@@ -1,11 +1,12 @@
 package edt.document.core;
 
 import java.util.*;
+import java.io.*;
 
 /**
 * Abstract class TextElement represents a generic text element with unique identification
 */
-public abstract class TextElement {
+public abstract class TextElement implements Serializable {
 	
 	/**
 	* Text element identification
