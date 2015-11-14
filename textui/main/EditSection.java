@@ -19,8 +19,8 @@ public class EditSection extends Command<Document> {
      * 
      * @param ent the target entity.
      */
-    public EditSection(Document ent) {
-        super(MenuEntry.OPEN_DOCUMENT_EDITOR, ent);
+    public EditSection(Document doc) {
+        super(MenuEntry.OPEN_DOCUMENT_EDITOR, doc);
     }
 
     /**

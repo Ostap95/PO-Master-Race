@@ -3,7 +3,7 @@ package edt.core;
 import java.util.ArrayList;
 
 /**
-* Class Documento represents general document, containing sections, subsections, authors and paragraphs.
+* Class Document represents general document, containing sections, subsections, authors and paragraphs.
 */
 public class Document extends Section {
 	
@@ -55,13 +55,6 @@ public class Document extends Section {
 		
 	}
 	
-	public void loadDocument() {
-		
-	}
-	
-	public void saveDocument() {
-		
-	}
 	
 	/**
 	* Returns document name
