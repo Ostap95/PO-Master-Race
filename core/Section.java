@@ -40,17 +40,12 @@ public class Section extends TextElement {
 	
 	/**
 	* Add key to a section (Setter)
+	* @param section id
 	*/
 	public void addSectionId(String id) {
 		setKey(id);
 	}
-	
-	/**
-	* Add title to the section (Setter)
-	*/
-	public void addSectionTitle(String title) {
-		_title = title;
-	}
+
 	/**
 	* Return HeadLine title
 	* @return headline title
@@ -172,4 +167,21 @@ public class Section extends TextElement {
 		return _paragraphs.get(idx);
 	}
 	
+	public static void main(String[] arg){
+		
+		Section sec = new Section();
+		sec.setTitle("Test Title");
+		Paragraph par = new Paragraph("Random Stuff");
+		par.setKey("123");
+		sec.addParagraph(0,par);
+		Section sec2 = new Section();
+		sec2.setTitle("SubSection Title");
+		Paragraph par2 = new Paragraph("Subsection paragraph");
+		sec2.addParagraph(0,par2);
+		sec.addSection(0,sec2);
+		
+		System.out.println(sec.getContent());
+		System.out.println(sec.getSize());
+		
+	}
 }

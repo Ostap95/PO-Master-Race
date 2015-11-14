@@ -13,6 +13,13 @@ public class Paragraph extends TextElement {
 	private String _text;
 	
 	/**
+	* Paragraph constructor
+	*/
+	public Paragraph(String text) {
+		_text = text;
+	}
+	
+	/**
 	* set new text for paragraph
 	*/
 	public void setText(String text) {
