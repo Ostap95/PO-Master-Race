@@ -35,9 +35,22 @@ public class Section extends TextElement {
 	
 	/*public Section(String id, String title) {
 		_title = title;
-		//setKey(id);
+		setKey(id);
 	}*/
 	
+	/**
+	* Add key to a section (Setter)
+	*/
+	public void addSectionId(String id) {
+		setKey(id);
+	}
+	
+	/**
+	* Add title to the section (Setter)
+	*/
+	public void addSectionTitle(String title) {
+		_title = title;
+	}
 	/**
 	* Return HeadLine title
 	* @return headline title
