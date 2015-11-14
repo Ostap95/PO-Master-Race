@@ -28,5 +28,10 @@ public class ChangeTitle extends Command<Document> {
     @SuppressWarnings("nls")
     public final void execute() {
         /* FIXME: implement command */
+          Form f = new Form();
+       
+        InputString title = new InputString(f, "New title: ");
+        f.parse();
+        entity().setTitle(title.toString());
     }
 }

@@ -7,6 +7,7 @@ import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
 
+import pt.utl.ist.po.ui.InputString;
 import edt.core.*;
 /* FIXME: import core classes here */
 
@@ -33,8 +34,11 @@ public class ListTopSections extends Command<Document> {
         /* FIXME: implement command */
         
         Form f = new Form();
-        entity().getContent();
+       
+        InputString name = new InputString(f, "Press any key to continue");
         f.parse();
+        Display display = new Display();
+        
         
     }
 }

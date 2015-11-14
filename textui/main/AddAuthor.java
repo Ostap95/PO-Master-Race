@@ -32,6 +32,7 @@ public class AddAuthor extends Command<Document> {/* FIXE */
         Form f = new Form();
         InputString name = new InputString(f, "Qual é o nome do autor? ");
         InputString email = new InputString(f, "Qual é o email do autor? ");
+        entity().addAuthor(name.toString(), email.toString());
         f.parse();
         
         
