@@ -35,7 +35,7 @@ public class Section extends TextElement {
 	
 	/*public Section(String id, String title) {
 		_title = title;
-		setKey(id);
+		//setKey(id);
 	}*/
 	
 	/**
@@ -159,21 +159,4 @@ public class Section extends TextElement {
 		return _paragraphs.get(idx);
 	}
 	
-	public static void main(String[] args) {
-		
-		/*Section sec1 = new Section();
-		sec1.setTitle("1");
-		Paragraph p1 = new Paragraph();
-		p1.setText("22");
-		Paragraph p2 = new Paragraph();
-		p2.setText("333");
-		sec1.addParagraph(0,p1);
-		sec1.addParagraph(1,p2);
-		Section sec2 = new Section();
-		sec2.setTitle("7");
-		
-		sec1.addSection(0,sec2);
-		System.out.println(sec1.getSize());*/
-		
-	}
 }
