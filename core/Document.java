@@ -1,9 +1,13 @@
 package edt.core;
 
+import java.util.ArrayList;
+
 /**
 * Class Documento represents general document, containing sections, subsections, authors and paragraphs.
 */
 public class Document extends Section {
+	
+	private static int listAuthorCounter = 0;
 	
 	/**
 	* File name
@@ -11,16 +15,27 @@ public class Document extends Section {
 	public String _filename;
 	
 	/**
+	* List of authors
+	*/
+	private ArrayList<Author> authors = new ArrayList<Author>();
+	
+	/**
 	* Adds new author to the document
+	* @param name: authors name, email: authors email
 	*/
 	public void addAuthor(String name, String email) {
 		Author author = new Author(name, email);
+		authors.add(listAuthorCounter, author);
+		listAuthorCounter++;
 	}
 	
-	/*
-	public Author getAuthors() {
-		
-	}*/
+	/**
+	* Return list of the document authors
+	* @return ArrayList of authors
+	*/
+	public ArrayList<Author> getAuthors() {
+		return authors;
+	}
 	
 	/*public TextElement getTextElement(String id) {
 		

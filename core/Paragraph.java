@@ -31,7 +31,7 @@ public class Paragraph extends TextElement {
 	* @return return string content of the paragraph
 	*/
 	public String getContent(){
-		return _text;
+		return " {" +_text+ "}\n";
 	}
 	
 	/*

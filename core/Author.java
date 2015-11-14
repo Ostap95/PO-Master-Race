@@ -20,6 +20,7 @@ public class Author implements Comparable<Author>{
 	
 	/**
 	* Author constructor
+	* @param name: Authors name, email: Authors email
 	*/
 	public Author(String name, String email) {
 		_name = name;
@@ -44,6 +45,7 @@ public class Author implements Comparable<Author>{
 	
 	/**
 	* See if two objects are equal
+	* @param obj: generic object
 	* @return return true if two author are equal
 	*/
 	public boolean equals(Object obj) {
@@ -53,6 +55,7 @@ public class Author implements Comparable<Author>{
 	/**
 	* Overriding the compareTo method from Comparator interface
 	* See if two authors are the same
+	* @param author: Author object
 	* @return return 1 if the authors are the same and 0 if not
 	*/
 	public int compareTo(Author author) {

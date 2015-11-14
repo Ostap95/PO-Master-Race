@@ -51,7 +51,7 @@ public class Section extends TextElement {
 	* @return headline title
 	*/
 	public String getHeadLine() {
-		return _title;
+		return "{"+ _title +"}\n";
 	}
 	
 	/**
@@ -92,9 +92,9 @@ public class Section extends TextElement {
 	*/
 	public String getContent() {
 		StringBuilder result = new StringBuilder();
-		result.append("{"+getTitle()+"}\n");
+		result.append(getHeadLine());
 		for(Paragraph par: _paragraphs) {
-			result.append("["+par.getKey()+"]" + " {" +par.getContent()+"}\n");
+			result.append("["+par.getKey()+"]" + par.getContent());
 		}
 		for(Section sec : _subsections) {
 			result.append(sec.getContent());
@@ -167,7 +167,7 @@ public class Section extends TextElement {
 		return _paragraphs.get(idx);
 	}
 	
-	public static void main(String[] arg){
+	/*public static void main(String[] arg){
 		
 		Section sec = new Section();
 		sec.setTitle("Test Title");
@@ -183,5 +183,5 @@ public class Section extends TextElement {
 		System.out.println(sec.getContent());
 		System.out.println(sec.getSize());
 		
-	}
+	}*/
 }
