@@ -31,5 +31,10 @@ public class ListTopSections extends Command<Document> {
     @SuppressWarnings("nls")
     public final void execute() {
         /* FIXME: implement command */
+        
+        Form f = new Form();
+        entity().getContent();
+        f.parse();
+        
     }
 }

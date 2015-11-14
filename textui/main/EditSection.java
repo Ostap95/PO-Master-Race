@@ -30,6 +30,9 @@ public class EditSection extends Command<Document> {
     @SuppressWarnings("nls")
     public final void execute() {
         /* FIXME: implement command */
+        EditMenu edit = new EditMenu(entity());
+        edit.entry(1).invisible();
+        edit.open();
     }
 }
 

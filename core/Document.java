@@ -37,6 +37,7 @@ public class Document extends Section {
 		return authors;
 	}
 	
+	
 	/*public TextElement getTextElement(String id) {
 		
 		

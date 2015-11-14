@@ -29,5 +29,11 @@ public class AddAuthor extends Command<Document> {/* FIXE */
     @SuppressWarnings("nls")
     public final void execute() {
         /* FIXME: implement command */
+        Form f = new Form();
+        InputString name = new InputString(f, "Qual é o nome do autor? ");
+        InputString email = new InputString(f, "Qual é o email do autor? ");
+        f.parse();
+        
+        
     }
 }

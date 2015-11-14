@@ -51,7 +51,7 @@ public class Section extends TextElement {
 	* @return headline title
 	*/
 	public String getHeadLine() {
-		return "{"+ _title +"}\n";
+		return "["+getKey()+"]"+" {"+ _title +"}\n";
 	}
 	
 	/**
@@ -92,7 +92,7 @@ public class Section extends TextElement {
 	*/
 	public String getContent() {
 		StringBuilder result = new StringBuilder();
-		result.append(getHeadLine());
+		result.append("{"+ _title +"}\n");
 		for(Paragraph par: _paragraphs) {
 			result.append("["+par.getKey()+"]" + par.getContent());
 		}
