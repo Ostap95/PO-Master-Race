@@ -8,14 +8,10 @@ import java.util.*;
 */
 public class Author implements Comparable<Author>{
 	
-	/**
-	* Name of the author
-	*/
+	/** Name of the author */
 	private String _name;
 	
-	/**
-	* E-mail of the author
-	*/
+	/** E-mail of the author */
 	private String _email;
 	
 	/**

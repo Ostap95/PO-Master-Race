@@ -8,24 +8,16 @@ import java.io.*;
 */
 public class Section extends TextElement {
 	
-	/** 
-	* Serial number for serialization 
-	*/
+	/** Serial number for serialization */
 	
-	/*
-	* Section title
-	*/
+	/* Section title */
 	private String _title;
 	
 	
-	/**
-	* ArrayList of paragraphs of the section
-	*/
+	/** ArrayList of paragraphs of the section */
 	private ArrayList<Paragraph> _paragraphs = new ArrayList<Paragraph>();
 	
-	/**
-	* ArrayList of subsections of the section
-	*/
+	/** ArrayList of subsections of the section */
 	private ArrayList<Section> _subsections = new ArrayList<Section>();
 	
 	/**
@@ -75,15 +67,21 @@ public class Section extends TextElement {
 	* @return returns the size of the section
 	*/
 	public int getSize() {
-		int size = 0;
-		size += getTitle().length();
-		for(Section sec : _subsections) {
-			size += sec.getSize();
+		int totalsize = _title.length(); 
+		 
+		if (_paragraphs != null) {
+			for (Paragraph y : _paragraphs) {    
+				totalsize += y.getSize();
+			}
 		}
-		for(Paragraph par : _paragraphs) {
-			size += par.getSize();
+
+		if (_subsections != null) {	
+			for (Section x : _subsections) {
+				totalsize += x.getSize();
+			}
 		}
-		return size;
+
+		return totalsize; 
 	}
 	
 	/**
@@ -93,12 +91,18 @@ public class Section extends TextElement {
 	public String getContent() {
 		StringBuilder result = new StringBuilder();
 		result.append("{"+ _title +"}\n");
-		for(Paragraph par: _paragraphs) {
-			result.append("["+par.getKey()+"]" + par.getContent());
+		if (_paragraphs != null) {
+			for (Paragraph par: _paragraphs) {
+				result.append("[" + par.getKey() + "]" + par.getContent());
+			}
 		}
-		for(Section sec : _subsections) {
-			result.append(sec.getContent());
+
+		if (_subsections != null) {
+			for (Section sec : _subsections) {
+				result.append(sec.getContent());
+			}
 		}
+		
 		return result.toString();
 	}
 	
@@ -117,8 +121,14 @@ public class Section extends TextElement {
 	*/
 	public Section getSection(int idx) {
 		/* USE EXCPETION TO THROW ERROR IF SUBSECTIONS IS EMPTY */
-		return _subsections.get(idx);
+		try{	
+			 return _subsections.get(idx);
+		} catch (IndexOutOfBoundsException e) {
+			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
+			return null; 
+		} 
 	}
+	
 	
 	/**
 	* Return number of elements in subsection array list
@@ -133,7 +143,11 @@ public class Section extends TextElement {
 	* Adds new subsections to the section
 	*/
 	public void addSection(int idx, Section sec) {
-		_subsections.add(idx,sec);
+		try{
+			_subsections.add(idx,sec);
+		} catch (IndexOutOfBoundsException e) {
+			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
+		} 
 	}
 	
 	/**
@@ -149,7 +163,11 @@ public class Section extends TextElement {
 	*/
 	public void addParagraph(int idx, Paragraph par) {
 		/* USE EXCPETION TO THROW ERROR IF PARAGRAPHLIST IS EMPTY */
-		_paragraphs.add(idx, par);
+		try{
+			_paragraphs.add(idx, par);
+		} catch (IndexOutOfBoundsException e) {
+			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
+		}
 	}
 	
 	/**
@@ -164,7 +182,13 @@ public class Section extends TextElement {
 	
 	public Paragraph getParagraph(int idx) {
 		/* USE EXCPETION TO THROW ERROR IF PARAGRAPHLIST IS EMPTY */
-		return _paragraphs.get(idx);
+		
+		try{
+			return _paragraphs.get(idx);
+		} catch (IndexOutOfBoundsException e) {
+			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
+			return null; 
+		} 
 	}
 	
 	/*public static void main(String[] arg){

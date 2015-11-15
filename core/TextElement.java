@@ -8,9 +8,7 @@ import java.io.*;
 */
 public abstract class TextElement implements Serializable {
 	
-	/**
-	* Text element identification
-	*/
+	/** Text element identification	*/
 	private String _key;
 	
 	/**
@@ -21,9 +19,7 @@ public abstract class TextElement implements Serializable {
 		return _key;
 	}
 	
-	/**
-	* Set text element key
-	*/
+	/* Set text element key	*/
 	public void setKey(String key) {
 		_key = key;
 	}

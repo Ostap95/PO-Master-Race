@@ -9,6 +9,7 @@ import pt.utl.ist.po.ui.Form;
 
 import pt.utl.ist.po.ui.InputString;
 import edt.core.*;
+import java.util.*;
 /* FIXME: import core classes here */
 
 /**
@@ -25,6 +26,13 @@ public class ListTopSections extends Command<Document> {
         super(MenuEntry.SHOW_INDEX, ent);
     }
 
+
+    public String searchTopSections(ArrayList<Section> sec){
+        StringBuilder result = new StringBuilder();
+		//result.append("{"+ _title +"}\n");
+        return result.toString();
+    }
+    
     /**
      * Execute the command.
      */
@@ -32,9 +40,9 @@ public class ListTopSections extends Command<Document> {
     @SuppressWarnings("nls")
     public final void execute() {
         /* FIXME: implement command */
+        ArrayList<Section> sections = entity().getSubsections();
         
         Form f = new Form();
-       
         InputString name = new InputString(f, "Press any key to continue");
         f.parse();
         Display display = new Display();

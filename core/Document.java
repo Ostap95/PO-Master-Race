@@ -17,7 +17,7 @@ public class Document extends Section {
 	/**
 	* List of authors
 	*/
-	private ArrayList<Author> authors = new ArrayList<Author>();
+	private ArrayList<Author> _authors = new ArrayList<Author>();
 	
 	/**
 	* Adds new author to the document
@@ -25,8 +25,20 @@ public class Document extends Section {
 	*/
 	public void addAuthor(String name, String email) {
 		Author author = new Author(name, email);
-		authors.add(listAuthorCounter, author);
-		listAuthorCounter++;
+		int idx = 0; 
+
+		for (Author aut: _authors) {
+			idx ++;
+			
+			if (aut.compareTo(author) < 0) {
+				_authors.add((idx--),author);
+				break;
+			}
+
+			if (idx == _authors.size()) {
+				_authors.add(author);
+			}
+		}
 	}
 	
 	/**
@@ -34,7 +46,7 @@ public class Document extends Section {
 	* @return ArrayList of authors
 	*/
 	public ArrayList<Author> getAuthors() {
-		return authors;
+		return _authors;
 	}
 	
 	
@@ -47,10 +59,10 @@ public class Document extends Section {
 		
 	}
 	
-	/*public String getHeadLine() {
+	public String getHeadLine() {
+		return "{" + _filename + "}\n";
 		
-		
-	}*/
+	}
 	
 	public void removeFromIndex(TextElement ele) {
 		
