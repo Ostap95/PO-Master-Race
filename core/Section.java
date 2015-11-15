@@ -7,29 +7,29 @@ import java.io.*;
 * Class Section that represents a section of a document
 */
 public class Section extends TextElement {
-	
+
 	/** Serial number for serialization */
-	
+
 	/* Section title */
 	private String _title;
-	
-	
+
+
 	/** ArrayList of paragraphs of the section */
 	private ArrayList<Paragraph> _paragraphs = new ArrayList<Paragraph>();
-	
+
 	/** ArrayList of subsections of the section */
 	private ArrayList<Section> _subsections = new ArrayList<Section>();
-	
+
 	/**
 	* Section class constructor
 	* @param id - unique key of the new section, title - title of the section
 	*/
-	
+
 	/*public Section(String id, String title) {
 		_title = title;
 		setKey(id);
 	}*/
-	
+
 	/**
 	* Add key to a section (Setter)
 	* @param section id
@@ -45,15 +45,15 @@ public class Section extends TextElement {
 	public String getHeadLine() {
 		return "["+getKey()+"]"+" {"+ _title +"}\n";
 	}
-	
+
 	/**
-	* Sets new title for the section 
+	* Sets new title for the section
 	* @param title - title of the section
 	*/
 	public void setTitle(String title) {
 		_title = title;
 	}
-	
+
 	/**
 	* Return section title
 	* @return return section title
@@ -61,32 +61,32 @@ public class Section extends TextElement {
 	public String getTitle() {
 		return _title;
 	}
-	
+
 	/**
 	* Returns the size of the section (include all subsections)
 	* @return returns the size of the section
 	*/
 	public int getSize() {
-		int totalsize = _title.length(); 
-		 
+		int totalsize = _title.length();
+
 		if (_paragraphs != null) {
-			for (Paragraph y : _paragraphs) {    
+			for (Paragraph y : _paragraphs) {
 				totalsize += y.getSize();
 			}
 		}
 
-		if (_subsections != null) {	
+		if (_subsections != null) {
 			for (Section x : _subsections) {
 				totalsize += x.getSize();
 			}
 		}
 
-		return totalsize; 
+		return totalsize;
 	}
-	
+
 	/**
 	* Return content of the section
-	* @return returns content of the section 
+	* @return returns content of the section
 	*/
 	public String getContent() {
 		StringBuilder result = new StringBuilder();
@@ -102,10 +102,10 @@ public class Section extends TextElement {
 				result.append(sec.getContent());
 			}
 		}
-		
+
 		return result.toString();
 	}
-	
+
 	/**
 	* Return list of all subsections of the current section
 	* @return list of subsections
@@ -114,42 +114,40 @@ public class Section extends TextElement {
 		/* USE EXCPETION TO THROW ERROR IF SUBSECTIONS IS EMPTY */
 		return _subsections;
 	}
-	
+
 	/**
 	* Returns SubSection based on given index
 	* @return return desired subsection of the section
 	*/
 	public Section getSection(int idx) {
 		/* USE EXCPETION TO THROW ERROR IF SUBSECTIONS IS EMPTY */
-		try{	
+		try{
 			 return _subsections.get(idx);
 		} catch (IndexOutOfBoundsException e) {
 			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
-			return null; 
-		} 
+			return null;
+		}
 	}
-	
-	
+
+
 	/**
 	* Return number of elements in subsection array list
-	* @return return number of subsections 
+	* @return return number of subsections
 	*/
 	public String getSubsectionIndex() {
 		int size = _subsections.size();
 		return Integer.toString(size);
 	}
-	
-	/**
-	* Adds new subsections to the section
+	https://github.com/atomction
 	*/
 	public void addSection(int idx, Section sec) {
 		try{
 			_subsections.add(idx,sec);
 		} catch (IndexOutOfBoundsException e) {
 			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
-		} 
+		}
 	}
-	
+
 	/**
 	* Remove Subsection based on index
 	* @return return boolean value based on the success of the remove
@@ -157,7 +155,7 @@ public class Section extends TextElement {
 	public boolean removeSection(int idx /*, Document doc*/) {
 		return true; /* TEST */
 	}
-	
+
 	/**
 	* Add paragraph to the section
 	*/
@@ -169,7 +167,7 @@ public class Section extends TextElement {
 			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
 		}
 	}
-	
+
 	/**
 	* Remove paragraph of the ssection
 	* @return return boolean value based on the success of the remove
@@ -179,20 +177,20 @@ public class Section extends TextElement {
 		_paragraphs.remove(idx);
 		return true; /* TEST */
 	}
-	
+
 	public Paragraph getParagraph(int idx) {
 		/* USE EXCPETION TO THROW ERROR IF PARAGRAPHLIST IS EMPTY */
-		
+
 		try{
 			return _paragraphs.get(idx);
 		} catch (IndexOutOfBoundsException e) {
 			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
-			return null; 
-		} 
+			return null;
+		}
 	}
-	
+
 	/*public static void main(String[] arg){
-		
+
 		Section sec = new Section();
 		sec.setTitle("Test Title");
 		Paragraph par = new Paragraph("Random Stuff");
@@ -203,9 +201,9 @@ public class Section extends TextElement {
 		Paragraph par2 = new Paragraph("Subsection paragraph");
 		sec2.addParagraph(0,par2);
 		sec.addSection(0,sec2);
-		
+
 		System.out.println(sec.getContent());
 		System.out.println(sec.getSize());
-		
+
 	}*/
 }
