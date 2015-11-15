@@ -10,7 +10,6 @@ import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputString;
 import edt.core.*;
 import java.util.*;
-/* FIXME: import core classes here */
 
 /**
  * Command for showing the top sections of the current document in the editor.
@@ -25,7 +24,6 @@ public class ListTopSections extends Command<Document> {
     public ListTopSections(Document ent) {
         super(MenuEntry.SHOW_INDEX, ent);
     }
-
 
     public String searchTopSections(ArrayList<Section> sec) {
         StringBuilder result = new StringBuilder();
@@ -42,7 +40,7 @@ public class ListTopSections extends Command<Document> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+
         ArrayList<Section> sections = entity().getSubsections();
         Display display = new Display();
         display.add(searchTopSections(sections));
