@@ -41,7 +41,10 @@ public class ShowMetadata extends Command<Document> {
         Display display = new Display();            
         Form f = new Form();
         InputString name = new InputString(f, "Press Enter to continue"); // changed to "Press enter to continue"
-        //display.add(entity()); // adds string
+        display.add(entity().getTitle()); // adds string
+        //display.add(entity().)
+        display.add(entity().getSubsectionIndex());
+        display.add(entity().getNumberUniqueIds());
         //display.display();
         f.parse();
     }

@@ -13,5 +13,5 @@ import java.util.*;
 import pt.utl.ist.po.ui.InvalidOperation;
 
 public class Message {
-	
+			
 }

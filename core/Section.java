@@ -61,7 +61,7 @@ public class Section extends TextElement {
 	* to be used in metadata menu
 	*@return number of Unique Ids in file
 	*/
-	public int getNumberUniqueIds() {
+	public String getNumberUniqueIds() {
 
 		int numberIds = 0; 
 		for(Section section: _subsections ) {
@@ -72,7 +72,7 @@ public class Section extends TextElement {
 			if (paragraph.isIndexed())
 				numberIds++;
 		}
-		return numberIds;
+		return Integer.toString(numberIds);
 	}
 
 	
@@ -88,13 +88,11 @@ public class Section extends TextElement {
 				totalsize += y.getSize();
 			}
 		}
-
 		if (_subsections != null) {	
 			for (Section x : _subsections) {
 				totalsize += x.getSize();
 			}
 		}
-
 		return totalsize; 
 	}
 	
@@ -102,10 +100,10 @@ public class Section extends TextElement {
 	* Return content of the section
 	* @return returns content of the section 
 	*/
+
 	public String getContent() {
 		StringBuilder result = new StringBuilder();
-		result.append(this.getHeadLine());
-		
+		result.append(this.getHeadLine());	
 		if (_paragraphs != null) {
 			for (Paragraph par: _paragraphs) {
 				result.append("[" + par.getKey() + "]" + par.getContent());
@@ -279,7 +277,6 @@ public class Section extends TextElement {
             System.err.println("InvalidOperation: " + e.getMessage());
             return ""; // return string
         }
-        result.append("() {}");
         return result.toString();
     }	
 
