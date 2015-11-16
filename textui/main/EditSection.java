@@ -32,7 +32,6 @@ public class EditSection extends Command<Editor> {
     public final void execute() {
         /* FIXME: implement command */
         EditMenu edit = new EditMenu(entity().getDocument());
-        edit.entry(1).invisible();
         edit.open();
     }
 }

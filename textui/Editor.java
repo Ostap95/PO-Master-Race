@@ -6,6 +6,8 @@ import edt.core.Document;
 import pt.utl.ist.po.ui.Menu;
 import static pt.utl.ist.po.ui.UserInteraction.IO;
 import edt.core.Command;
+import edt.parser.Parser;
+import java.io.*;
 /**
  * Themain class of the edt application.
  **/
@@ -38,10 +40,23 @@ public class Editor {
 
     public static void main(String[] args) {
         /* FIXME: Add code */
-		Document newdoc = new Document();
-    Editor editor = new Editor(newdoc);
-		MainMenu menu = new MainMenu(editor);
-		menu.open();
-		IO.close();
+        String fileName = System.getProperty("import");
+        Document newdoc;
+        if(fileName == null) {
+            newdoc = new Document();
+        }else{
+          try {
+            Parser parser = new Parser();
+            newdoc = parser.parse(fileName);
+          } catch (IOException e) {
+            e.getMessage();
+            newdoc = new Document();
+          }
+        }
+
+        Editor editor = new Editor(newdoc);
+		    MainMenu menu = new MainMenu(editor);
+		    menu.open();
+		    IO.close();
     }
 }

@@ -42,14 +42,13 @@ public class Parser {
                 parseLineContent(line);
 
             return _document;
-        } catch (IOException e) {
-            e.getMessage();
+
 
         } finally {
             if (reader != null)
                 reader.close();
         }
-        return _document;
+        
     }
 
     private void parseTitle(String title) {

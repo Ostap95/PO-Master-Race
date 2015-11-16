@@ -32,5 +32,10 @@ public class SaveDocument extends Command<Editor> {
     @SuppressWarnings("nls")
     public final void execute() throws InvalidOperation {
         /* FIXME: implement command */
+        Display display = new Display();
+        Form f = new Form();
+        f.parse();
+        Message.newSaveAs();
+
     }
 }
