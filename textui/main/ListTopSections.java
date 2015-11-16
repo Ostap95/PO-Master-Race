@@ -78,9 +78,8 @@ public class ListTopSections extends Command<Document> {
         Display display = new Display();
         Form f = new Form();
         InputString name = new InputString(f, "Press Enter to continue");
-        display.add(entity().searchTopSections());
-        display.display();
+        //display.add(entity().searchTopSections());
+        //display.display();
         f.parse();
-
     }
 }

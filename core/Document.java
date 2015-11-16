@@ -42,19 +42,6 @@ public class Document extends Section {
 	* @return ArrayList of authors
 	*/	
 
-	/*
-	public ArrayList<Author> sortAuthors() {
-		ArrayList<String> author = new ArrayList<String>();
-		ordenado = this.getAuthors();
-		for (Author author: ordenado) {
-			author.add(author.getName())
-		}
-
-		// use list implemented sort func
-
-	}
-	ordenar autores por ordem alfabetica ->NAO ACABADO
-	*/
 
 
 	/**

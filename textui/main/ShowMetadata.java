@@ -7,11 +7,9 @@ import pt.utl.ist.po.ui.Display;
 import edt.core.*;
 
 // importado
+import java.util.SortedSet;
 import pt.utl.ist.po.ui.Menu;
-import pt.utl.ist.po.ui.Command;
-import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
-
 import pt.utl.ist.po.ui.InputString;
 import edt.core.*;
 import java.util.*;
@@ -27,6 +25,17 @@ public class ShowMetadata extends Command<Document> {
      * 
      * @param ent the target entity.
      */
+
+
+    public String printAuthors(List<Author> authors) {
+        StringBuilder result = new StringBuilder();
+        for (Author author : authors) {
+            result.append("Autor: ").append(author.getName()).append("/").append(author.getEmail()).append("\n");
+        }
+        return result.toString();
+    }
+
+
     public ShowMetadata(Document ent) {
         super(MenuEntry.SHOW_METADATA, ent);
     }
@@ -37,15 +46,17 @@ public class ShowMetadata extends Command<Document> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
         Display display = new Display();            
         Form f = new Form();
         InputString name = new InputString(f, "Press Enter to continue"); // changed to "Press enter to continue"
-        display.add(entity().getTitle()); // adds string
-        //display.add(entity().)
-        display.add(entity().getSubsectionIndex());
-        display.add(entity().getNumberUniqueIds());
-        //display.display();
+        ArrayList<Author> authors;
+        authors = entity().getAuthors();
+        Collections.sort(authors);
+        display.add("Título: " + entity().getTitle() + "\n"); // adds string
+        display.add(printAuthors(authors) + "\n");
+        display.add("Dimensão do documento (bytes): " + entity().getSubsectionIndex() + "\n");
+        display.add("Identificadores únicos: " + entity().getNumberUniqueIds() + "\n");
+        display.display();
         f.parse();
     }
 }

@@ -170,8 +170,6 @@ public class Section extends TextElement {
 	}
 	*/
 
-
-
 	/**
 	* Adds new subsections to the section
 	*/
@@ -268,9 +266,9 @@ public class Section extends TextElement {
             for(Section section : this.getSubsections()){
                 if(section.isIndexed())
                     // verifica se seccao esta indexada
-                    result.append(this.getHeadLine()).append("\n");
+                    result.append(section.getHeadLine()).append("\n");
                 else{
-                    result.append("[] ").append(this.getTitle()).append("\n");
+                    result.append("[] ").append(section.getTitle()).append("\n");
                 }
             }
         }catch(InvalidOperation e){

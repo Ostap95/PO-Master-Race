@@ -24,7 +24,6 @@ public class Command {
 		try {
 			FileOutputStream fileStream = new FileOutputStream(doc.getFilename());
 			ObjectOutputStream os = new ObjectOutputStream(fileStream);
-
 			os.writeObject(doc);
 			os.close();
 		} catch (IOException ex) {
