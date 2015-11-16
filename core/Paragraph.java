@@ -29,7 +29,7 @@ public class Paragraph extends TextElement {
 	* Return content of the paragraph
 	* @return return string content of the paragraph
 	*/
-	public String getContent(){
+	public String getContent() {
 		return "{" +_text+ "}\n";
 	}
 

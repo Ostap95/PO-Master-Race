@@ -34,19 +34,16 @@ public class Editor {
 
     public boolean loadDocument(String filename) {
         Command cmd = new Command();
-
         try {
-        _currentDoc= cmd.loadDocument(filename);
-        return true;
-        
-      } catch (ClassNotFoundException e) {
-        e.getMessage();
-        return false;
-      }catch (IOException e) {
-        e.getMessage();
-        return false;
-      }
-
+          _currentDoc= cmd.loadDocument(filename);
+          return true;
+        } catch (ClassNotFoundException e) {
+          e.getMessage();
+          return false;
+        } catch (IOException e) {
+          e.getMessage();
+          return false;
+        }
     }
 
 

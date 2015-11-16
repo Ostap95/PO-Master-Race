@@ -30,7 +30,7 @@ public class ShowMetadata extends Command<Editor> {
     public String printAuthors(List<Author> authors) {
         StringBuilder result = new StringBuilder();
         for (Author author : authors) {
-            result.append(Message.author(author.getName(), author.getEmail())+"\n");
+            result.append(Message.author(author.getName(), author.getEmail()) + "\n");
         }
         return result.toString();
     }
@@ -53,11 +53,10 @@ public class ShowMetadata extends Command<Editor> {
         Collections.sort(authors);
         display.add(Message.documentTitle(entity().getDocument().getTitle()) + "\n"); // adds string
         display.add(printAuthors(authors));
-        display.add(Message.documentSections(entity().getDocument().getSubsectionIndex())+"\n");
+        display.add(Message.documentSections(entity().getDocument().getSubsectionIndex()) + "\n");
         display.add(Message.documentBytes(entity().getDocument().getSize()) + "\n");
         display.add(Message.documentIdentifiers(entity().getDocument().getNumberUniqueIds()) + "\n");
         display.display();
-        //InputString name = new InputString(f, "Press Enter to continue"); // changed to "Press enter to continue"
         f.parse();
     }
 }

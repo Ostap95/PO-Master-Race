@@ -40,15 +40,11 @@ public class Parser {
 
             while ((line = reader.readLine()) != null)
                 parseLineContent(line);
-
             return _document;
-
-
         } finally {
             if (reader != null)
                 reader.close();
         }
-        
     }
 
     private void parseTitle(String title) {

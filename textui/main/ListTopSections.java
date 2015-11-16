@@ -25,42 +25,24 @@ public class ListTopSections extends Command<Editor> {
     public ListTopSections(Editor editor) {
         super(MenuEntry.SHOW_INDEX, editor);
     }
-    /*
-    public String searchTopSections(ArrayList<Section> sec) {
-        StringBuilder result = new StringBuilder();
-        result.append(sec.getTitle());
-	      for(Section section : sec){
-              result.append(searchTopSections(section).toString());
-        }
-        return result.toString();
-    }*/
-    // alterado para
 
-
-
-    // search TopSections em Section.java (existe metodo protected)
     /**
-     * procura seccoes de topo (com relacao direta 'a seccao atual)
-     *
-     * @param section (being used in doc)
-     * @return string to be used in display
-     */
-
+    * Search top section in document
+    * @param sec: section to be Used
+    * @return return formatted string with top section information
+    */
     public String searchTopSections(Section sec) {
         StringBuilder result = new StringBuilder();
         result.append( sec.getHeadLine());
         try {
-            for(Section section : sec.getSubsections()){
+            for(Section section : sec.getSubsections()) {
                   result.append(section.getHeadLine());
             }
-        }catch(InvalidOperation e){
-
-            return result.toString(); // ret
+        } catch(InvalidOperation e) {
+            return result.toString();
         }
         return result.toString();
     }
-
-
 
     /**
      * Execute the command.
@@ -73,7 +55,6 @@ public class ListTopSections extends Command<Editor> {
         Form f = new Form();
         display.add(searchTopSections(entity().getDocument()));
         display.display();
-        //InputString name = new InputString(f, "Press Enter to continue");
         f.parse();
 
     }

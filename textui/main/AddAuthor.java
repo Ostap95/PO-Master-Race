@@ -32,8 +32,8 @@ public class AddAuthor extends Command<Editor> {/* FIXE */
     public final void execute() {
         /* FIXME: implement command */
         Form f = new Form();
-        InputString name = new InputString(f, "Name: ");
-        InputString email = new InputString(f, "Email: ");
+        InputString name = new InputString(f, Message.requestAuthorName());
+        InputString email = new InputString(f, Message.requestEmail());
         f.parse();
         Author author = new Author(name.toString(), email.toString());
         entity().getDocument().addAuthor(author);

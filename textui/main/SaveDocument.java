@@ -32,10 +32,10 @@ public class SaveDocument extends Command<Editor> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() throws InvalidOperation {
-        /* FIXME: implement command */
+
         Display display = new Display();
         Form f = new Form();
-        if(entity().getDocument().getFilename() == ""){
+        if (entity().getDocument().getFilename() == "") {
           InputString filename = new InputString(f, Message.newSaveAs());
           f.parse();
           entity().getDocument().setFilename(filename.toString());

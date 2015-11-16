@@ -34,13 +34,12 @@ public class OpenDocument extends Command<Editor> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() throws InvalidOperation {
-        /* FIXME: implement command */
+
         Display display = new Display();
         Form f = new Form();
         InputString filename = new InputString(f, Message.openFile());
         f.parse();
-        if(!(entity().loadDocument(filename.toString()))) {
-        
+        if (!(entity().loadDocument(filename.toString()))) {
           display.add(Message.fileNotFound());
           display.display();
         }

@@ -36,7 +36,6 @@ public class Section extends TextElement {
 	* @return headline title
 	*/
 	public String getHeadLine() {
-		// identificador ou titulo podem nao estar definidos
 		return "[" + getKey() + "]" + "{" + _title + "}\n";
 	}
 
@@ -87,7 +86,7 @@ public class Section extends TextElement {
 		result.append(this.getHeadLine());
 
 		if (_paragraphs != null) {
-			for (Paragraph par: _paragraphs) {
+			for (Paragraph par : _paragraphs) {
 				result.append("[" + par.getKey() + "]" + par.getContent());
 			}
 		}
@@ -107,8 +106,8 @@ public class Section extends TextElement {
 	*/
 
 	public ArrayList<Section> getSubsections() throws InvalidOperation {
-		/* USE EXCEPTION TO THROW ERROR IF SUBSECTIONS IS EMPTY */
-		if (_subsections.isEmpty()){
+
+		if (_subsections.isEmpty()) {
 			throw new InvalidOperation("No Subsections");
 		} else {
 			return _subsections;
@@ -121,7 +120,7 @@ public class Section extends TextElement {
 	* @return return desired subsection of the section
 	*/
 	public Section getSection(int idx) throws InvalidOperation {
-		/* USE EXCPETION TO THROW ERROR IF SUBSECTIONS IS EMPTY */
+
 		try{
 			 if (_subsections.isEmpty()) {
 				throw new InvalidOperation("No SubSection");
@@ -138,22 +137,10 @@ public class Section extends TextElement {
 	* Return number of elements in subsection array list
 	* @return return number of subsections
 	*/
-
-	// o que este metodo deve fazer?
 	public int getSubsectionIndex() {
  		int size = _subsections.size();
 		return size;
 	}
-
-	/*
-	//this method gets number of subsections
-	public String getSubsectionIndex() {
- 		int size = _subsections.size();
-		return Integer.toString(size);
-	}
-	*/
-
-
 
 	/**
 	* Adds new subsections to the section
@@ -177,7 +164,7 @@ public class Section extends TextElement {
 	* @return return boolean value based on the success of the remove
 	*/
 	public boolean removeSection(int idx, Document doc) {
-		try{
+		try {
 			Section s = _subsections.get(idx);
 
 			if (s.isIndexed()) {
@@ -214,14 +201,12 @@ public class Section extends TextElement {
 	* @return return boolean value based on the success of the remove
 	*/
 	public boolean removeParagraph(int idx, Document doc) throws InvalidOperation {
-		/* USE EXCPETION TO THROW ERROR IF PARAGRAPHLIST IS EMPTY */
-		try{
 
+		try {
 			if (_paragraphs.isEmpty()) {
 				throw new InvalidOperation("No paragraph");
 			} else {
 				Paragraph p = _paragraphs.get(idx);
-
 				if (p.isIndexed()) {
 					doc.removeFromIndex(p);
 				}
@@ -241,9 +226,8 @@ public class Section extends TextElement {
 	* @return return desired paragraph
 	*/
 	public Paragraph getParagraph(int idx) throws InvalidOperation {
-		/* USE EXCPETION TO THROW ERROR IF PARAGRAPHLIST IS EMPTY */
 
-		try{
+		try {
 			if (_paragraphs.isEmpty()) {
 				throw new InvalidOperation("No paragraph");
 			} else {

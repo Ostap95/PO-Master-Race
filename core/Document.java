@@ -37,7 +37,7 @@ public class Document extends Section {
 	public void addAuthor(Author author) {
 		int idx = 0;
 
-		if (!_authorList.isEmpty()){
+		if (!_authorList.isEmpty()) {
 				for (Author aut: _authorList) {
 					if (aut.compareTo(author) > 0) {
 						_authorList.add(idx, author);
