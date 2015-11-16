@@ -46,12 +46,12 @@ public class ListTopSections extends Command<Document> {
      * @return string to be used in display
      */
 
-    /*public String searchTopSections(Section sec) {
+    public String searchTopSections(Section sec) {
         StringBuilder result = new StringBuilder();
-        result.append(sec.getTitle()).append("\n");
+        result.append(sec.getTitle() + "\n");
         try {
             for(Section section : sec.getSubsections()){
-                  result.append(sec.getHeadLine());
+                  result.append(section.getHeadLine());
             }
         }catch(InvalidOperation e){
             System.err.println("InvalidOperation: " + e.getMessage());
@@ -59,7 +59,7 @@ public class ListTopSections extends Command<Document> {
         }
         result.append("() {}");
         return result.toString();
-    }*/
+    }
 
 
 
@@ -72,7 +72,7 @@ public class ListTopSections extends Command<Document> {
         // entity is Document
         Display display = new Display();
         Form f = new Form();
-        display.add(entity().searchTopSections());
+        display.add(searchTopSections(entity()));
         display.display();
         InputString name = new InputString(f, "Press Enter to continue");
         f.parse();

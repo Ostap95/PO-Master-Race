@@ -16,26 +16,41 @@ public class Document extends Section {
 	/** List of TextElements **/
 	private HashMap<String, TextElement> _elementList = new HashMap<String, TextElement>();
 
+	/**
+	* Document Constructor
+	*/
+	public Document() {
+
+	}
+	/** Document Constructor
+	* @param filename: Files name
+	*/
+	public Document(String filename) {
+		_filename = filename;
+	}
 
 	/**
 	* Adds new author to the document
 	* @param name: authors name, email: authors email
 	*/
-	public void addAuthor(String name, String email) {
-		Author author = new Author(name, email);
+	public void addAuthor(Author author) {
 		int idx = 0;
 
-		for (Author aut: _authorList) {
-			idx ++;
+		if (!_authorList.isEmpty()){
+				for (Author aut: _authorList) {
+					if (aut.compareTo(author) > 0) {
+						_authorList.add(idx, author);
+						break;
+					}
+					idx ++;
+				}
 
-			if (aut.compareTo(author) < 0) {
-				_authorList.add((idx--),author);
-				break;
-			}
+				if (idx == _authorList.size()) {
+					_authorList.add(author);
+				}
 
-			if (idx == _authorList.size()) {
-				_authorList.add(author);
-			}
+		} else {
+			_authorList.add(author);
 		}
 	}
 
@@ -79,7 +94,7 @@ public class Document extends Section {
 	public void removeFromIndex(TextElement ele) {
 		String key = ele.getKey();
 		_elementList.remove(key);
-		ele.setKey(null);
+		ele.setKey("");
 	}
 
 	/**
@@ -95,5 +110,13 @@ public class Document extends Section {
 	*/
 	public void setFilename(String filename) {
 		_filename = filename;
+	}
+
+	/**
+	* Used to get the number of uniq Ids
+	*@return number of Unique Ids in file
+	*/
+	public int getNumberUniqueIds() {
+		return _elementList.size();
 	}
 }

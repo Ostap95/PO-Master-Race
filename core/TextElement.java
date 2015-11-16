@@ -31,7 +31,7 @@ public abstract class TextElement implements Serializable {
 	* @return return boolean value based on if text element has unique key
 	*/
 	protected boolean isIndexed(){
-		return _key !=  null;
+		return _key !=  "";
 	}
 
 	/**

@@ -14,7 +14,7 @@ public class ChangeTitle extends Command<Document> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public ChangeTitle(Document ent) {
@@ -29,7 +29,7 @@ public class ChangeTitle extends Command<Document> {
     public final void execute() {
         /* FIXME: implement command */
         Form f = new Form();
-       
+
         InputString title = new InputString(f, "New title: ");
         f.parse();
         entity().setTitle(title.toString());

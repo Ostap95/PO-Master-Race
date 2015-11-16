@@ -161,7 +161,11 @@ public class Section extends TextElement {
 	*/
 	public void addSection(int idx, Section sec) {
 		try{
+			if (idx == -1) {
+				_subsections.add(sec);
+			} else {
 			_subsections.add(idx,sec);
+			}
 		} catch (IndexOutOfBoundsException e) {
 			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
 		}
@@ -176,7 +180,7 @@ public class Section extends TextElement {
 		try{
 			Section s = _subsections.get(idx);
 
-			if (s.getKey() != null) {
+			if (s.isIndexed()) {
 				doc.removeFromIndex(s);
 			}
 			_subsections.remove(idx);
@@ -194,7 +198,11 @@ public class Section extends TextElement {
 	*/
 	public void addParagraph(int idx, Paragraph par) {
 		try{
-			_paragraphs.add(idx, par);
+			if (idx == -1) {
+				_paragraphs.add(par);
+			} else {
+				_paragraphs.add(idx, par);
+			}
 		} catch (IndexOutOfBoundsException e) {
 			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
 		}
@@ -214,7 +222,7 @@ public class Section extends TextElement {
 			} else {
 				Paragraph p = _paragraphs.get(idx);
 
-				if (p.getKey() != null) {
+				if (p.isIndexed()) {
 					doc.removeFromIndex(p);
 				}
 				_paragraphs.remove(idx);
@@ -246,25 +254,4 @@ public class Section extends TextElement {
 			return null;
 		}
 	}
-
-	/**
-     * procura seccoes de topo (com relacao direta 'a seccao atual)
-     *
-     * @param section (being used in doc)
-     * @return string to be used in display
-     */
-		 public String searchTopSections() {
-         StringBuilder result = new StringBuilder();
-         result.append(getTitle()).append("\n");
-         try {
-             for(Section section : getSubsections()){
-                   result.append(section.getHeadLine());
-             }
-         }catch(InvalidOperation e){
-             System.err.println("InvalidOperation: " + e.getMessage());
-             return ""; // ret
-         }
-         //result.append("() {}");
-         return result.toString();
-     }
-	 }
+}

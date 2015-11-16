@@ -15,7 +15,7 @@ public class AddAuthor extends Command<Document> {/* FIXE */
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public AddAuthor(Document ent) { /* FIXE */
@@ -30,11 +30,10 @@ public class AddAuthor extends Command<Document> {/* FIXE */
     public final void execute() {
         /* FIXME: implement command */
         Form f = new Form();
-        InputString name = new InputString(f, "Qual é o nome do autor? ");
-        InputString email = new InputString(f, "Qual é o email do autor? ");
-        entity().addAuthor(name.toString(), email.toString());
+        InputString name = new InputString(f, "Name: ");
+        InputString email = new InputString(f, "Email: ");
         f.parse();
-        
-        
+        Author author = new Author(name.toString(), email.toString());
+        entity().addAuthor(author);
     }
 }

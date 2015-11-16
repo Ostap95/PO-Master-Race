@@ -60,6 +60,6 @@ public class Author implements Comparable<Author>, Serializable {
 	* @return return 1 if the authors are the same and 0 if not
 	*/
 	public int compareTo(Author author) {
-		return (this._name).compareTo(author.getName());
+		return (_name).compareTo(author.getName());
 	}
 }
