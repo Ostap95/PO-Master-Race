@@ -56,26 +56,6 @@ public class Section extends TextElement {
 		return _title;
 	}
 
-
-	/**
-	* Used for metadata informations
-	*@return number of Unique Ids in file
-	*/
-	public int getNumberUniqueIds() {
-
-		int numberIds = 0;
-		for(Section section: _subsections ) {
-				if(section.isIndexed())
-					numberIds++;
-		}
-		for (Paragraph paragraph: _paragraphs) {
-			if (paragraph.isIndexed())
-				numberIds++;
-		}
-		return numberIds;
-	}
-
-
 	/**
 	* Returns the size of the section (include all subsections)
 	* @return returns the size of the section
