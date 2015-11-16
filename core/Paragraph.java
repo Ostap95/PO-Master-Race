@@ -6,22 +6,25 @@ import java.io.*;
 * Class Paragraph represents a paragraph of a section
 */
 public class Paragraph extends TextElement {
-	
-	/** text information of the paragraph */
+
+	/** Text information of the paragraph */
 	private String _text;
-	
-	/** Paragraph constructor */
+
+	/** Paragraph constructor
+	* @param text: text for the paragraph
+	*/
 	public Paragraph(String text) {
 		_text = text;
 	}
-	
+
 	/**
-	* set new text for paragraph
+	* Set new text for paragraph
+	* @param text: new text for the paragraph
 	*/
 	public void setText(String text) {
 		_text = text;
 	}
-	
+
 	/*
 	* Return content of the paragraph
 	* @return return string content of the paragraph
@@ -29,10 +32,10 @@ public class Paragraph extends TextElement {
 	public String getContent(){
 		return " {" +_text+ "}\n";
 	}
-	
+
 	/*
 	* Return paragraph size
-	* @return return paragraph size 
+	* @return return paragraph size
 	*/
 	public int getSize() {
 		int length = _text.length();

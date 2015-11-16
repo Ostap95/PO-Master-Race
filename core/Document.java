@@ -6,14 +6,15 @@ import java.util.*;
 * Class Document represents general document, containing sections, subsections, authors and paragraphs.
 */
 public class Document extends Section {
+
 	/** File name*/
 	public String _filename;
-	
+
 	/** List of authors */
 	private ArrayList<Author> _authorList = new ArrayList<Author>();
-	
+
 	/** List of TextElements **/
-	private HashMap<String, TextElement> _elementlist = new HashMap<String, TextElement>();
+	private HashMap<String, TextElement> _elementList = new HashMap<String, TextElement>();
 
 
 	/**
@@ -22,11 +23,11 @@ public class Document extends Section {
 	*/
 	public void addAuthor(String name, String email) {
 		Author author = new Author(name, email);
-		int idx = 0; 
+		int idx = 0;
 
 		for (Author aut: _authorList) {
 			idx ++;
-			
+
 			if (aut.compareTo(author) < 0) {
 				_authorList.add((idx--),author);
 				break;
@@ -37,28 +38,44 @@ public class Document extends Section {
 			}
 		}
 	}
-	
+
 	/**
 	* Return list of the document authors
 	* @return ArrayList of authors
 	*/
 	public ArrayList<Author> getAuthors() {
 		return _authorList;
-	}	
-	
-	public TextElement getTextElement(String id) {  
+	}
+
+	/**
+	* Return textelement by id
+	* @return return text element
+	*/
+	public TextElement getTextElement(String id) {
 		return _elementlist.get(id);
 	}
-	
+
+	/**
+	* Add element to hasmap of text elements
+	* @param id: text element id. ele: textelement
+	*/
 	public void indexElement(String id, TextElement ele) {
-		ele.setKey(id); 
+		 ele.setKey(id);
 		_elementlist.put(id, ele);
 	}
-	
+
+	/**
+	* Return formmated title
+	* @return return formmated title
+	*/
 	public String getHeadLine() {
-		return "{" + getTitle() + "}\n";	
+		return "{" + getTitle() + "}\n";
 	}
-	
+
+	/**
+	* Remove TextElement from hash map
+	* @param ele: text element to be removed
+	*/
 	public void removeFromIndex(TextElement ele) {
 		String key = ele.getKey();
 		_elementlist.remove(key);
@@ -72,7 +89,7 @@ public class Document extends Section {
 	public String getFilename() {
 		return _filename;
 	}
-	
+
 	/**
 	* Set new name for the document
 	*/

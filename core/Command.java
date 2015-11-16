@@ -3,23 +3,32 @@ import java.io.*;
 
 
 public class Command {
-	
+
+	/**
+	* Loads new document
+	* @param filename : file name
+	* @return return loaded document
+	*/
 	public Document loadDocument(String filename) {
 		try {
 			FileInputStream fileStream = new FileInputStream(filename);
 			ObjectInputStream obj = new ObjectInputStream(fileStream);
 
 			Document doc = (Document) obj.readObject();
-			return doc; 
+			return doc;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			return null;   
+			return null;
 		} catch (IOException ex) {
 			ex.printStackTrace();
-			return null; 
+			return null;
 		}
 	}
-	
+
+	/**
+	* Saves the document
+	* @param doc: document to be saved
+	*/
 	public void saveDocument(Document doc) {
 		try {
 			FileOutputStream fileStream = new FileOutputStream(doc.getFilename());
@@ -31,5 +40,5 @@ public class Command {
 			ex.printStackTrace();
 		}
 	}
-	
+
 }
