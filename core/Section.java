@@ -273,12 +273,12 @@ public class Section extends TextElement {
      * @param section (being used in doc)
      * @return string to be used in display
      */
-		 public String searchTopSections(Section sec) {
+		 public String searchTopSections() {
          StringBuilder result = new StringBuilder();
          result.append(getTitle()).append("\n");
          try {
-             for(Section section : sec.getSubsections()){
-                   result.append(sec.getHeadLine());
+             for(Section section : getSubsections()){
+                   result.append(section.getHeadLine());
              }
          }catch(InvalidOperation e){
              System.err.println("InvalidOperation: " + e.getMessage());
@@ -287,3 +287,4 @@ public class Section extends TextElement {
          //result.append("() {}");
          return result.toString();
      }
+	 }

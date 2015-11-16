@@ -52,7 +52,7 @@ public class Document extends Section {
 	* @return return text element
 	*/
 	public TextElement getTextElement(String id) {
-		return _elementlist.get(id);
+		return _elementList.get(id);
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class Document extends Section {
 	*/
 	public void indexElement(String id, TextElement ele) {
 		 ele.setKey(id);
-		_elementlist.put(id, ele);
+		_elementList.put(id, ele);
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class Document extends Section {
 	*/
 	public void removeFromIndex(TextElement ele) {
 		String key = ele.getKey();
-		_elementlist.remove(key);
+		_elementList.remove(key);
 		ele.setKey(null);
 	}
 
