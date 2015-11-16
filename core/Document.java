@@ -1,24 +1,21 @@
 package edt.core;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
 * Class Document represents general document, containing sections, subsections, authors and paragraphs.
 */
 public class Document extends Section {
-	
-	private static int listAuthorCounter = 0;
-	
-	/**
-	* File name
-	*/
+	/** File name*/
 	public String _filename;
 	
-	/**
-	* List of authors
-	*/
-	private ArrayList<Author> _authors = new ArrayList<Author>();
+	/** List of authors */
+	private ArrayList<Author> _authorList = new ArrayList<Author>();
 	
+	/** List of TextElements **/
+	private HashMap<String, TextElement> _elementlist = new HashMap<String, TextElement>();
+
+
 	/**
 	* Adds new author to the document
 	* @param name: authors name, email: authors email
@@ -27,16 +24,16 @@ public class Document extends Section {
 		Author author = new Author(name, email);
 		int idx = 0; 
 
-		for (Author aut: _authors) {
+		for (Author aut: _authorList) {
 			idx ++;
 			
 			if (aut.compareTo(author) < 0) {
-				_authors.add((idx--),author);
+				_authorList.add((idx--),author);
 				break;
 			}
 
-			if (idx == _authors.size()) {
-				_authors.add(author);
+			if (idx == _authorList.size()) {
+				_authorList.add(author);
 			}
 		}
 	}
@@ -46,29 +43,28 @@ public class Document extends Section {
 	* @return ArrayList of authors
 	*/
 	public ArrayList<Author> getAuthors() {
-		return _authors;
+		return _authorList;
+	}	
+	
+	public TextElement getTextElement(String id) {  
+		return _elementlist.get(id);
 	}
 	
-	
-	/*public TextElement getTextElement(String id) {
-		
-		
-	}*/
-	
 	public void indexElement(String id, TextElement ele) {
-		
+		ele.setKey(id); 
+		_elementlist.put(id, ele);
 	}
 	
 	public String getHeadLine() {
-		return "{" + _filename + "}\n";
-		
+		return "{" + getTitle() + "}\n";	
 	}
 	
 	public void removeFromIndex(TextElement ele) {
-		
+		String key = ele.getKey();
+		_elementlist.remove(key);
+		ele.setKey(null);
 	}
-	
-	
+
 	/**
 	* Returns document name
 	* @return return file name

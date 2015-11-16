@@ -3,8 +3,19 @@ package edt.textui.main;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 
+
 import edt.core.*;
-/* FIXME: import core classes here */
+
+// importado
+import pt.utl.ist.po.ui.Menu;
+import pt.utl.ist.po.ui.Command;
+import pt.utl.ist.po.ui.Display;
+import pt.utl.ist.po.ui.Form;
+
+import pt.utl.ist.po.ui.InputString;
+import edt.core.*;
+import java.util.*;
+
 
 /**
  * Command for showing the metadata of the current document in the editor.
@@ -27,5 +38,11 @@ public class ShowMetadata extends Command<Document> {
     @SuppressWarnings("nls")
     public final void execute() {
         /* FIXME: implement command */
+        Display display = new Display();            
+        Form f = new Form();
+        InputString name = new InputString(f, "Press Enter to continue"); // changed to "Press enter to continue"
+        //display.add(entity()); // adds string
+        //display.display();
+        f.parse();
     }
 }

@@ -6,12 +6,16 @@ import java.util.*;
 /**
 * Class Author represent author/authors of a document
 */
-public class Author implements Comparable<Author>{
+public class Author implements Comparable<Author>, Serializable {
 	
-	/** Name of the author */
+	/**
+	* Name of the author
+	*/
 	private String _name;
 	
-	/** E-mail of the author */
+	/**
+	* E-mail of the author
+	*/
 	private String _email;
 	
 	/**
@@ -45,7 +49,8 @@ public class Author implements Comparable<Author>{
 	* @return return true if two author are equal
 	*/
 	public boolean equals(Object obj) {
-		return obj instanceof Author && _name.equals(((Author)obj).getName()) && _email.equals(((Author)obj).getEmail());
+		return obj instanceof Author && _name.equals(((Author)obj).getName()) 
+		&& _email.equals(((Author)obj).getEmail());
 	}
 	
 	/**
