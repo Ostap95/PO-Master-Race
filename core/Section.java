@@ -26,10 +26,9 @@ public class Section extends TextElement {
 	* @param id - unique key of the new section, title - title of the section
 	*/
 
-	/*public Section(String id, String title) {
+	public Section(String title) {
 		_title = title;
-		setKey(id);
-	}*/
+	}
 
 	/**
 	* Return HeadLine title

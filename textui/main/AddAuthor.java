@@ -6,20 +6,22 @@ import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputString;
 import edt.core.*;
+
+import edt.textui.Editor;
 /* FIXME: import core classes here */
 
 /**
  * Command for adding an author to the current document in the editor.
  */
-public class AddAuthor extends Command<Document> {/* FIXE */
+public class AddAuthor extends Command<Editor> {/* FIXE */
 
     /**
      * Constructor.
      *
      * @param ent the target entity.
      */
-    public AddAuthor(Document ent) { /* FIXE */
-        super(MenuEntry.ADD_AUTHOR, ent);
+    public AddAuthor(Editor editor) { /* FIXE */
+        super(MenuEntry.ADD_AUTHOR, editor);
     }
 
     /**
@@ -34,6 +36,6 @@ public class AddAuthor extends Command<Document> {/* FIXE */
         InputString email = new InputString(f, "Email: ");
         f.parse();
         Author author = new Author(name.toString(), email.toString());
-        entity().addAuthor(author);
+        entity().getDocument().addAuthor(author);
     }
 }

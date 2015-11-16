@@ -20,12 +20,13 @@ public class Document extends Section {
 	* Document Constructor
 	*/
 	public Document() {
-
+		super("");
 	}
 	/** Document Constructor
 	* @param filename: Files name
 	*/
 	public Document(String filename) {
+		super("");
 		_filename = filename;
 	}
 

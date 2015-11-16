@@ -15,7 +15,7 @@ public class InsertSection extends Command<Document> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public InsertSection(Document ent) {
@@ -29,5 +29,6 @@ public class InsertSection extends Command<Document> {
     @SuppressWarnings("nls")
     public final void execute() {
         /* FIXME: implement command */
+
     }
 }

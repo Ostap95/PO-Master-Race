@@ -10,20 +10,21 @@ import pt.utl.ist.po.ui.InputString;
 import pt.utl.ist.po.ui.InvalidOperation;
 
 import edt.core.*;
+import edt.textui.Editor;
 /* FIXME: import core classes here */
 
 /**
  * Command for opening an existing document in the editor.
  */
-public class OpenDocument extends Command<Document> {
+public class OpenDocument extends Command<Editor> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
-    public OpenDocument(Document ent) {
-        super(MenuEntry.OPEN, ent);
+    public OpenDocument(Editor editor) {
+        super(MenuEntry.OPEN, editor);
     }
 
     /**

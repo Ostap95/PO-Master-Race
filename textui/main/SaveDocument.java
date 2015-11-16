@@ -8,20 +8,21 @@ import pt.utl.ist.po.ui.InvalidOperation;
 import java.io.IOException;
 
 import edt.core.*;
+import edt.textui.Editor;
 /* FIXME: import core classes here */
 
 /**
  * Command for saving the current document in the editor.
  */
-public class SaveDocument extends Command<Document> {
+public class SaveDocument extends Command<Editor> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
-    public SaveDocument(Document ent) {
-        super(MenuEntry.SAVE, ent);
+    public SaveDocument(Editor editor) {
+        super(MenuEntry.SAVE, editor);
     }
 
     /**

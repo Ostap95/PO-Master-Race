@@ -3,7 +3,7 @@ package edt.textui.main;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Menu;
 
-import edt.core.*;
+import edt.textui.Editor;
 /* FIXME: import core classes here */
 
 /**
@@ -13,16 +13,16 @@ import edt.core.*;
 
 public class MainMenu extends Menu {
 
-    public MainMenu(Document doc) {
+    public MainMenu(Editor editor) {
         super(MenuEntry.TITLE,
-              new Command<?>[] { new NewDocument(doc),
-                      new OpenDocument(doc),
-                      new SaveDocument(doc),
-                      new ShowMetadata(doc),
-                      new AddAuthor(doc),
-                      new ListTopSections(doc),
-                      new ShowTextElement(doc),
-                      new EditSection(doc),
+              new Command<?>[] { new NewDocument(editor),
+                      new OpenDocument(editor),
+                      new SaveDocument(editor),
+                      new ShowMetadata(editor),
+                      new AddAuthor(editor),
+                      new ListTopSections(editor),
+                      new ShowTextElement(editor),
+                      new EditSection(editor),
                       });
     }
 }

@@ -11,19 +11,19 @@ import pt.utl.ist.po.ui.InputString;
 import edt.core.*;
 import java.util.*;
 import pt.utl.ist.po.ui.InvalidOperation;
-
+import edt.textui.Editor;
 /**
  * Command for showing the top sections of the current document in the editor.
  */
-public class ListTopSections extends Command<Document> {
+public class ListTopSections extends Command<Editor> {
 
     /**
      * Constructor.
      *
      * @param ent the target entity.
      */
-    public ListTopSections(Document ent) {
-        super(MenuEntry.SHOW_INDEX, ent);
+    public ListTopSections(Editor editor) {
+        super(MenuEntry.SHOW_INDEX, editor);
     }
     /*
     public String searchTopSections(ArrayList<Section> sec) {
@@ -72,7 +72,7 @@ public class ListTopSections extends Command<Document> {
         // entity is Document
         Display display = new Display();
         Form f = new Form();
-        display.add(searchTopSections(entity()));
+        display.add(searchTopSections(entity().getDocument()));
         display.display();
         InputString name = new InputString(f, "Press Enter to continue");
         f.parse();

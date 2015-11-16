@@ -13,12 +13,12 @@ import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputString;
 import edt.core.*;
 import java.util.*;
-
+import edt.textui.Editor;
 
 /**
  * Command for showing the metadata of the current document in the editor.
  */
-public class ShowMetadata extends Command<Document> {
+public class ShowMetadata extends Command<Editor> {
 
     /**
      * Constructor.
@@ -36,8 +36,8 @@ public class ShowMetadata extends Command<Document> {
     }
 
 
-    public ShowMetadata(Document ent) {
-        super(MenuEntry.SHOW_METADATA, ent);
+    public ShowMetadata(Editor editor) {
+        super(MenuEntry.SHOW_METADATA, editor);
     }
 
     /**
@@ -49,12 +49,12 @@ public class ShowMetadata extends Command<Document> {
         Display display = new Display();
         Form f = new Form();
         ArrayList<Author> authors;
-        authors = entity().getAuthors();
+        authors = entity().getDocument().getAuthors();
         Collections.sort(authors);
-        display.add("Título: " + entity().getTitle() + "\n"); // adds string
-        display.add(printAuthors(authors) + "\n");
-        display.add("Dimensão do documento (bytes): " + entity().getSize() + "\n");
-        display.add("Identificadores únicos: " + entity().getNumberUniqueIds() + "\n");
+        display.add("Título: " + entity().getDocument().getTitle() + "\n"); // adds string
+        display.add(printAuthors(authors));
+        display.add("Dimensão do documento (bytes): " + entity().getDocument().getSize() + "\n");
+        display.add("Identificadores únicos: " + entity().getDocument().getNumberUniqueIds() + "\n");
         display.display();
         InputString name = new InputString(f, "Press Enter to continue"); // changed to "Press enter to continue"
         f.parse();
