@@ -26,6 +26,7 @@ public class Section extends TextElement {
 	* @param id - unique key of the new section, title - title of the section
 	*/
 
+
 	public Section(String title) {
 		_title = title;
 	}
@@ -128,7 +129,7 @@ public class Section extends TextElement {
 				return _subsections.get(idx);
 			}
 		} catch (IndexOutOfBoundsException e) {
-			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
+			e.getMessage();
 			return null;
 		}
 	}
@@ -139,9 +140,9 @@ public class Section extends TextElement {
 	*/
 
 	// o que este metodo deve fazer?
-	public String getSubsectionIndex() {
+	public int getSubsectionIndex() {
  		int size = _subsections.size();
-		return Integer.toString(size);
+		return size;
 	}
 
 	/*

@@ -8,7 +8,7 @@ import java.util.*;
 public class Document extends Section {
 
 	/** File name*/
-	public String _filename;
+	public String _filename = "";
 
 	/** List of authors */
 	private ArrayList<Author> _authorList = new ArrayList<Author>();

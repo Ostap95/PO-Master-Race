@@ -32,9 +32,21 @@ public class Editor {
       cmd.saveDocument(_currentDoc);
     }
 
-    public void loadDocument(String filename) {
+    public boolean loadDocument(String filename) {
         Command cmd = new Command();
-        _currentDoc = cmd.loadDocument(filename);
+
+        try {
+        _currentDoc= cmd.loadDocument(filename);
+        return true;
+        
+      } catch (ClassNotFoundException e) {
+        e.getMessage();
+        return false;
+      }catch (IOException e) {
+        e.getMessage();
+        return false;
+      }
+
     }
 
 

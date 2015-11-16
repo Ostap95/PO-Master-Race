@@ -48,16 +48,15 @@ public class ListTopSections extends Command<Editor> {
 
     public String searchTopSections(Section sec) {
         StringBuilder result = new StringBuilder();
-        result.append(sec.getTitle() + "\n");
+        result.append( sec.getHeadLine());
         try {
             for(Section section : sec.getSubsections()){
                   result.append(section.getHeadLine());
             }
         }catch(InvalidOperation e){
-            System.err.println("InvalidOperation: " + e.getMessage());
-            return ""; // ret
+
+            return result.toString(); // ret
         }
-        result.append("() {}");
         return result.toString();
     }
 
@@ -74,7 +73,7 @@ public class ListTopSections extends Command<Editor> {
         Form f = new Form();
         display.add(searchTopSections(entity().getDocument()));
         display.display();
-        InputString name = new InputString(f, "Press Enter to continue");
+        //InputString name = new InputString(f, "Press Enter to continue");
         f.parse();
 
     }

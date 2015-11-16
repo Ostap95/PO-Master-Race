@@ -4,7 +4,8 @@ import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputString;
 import pt.utl.ist.po.ui.InvalidOperation;
-
+import pt.utl.ist.po.ui.Display;
+import pt.utl.ist.po.ui.InputString;
 import java.io.IOException;
 
 import edt.core.*;
@@ -34,8 +35,13 @@ public class SaveDocument extends Command<Editor> {
         /* FIXME: implement command */
         Display display = new Display();
         Form f = new Form();
-        f.parse();
-        Message.newSaveAs();
+        if(entity().getDocument().getFilename() == ""){
+          InputString filename = new InputString(f, Message.newSaveAs());
+          f.parse();
+          entity().getDocument().setFilename(filename.toString());
+        }
+        entity().saveDocument();
+        display.display();
 
     }
 }
