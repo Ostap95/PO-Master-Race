@@ -37,7 +37,7 @@ public class ListTopSections extends Command<Document> {
     // alterado para
 
 
-    
+
     // search TopSections em Section.java (existe metodo protected)
     /**
      * procura seccoes de topo (com relacao direta 'a seccao atual)
@@ -45,18 +45,13 @@ public class ListTopSections extends Command<Document> {
      * @param section (being used in doc)
      * @return string to be used in display
      */
-    /*
-    public String searchTopSections(Section sec) {
+
+    /*public String searchTopSections(Section sec) {
         StringBuilder result = new StringBuilder();
         result.append(sec.getTitle()).append("\n");
         try {
             for(Section section : sec.getSubsections()){
-                if(section.isIndexed())
-                    // verifica se seccao esta indexada
-                    result.append(sec.getHeadLine()).append("\n");
-                else{
-                    result.append("[] ").append(sec.getTitle()).append("\n");
-                }
+                  result.append(sec.getHeadLine());
             }
         }catch(InvalidOperation e){
             System.err.println("InvalidOperation: " + e.getMessage());
@@ -64,8 +59,8 @@ public class ListTopSections extends Command<Document> {
         }
         result.append("() {}");
         return result.toString();
-    }
-    */
+    }*/
+
 
 
     /**
@@ -77,9 +72,9 @@ public class ListTopSections extends Command<Document> {
         // entity is Document
         Display display = new Display();
         Form f = new Form();
-        InputString name = new InputString(f, "Press Enter to continue");
         display.add(entity().searchTopSections());
         display.display();
+        InputString name = new InputString(f, "Press Enter to continue");
         f.parse();
 
     }
