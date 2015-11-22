@@ -114,7 +114,7 @@ public class Section extends TextElement {
 
 		try{
 			 if (_subsections.isEmpty()) {
-				throw new InvalidOperation("No SubSection");
+				throw new InvalidOperation();
 			} else {
 				return _subsections.get(idx);
 			}

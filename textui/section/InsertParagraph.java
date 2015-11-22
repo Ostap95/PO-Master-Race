@@ -16,7 +16,7 @@ public class InsertParagraph extends Command<Document> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public InsertParagraph(Document ent) {
@@ -29,6 +29,12 @@ public class InsertParagraph extends Command<Document> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+
+      Display display = new Display();
+      Form f = new Form();
+      InputInteger filename = new InputInteger(f, Message.requestParagraphId());
+      InputString filename2 = new InputString(f, Message.requestParagraphContent());
+      f.parse();
+
     }
 }
