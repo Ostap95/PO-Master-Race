@@ -14,7 +14,7 @@ public class ShowSection extends Command<Document> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public ShowSection(Document ent) {
@@ -28,13 +28,13 @@ public class ShowSection extends Command<Document> {
     @SuppressWarnings("nls")
     public final void execute() {
         /* FIXME: implement command */
-        
+
         Display display = new Display();
         display.add(entity().getContent());
         display.display();
         Form f = new Form();
         InputString name = new InputString(f, "Press any key to continue");
         f.parse();
-        
+
      }
 }

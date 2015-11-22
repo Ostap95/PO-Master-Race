@@ -13,7 +13,6 @@ import static pt.utl.ist.po.ui.UserInteraction.IO;
 
 import edt.core.*;
 import edt.textui.Editor;
-/* FIXME: import core classes here */
 
 /**
  * Command for creating a new document in the editor.
@@ -21,21 +20,20 @@ import edt.textui.Editor;
 public class NewDocument extends Command<Editor> {
 
     /**
-     * Constructor.
-     *
-     * @param ent the target entity.
-     */
+    * Constructor.
+    * @param ent the target entity.
+    */
     public NewDocument(Editor editor) {
         super(MenuEntry.NEW, editor);
     }
 
     /**
-     * Execute the command.
-     */
+    * Execute the command.
+    */
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+        
         Document newdoc = new Document();
     		entity().setDocument(newdoc);
     }

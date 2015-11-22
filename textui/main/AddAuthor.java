@@ -8,29 +8,27 @@ import pt.utl.ist.po.ui.InputString;
 import edt.core.*;
 
 import edt.textui.Editor;
-/* FIXME: import core classes here */
 
 /**
  * Command for adding an author to the current document in the editor.
  */
-public class AddAuthor extends Command<Editor> {/* FIXE */
+public class AddAuthor extends Command<Editor> {
 
     /**
-     * Constructor.
-     *
-     * @param ent the target entity.
-     */
-    public AddAuthor(Editor editor) { /* FIXE */
+    * Constructor.
+    * @param ent the target entity.
+    */
+    public AddAuthor(Editor editor) { 
         super(MenuEntry.ADD_AUTHOR, editor);
     }
 
     /**
-     * Execute the command.
-     */
+    * Execute the command.
+    */
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+
         Form f = new Form();
         InputString name = new InputString(f, Message.requestAuthorName());
         InputString email = new InputString(f, Message.requestEmail());

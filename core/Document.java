@@ -22,6 +22,7 @@ public class Document extends Section {
 	public Document() {
 		super("");
 	}
+
 	/** Document Constructor
 	* @param filename: Files name
 	*/

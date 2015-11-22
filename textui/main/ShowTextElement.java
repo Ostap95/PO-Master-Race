@@ -7,7 +7,6 @@ import pt.utl.ist.po.ui.InputString;
 
 import edt.core.*;
 import edt.textui.Editor;
-/* FIXME: import core classes here */
 
 /**
  * Command for showing the text element with a given identifier of the current document in the editor.
@@ -15,17 +14,16 @@ import edt.textui.Editor;
 public class ShowTextElement extends Command<Editor> {
 
     /**
-     * Constructor.
-     *
-     * @param ent the target entity.
-     */
+    * Constructor.
+    * @param ent the target entity.
+    */
     public ShowTextElement(Editor editor) {
         super(MenuEntry.SHOW_TEXT_ELEMENT, editor);
     }
 
     /**
-     * Execute the command.
-     */
+    * Execute the command.
+    */
     @Override
     @SuppressWarnings("nls")
     public final void execute() {

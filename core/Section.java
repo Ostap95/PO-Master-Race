@@ -9,11 +9,8 @@ import pt.utl.ist.po.ui.InvalidOperation;
 */
 public class Section extends TextElement {
 
-	/** Serial number for serialization */
-
 	/* Section title */
 	private String _title = "";
-	// initialized for easier ListTopSections
 
 	/** ArrayList of paragraphs of the section */
 	private ArrayList<Paragraph> _paragraphs = new ArrayList<Paragraph>();
@@ -25,8 +22,6 @@ public class Section extends TextElement {
 	* Section class constructor
 	* @param id - unique key of the new section, title - title of the section
 	*/
-
-
 	public Section(String title) {
 		_title = title;
 	}
@@ -73,7 +68,6 @@ public class Section extends TextElement {
 				totalsize += x.getSize();
 			}
 		}
-
 		return totalsize;
 	}
 
@@ -96,7 +90,6 @@ public class Section extends TextElement {
 				result.append(sec.getContent());
 			}
 		}
-
 		return result.toString();
 	}
 
@@ -104,9 +97,7 @@ public class Section extends TextElement {
 	* Return list of all subsections of the current section
 	* @return list of subsections
 	*/
-
 	public ArrayList<Section> getSubsections() throws InvalidOperation {
-
 		if (_subsections.isEmpty()) {
 			throw new InvalidOperation("No Subsections");
 		} else {
@@ -184,7 +175,7 @@ public class Section extends TextElement {
 	* @param idx: position int the list. par: paragraph to be added
 	*/
 	public void addParagraph(int idx, Paragraph par) {
-		try{
+		try {
 			if (idx == -1) {
 				_paragraphs.add(par);
 			} else {
@@ -226,7 +217,6 @@ public class Section extends TextElement {
 	* @return return desired paragraph
 	*/
 	public Paragraph getParagraph(int idx) throws InvalidOperation {
-
 		try {
 			if (_paragraphs.isEmpty()) {
 				throw new InvalidOperation("No paragraph");
