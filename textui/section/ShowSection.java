@@ -27,14 +27,10 @@ public class ShowSection extends Command<Document> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
 
         Display display = new Display();
         display.add(entity().getContent());
         display.display();
-        Form f = new Form();
-        InputString name = new InputString(f, "Press any key to continue");
-        f.parse();
 
      }
 }

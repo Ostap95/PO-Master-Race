@@ -3,7 +3,7 @@ package edt.core;
 import java.util.ArrayList;
 import java.io.*;
 import pt.utl.ist.po.ui.InvalidOperation;
-
+import edt.textui.section.*;
 /**
 * Class Section that represents a section of a document
 */
@@ -31,7 +31,8 @@ public class Section extends TextElement {
 	* @return headline title
 	*/
 	public String getHeadLine() {
-		return "[" + getKey() + "]" + "{" + _title + "}\n";
+		return Message.sectionIndexEntry(getKey() ,_title) + "\n";
+		//return "[" + getKey() + "]" + "{" + _title + "}\n";
 	}
 
 	/**
@@ -226,6 +227,36 @@ public class Section extends TextElement {
 		} catch (IndexOutOfBoundsException e) {
 			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
 			return null;
+		}
+	}
+
+	/**
+	* Checks if the paragraph with given id exists
+	* @param idx : paragraph id
+	* @return returns boolean value
+	*/
+	public boolean paragraphExist(int idx) {
+		Paragraph paragraph = null;
+		try {
+			paragraph = getParagraph(idx);
+			return _paragraphs.contains(paragraph);
+		} catch (IndexOutOfBoundsException | InvalidOperation e) {
+			return false;
+		}
+	}
+
+	/*
+	* Checks if the section with given id exists
+	* @param idx: section id
+	* @return return boolean value
+	*/
+	public boolean sectionExist(int idx) {
+		Section section = null;
+		try {
+			section = getSection(idx);
+			return _subsections.contains(section);
+		} catch (IndexOutOfBoundsException | InvalidOperation e) {
+			return false;
 		}
 	}
 }
