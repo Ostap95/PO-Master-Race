@@ -40,8 +40,9 @@ public class IndexSection extends Command<Document> {
         if(elementMap.containsKey(uniqueId.toString())) {
           desiredSection.setKey(uniqueId.toString());
           display.add(Message.sectionNameChanged());
+        } else {
+          entity().indexElement(uniqueId.toString(), desiredSection);
         }
-        entity().indexElement(uniqueId.toString(), desiredSection);
 
     } catch (InvalidOperation e) {
         display.add(Message.noSuchSection(Integer.parseInt(sectionId.toString())));
