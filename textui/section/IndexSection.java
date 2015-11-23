@@ -33,7 +33,6 @@ public class IndexSection extends Command<Document> {
     InputInteger sectionId = new InputInteger(f, Message.requestSectionId());
     InputString uniqueId = new InputString(f, Message.requestUniqueId());
     f.parse();
-
     try {
         Section desiredSection = entity().getSection(Integer.parseInt(sectionId.toString()));
         HashMap<String, TextElement> elementMap = entity().getElementMap();

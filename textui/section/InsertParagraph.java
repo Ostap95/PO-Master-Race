@@ -37,9 +37,9 @@ public class InsertParagraph extends Command<Document> {
       f.parse();
       Paragraph newParagraph = new Paragraph(paragraphContent.toString());
       if(entity().paragraphExist(Integer.parseInt(pReferenceId.toString()))){
-          entity().addParagraph(Integer.parseInt(pReferenceId.toString())-1, newParagraph);
-      } else {
           entity().addParagraph(Integer.parseInt(pReferenceId.toString()), newParagraph);
+      } else {
+          entity().addParagraph(-1, newParagraph);
       }
     }
 }

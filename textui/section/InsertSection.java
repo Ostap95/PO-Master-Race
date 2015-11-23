@@ -34,9 +34,9 @@ public class InsertSection extends Command<Document> {
       f.parse();
       Section newSection = new Section(sectionTitle.toString());
       if(entity().sectionExist(Integer.parseInt(sReferenceId.toString()))){
-          entity().addSection(Integer.parseInt(sReferenceId.toString())-1, newSection);
-      } else {
           entity().addSection(Integer.parseInt(sReferenceId.toString()), newSection);
+      } else {
+          entity().addSection(Integer.parseInt(sReferenceId.toString())-1, newSection);
       }
 
     }
