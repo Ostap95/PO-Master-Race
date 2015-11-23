@@ -13,9 +13,10 @@ public class ListSections extends Command<Document> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
+
     public ListSections(Document ent) {
         super(MenuEntry.LIST_SECTIONS, ent);
     }
@@ -26,6 +27,8 @@ public class ListSections extends Command<Document> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+      Display display = new Display();
+      display.add(entity().searchAllSections());
+      display.display();
     }
 }

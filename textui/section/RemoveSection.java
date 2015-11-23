@@ -15,7 +15,7 @@ public class RemoveSection extends Command<Document> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public RemoveSection(Document ent) {
@@ -28,6 +28,11 @@ public class RemoveSection extends Command<Document> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+        Display display = new Display();
+        Form f = new Form();
+        InputInteger idx = new InputInteger(f, Message.requestSectionId());
+        f.parse();
+        entity().removeSection(idx.value(), entity());
+        display.display();
     }
 }

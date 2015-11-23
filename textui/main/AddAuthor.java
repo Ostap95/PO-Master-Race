@@ -30,7 +30,6 @@ public class AddAuthor extends Command<Editor> {/* FIXE */
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
         Form f = new Form();
         InputString name = new InputString(f, Message.requestAuthorName());
         InputString email = new InputString(f, Message.requestEmail());

@@ -31,6 +31,7 @@ public class ListTopSections extends Command<Editor> {
     * @param sec: section to be Used
     * @return return formatted string with top section information
     */
+    /*
     public String searchTopSections(Section sec) {
         StringBuilder result = new StringBuilder();
         result.append( sec.getHeadLine());
@@ -43,7 +44,7 @@ public class ListTopSections extends Command<Editor> {
         }
         return result.toString();
     }
-
+    */
     /**
      * Execute the command.
      */
@@ -53,7 +54,7 @@ public class ListTopSections extends Command<Editor> {
         // entity is Document
         Display display = new Display();
         Form f = new Form();
-        display.add(searchTopSections(entity().getDocument()));
+        display.add(entity().getDocument().searchTopSections());
         display.display();
         f.parse();
 

@@ -154,8 +154,35 @@ public class Section extends TextElement {
 			_subsections.add(idx,sec);
 			}
 		} catch (IndexOutOfBoundsException e) {
-			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
+				System.err.println("IndexOutOfBoundsException: " + e.getMessage());
 		}
+	}
+
+	public String searchTopSections() {
+			StringBuilder result = new StringBuilder();
+			result.append( this.getHeadLine());
+			try {
+					for(Section section : this.getSubsections()) {
+								result.append(section.getHeadLine());
+					}
+			} catch(InvalidOperation e) {
+					return result.toString();
+			}
+			return result.toString();
+	}
+
+	public String searchAllSections() {
+			StringBuilder result = new StringBuilder();
+					try {
+						for(Section section : this.getSubsections()) {
+								result.append(section.getHeadLine());
+								section.searchAllSections();
+						}
+					}catch(InvalidOperation e) {
+								// if no more Subsections continue
+								return result.toString();
+						}
+			return result.toString();
 	}
 
 	/**
@@ -163,7 +190,7 @@ public class Section extends TextElement {
 	* @param idx: position in the list. doc: current document
 	* @return return boolean value based on the success of the remove
 	*/
-	public boolean removeSection(int idx, Document doc) {
+	public boolean removeSection(int idx,Document doc) {
 		try {
 			Section s = _subsections.get(idx);
 
@@ -200,11 +227,12 @@ public class Section extends TextElement {
 	* @param idx: position in the list. doc: current document
 	* @return return boolean value based on the success of the remove
 	*/
-	public boolean removeParagraph(int idx, Document doc) throws InvalidOperation {
+	public boolean removeParagraph(int idx,Document doc) throws InvalidOperation {
 
 		try {
 			if (_paragraphs.isEmpty()) {
-				throw new InvalidOperation("No paragraph");
+
+				throw new InvalidOperation("No paragraphs");
 			} else {
 				Paragraph p = _paragraphs.get(idx);
 				if (p.isIndexed()) {
@@ -213,7 +241,7 @@ public class Section extends TextElement {
 				_paragraphs.remove(idx);
 				return true;
 			}
-
+			//remover catch (message)
 		} catch (NullPointerException e) {
 			System.err.println("NullPointerException: " + e.getMessage());
 			return false;
