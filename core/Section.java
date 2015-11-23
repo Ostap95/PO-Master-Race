@@ -100,7 +100,7 @@ public class Section extends TextElement {
 	*/
 	public ArrayList<Section> getSubsections() throws InvalidOperation {
 		if (_subsections.isEmpty()) {
-			throw new InvalidOperation("No Subsections");
+			throw new InvalidOperation();
 		} else {
 			return _subsections;
 		}

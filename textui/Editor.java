@@ -13,42 +13,63 @@ import java.io.*;
  **/
 public class Editor {
 
+    /**
+    * Current Document
+    */
     private Document _currentDoc = new Document();
 
+    /**
+    * Editor constructor
+    * @param doc : Document
+    */
     public Editor(Document doc) {
       _currentDoc = doc;
     }
 
+    /**
+    * Return current document in use
+    * @return return document
+    */
     public Document getDocument() {
       return _currentDoc;
     }
 
+    /**
+    * Change current document
+    * @param doc : Document
+    */
     public void setDocument(Document doc) {
       _currentDoc = doc;
     }
 
+    /**
+    * Save current document
+    */
     public void saveDocument() {
       Command cmd = new Command();
       cmd.saveDocument(_currentDoc);
     }
 
+    /**
+    * Load new document
+    * @param filename : name of the document
+    * @return return boolean value
+    */
     public boolean loadDocument(String filename) {
-        Command cmd = new Command();
-        try {
-          _currentDoc= cmd.loadDocument(filename);
-          return true;
-        } catch (ClassNotFoundException e) {
-          e.getMessage();
-          return false;
-        } catch (IOException e) {
-          e.getMessage();
-          return false;
-        }
+      Command cmd = new Command();
+      try {
+        _currentDoc= cmd.loadDocument(filename);
+        return true;
+      } catch (ClassNotFoundException e) {
+        e.getMessage();
+        return false;
+      } catch (IOException e) {
+        e.getMessage();
+        return false;
+      }
     }
 
-
     public static void main(String[] args) {
-        /* FIXME: Add code */
         String fileName = System.getProperty("import");
         Document newdoc;
         if(fileName == null) {

@@ -27,8 +27,7 @@ public class ChangeTitle extends Command<Document> {
     public final void execute() {
 
         Form f = new Form();
-
-        InputString title = new InputString(f, "New title: ");
+        InputString title = new InputString(f, Message.requestSectionTitle());
         f.parse();
         entity().setTitle(title.toString());
     }
