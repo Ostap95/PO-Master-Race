@@ -49,7 +49,6 @@ public class ShowMetadata extends Command<Editor> {
     @SuppressWarnings("nls")
     public final void execute() {
         Display display = new Display();
-        Form f = new Form();
         ArrayList<Author> authors;
         authors = entity().getDocument().getAuthors();
         Collections.sort(authors);
@@ -59,6 +58,5 @@ public class ShowMetadata extends Command<Editor> {
         display.add(Message.documentBytes(entity().getDocument().getSize()) + "\n");
         display.add(Message.documentIdentifiers(entity().getDocument().getNumberUniqueIds()) + "\n");
         display.display();
-        f.parse();
     }
 }

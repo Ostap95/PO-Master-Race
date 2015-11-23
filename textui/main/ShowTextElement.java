@@ -28,5 +28,18 @@ public class ShowTextElement extends Command<Editor> {
     @SuppressWarnings("nls")
     public final void execute() {
         /* FIXME: implement command */
+
+        TextElement t = new TextElement;
+        Display display = new Display;
+        Form f = new Form;
+        InputString elementId = new InputString(f, Message.requestElementId());
+        f.parse();
+        t = entity().getDocument().getTextElement(elementId.toString());
+
+        if (t != null) {
+           display.add(t.getContent());
+        } else {
+            display.add(Message.noSuchTextElement());
+        }
     }
 }
