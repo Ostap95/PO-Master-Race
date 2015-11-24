@@ -22,6 +22,7 @@ public class Document extends Section {
 	public Document() {
 		super("");
 	}
+
 	/** Document Constructor
 	* @param filename: Files name
 	*/
@@ -119,5 +120,12 @@ public class Document extends Section {
 	*/
 	public int getNumberUniqueIds() {
 		return _elementList.size();
+	}
+
+	/*
+	* Return Element Map
+	*/
+	public HashMap<String, TextElement> getElementMap() {
+		return _elementList;
 	}
 }

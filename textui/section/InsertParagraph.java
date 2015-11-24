@@ -7,7 +7,7 @@ import pt.utl.ist.po.ui.InputString;
 import pt.utl.ist.po.ui.InputInteger;
 
 import edt.core.*;
-/* FIXME: import core classes here */
+import pt.utl.ist.po.ui.InvalidOperation;
 
 /**
  * Command for adding a paragraph to the current section.
@@ -16,7 +16,7 @@ public class InsertParagraph extends Command<Document> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public InsertParagraph(Document ent) {
@@ -29,6 +29,17 @@ public class InsertParagraph extends Command<Document> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+
+      Display display = new Display();
+      Form f = new Form();
+      InputInteger pReferenceId = new InputInteger(f, Message.requestParagraphId());
+      InputString paragraphContent = new InputString(f, Message.requestParagraphContent());
+      f.parse();
+      Paragraph newParagraph = new Paragraph(paragraphContent.toString());
+      if(entity().paragraphExist(Integer.parseInt(pReferenceId.toString()))){
+          entity().addParagraph(Integer.parseInt(pReferenceId.toString()), newParagraph);
+      } else {
+          entity().addParagraph(-1, newParagraph);
+      }
     }
 }

@@ -12,16 +12,17 @@ import edt.core.*;
 import java.util.*;
 import pt.utl.ist.po.ui.InvalidOperation;
 import edt.textui.Editor;
+
 /**
  * Command for showing the top sections of the current document in the editor.
  */
 public class ListTopSections extends Command<Editor> {
 
     /**
-     * Constructor.
-     *
-     * @param ent the target entity.
-     */
+    * Constructor.
+    *
+    * @param ent the target entity.
+    */
     public ListTopSections(Editor editor) {
         super(MenuEntry.SHOW_INDEX, editor);
     }
@@ -46,12 +47,12 @@ public class ListTopSections extends Command<Editor> {
     }
     */
     /**
-     * Execute the command.
-     */
+    * Execute the command.
+    */
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        // entity is Document
+
         Display display = new Display();
         Form f = new Form();
         display.add(entity().getDocument().searchTopSections());

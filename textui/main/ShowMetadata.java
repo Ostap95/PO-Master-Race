@@ -21,12 +21,19 @@ import edt.textui.Editor;
 public class ShowMetadata extends Command<Editor> {
 
     /**
-     * Constructor.
-     *
-     * @param ent the target entity.
-     */
+    * Constructor.
+    * @param ent the target entity.
+    */
+     public ShowMetadata(Editor editor) {
+         super(MenuEntry.SHOW_METADATA, editor);
+     }
 
 
+    /**
+    * Prints authors data
+    * @param authors List
+    * @return return string with authors data
+    */
     public String printAuthors(List<Author> authors) {
         StringBuilder result = new StringBuilder();
         for (Author author : authors) {
@@ -35,19 +42,13 @@ public class ShowMetadata extends Command<Editor> {
         return result.toString();
     }
 
-
-    public ShowMetadata(Editor editor) {
-        super(MenuEntry.SHOW_METADATA, editor);
-    }
-
     /**
-     * Execute the command.
-     */
+    * Execute the command.
+    */
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
         Display display = new Display();
-        Form f = new Form();
         ArrayList<Author> authors;
         authors = entity().getDocument().getAuthors();
         Collections.sort(authors);
@@ -57,6 +58,5 @@ public class ShowMetadata extends Command<Editor> {
         display.add(Message.documentBytes(entity().getDocument().getSize()) + "\n");
         display.add(Message.documentIdentifiers(entity().getDocument().getNumberUniqueIds()) + "\n");
         display.display();
-        f.parse();
     }
 }

@@ -13,7 +13,6 @@ public class Command {
 
 			FileInputStream fileStream = new FileInputStream(filename);
 			ObjectInputStream obj = new ObjectInputStream(fileStream);
-
 			Document doc = (Document) obj.readObject();
 			return doc;
 	}

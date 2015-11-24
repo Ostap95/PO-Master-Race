@@ -4,13 +4,11 @@ import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Menu;
 
 import edt.textui.Editor;
-/* FIXME: import core classes here */
 
 /**
  * Represents the main menu of this application. This is the first menu
  * shown to the users.
  ***/
-
 public class MainMenu extends Menu {
 
     public MainMenu(Editor editor) {
