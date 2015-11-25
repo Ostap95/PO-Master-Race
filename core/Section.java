@@ -110,7 +110,6 @@ public class Section extends TextElement {
 	* @return return desired subsection of the section
 	*/
 	public Section getSection(int idx) throws InvalidOperation {
-
 		try{
 			 if (_subsections.isEmpty()) {
 				throw new InvalidOperation();
@@ -143,7 +142,7 @@ public class Section extends TextElement {
 				_subsections.add(idx,sec);
 			}
 		} catch (IndexOutOfBoundsException e) {
-			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
+			_subsections.add(sec);
 		}
 	}
 
@@ -168,9 +167,9 @@ public class Section extends TextElement {
 								section.searchAllSections();
 						}
 					}catch(InvalidOperation e) {
-								// if no more Subsections continue
-								return result.toString();
-						}
+						// if no more Subsections continue
+						return result.toString();
+					}
 			return result.toString();
 	}
 
@@ -187,9 +186,7 @@ public class Section extends TextElement {
 			}
 			_subsections.remove(idx);
 			return true;
-		} catch (NullPointerException|IndexOutOfBoundsException e) {
-			// System.err.println("NullPointerException: " + e.getMessage());
-			// no action
+		} catch (IndexOutOfBoundsException e) {
 			return false;
 		}
 	}
@@ -206,7 +203,7 @@ public class Section extends TextElement {
 				_paragraphs.add(idx, par);
 			}
 		} catch (IndexOutOfBoundsException e) {
-			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
+				_paragraphs.add(par);
 		}
 	}
 
@@ -228,9 +225,6 @@ public class Section extends TextElement {
 				return true;
 			}
 			//remover catch (message)
-		} catch (NullPointerException e) {
-			//System.err.println("NullPointerException: " + e.getMessage());
-			return false;
 		} catch (IndexOutOfBoundsException e) {
 			return false;
 		}
@@ -249,8 +243,7 @@ public class Section extends TextElement {
 				return _paragraphs.get(idx);
 			}
 		} catch (IndexOutOfBoundsException e) {
-			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
-			return null;
+				throw new InvalidOperation();
 		}
 	}
 
