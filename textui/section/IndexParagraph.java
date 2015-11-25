@@ -12,15 +12,19 @@ import edt.core.*;
 /**
  * Command for indexing a paragraph (nomear um parágrafo 2.2.9) of the current section.
  */
-public class IndexParagraph extends Command<Document> {
+public class IndexParagraph extends Command<Section> {
+
+    /** Holds the Document that we are using */
+    private Document _doc;
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
-    public IndexParagraph(Document ent) {
-        super(MenuEntry.NAME_PARAGRAPH, ent);
+    public IndexParagraph(Document doc, Section sec) {
+        super(MenuEntry.NAME_PARAGRAPH, sec);
+        _doc = doc;
     }
 
     /**

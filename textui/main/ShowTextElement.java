@@ -28,12 +28,11 @@ public class ShowTextElement extends Command<Editor> {
     @SuppressWarnings("nls")
     public final void execute() {
 
-        TextElement t;
         Display display = new Display();
         Form f = new Form();
         InputString elementId = new InputString(f, Message.requestElementId());
         f.parse();
-        t = entity().getDocument().getTextElement(elementId.toString());
+        TextElement t = entity().getDocument().getTextElement(elementId.toString());
         if (t != null) {
            display.add(t.getContent());
         } else {

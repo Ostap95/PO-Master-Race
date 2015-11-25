@@ -7,22 +7,26 @@ import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputInteger;
 
 import edt.textui.main.EditSection;
-
+import pt.utl.ist.po.ui.InvalidOperation;
 import edt.core.*;
 /* FIXME: import core classes here */
 
 /**
  * Command for selecting a subsection of the current section and edit it.
  */
-public class SelectSection extends Command<Document> {
+public class SelectSection extends Command<Section> {
+
+    /** Holds the Document that we are using */
+    private Document _doc;
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
-    public SelectSection(Document ent) {
-        super(MenuEntry.SELECT_SECTION, ent);
+    public SelectSection(Document doc, Section sec) {
+        super(MenuEntry.SELECT_SECTION, sec);
+        _doc = doc;
     }
 
     /**
@@ -31,6 +35,20 @@ public class SelectSection extends Command<Document> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+      Display display = new Display();
+      Form f = new Form();
+      InputInteger id = new InputInteger(f, Message.requestSectionId());
+      f.parse();
+
+      try {
+        EditMenu edit = new EditMenu(_doc, entity().getSection(id.value()));
+        display.add(Message.newActiveSection(id.value()));
+        display.display();
+        edit.open();
+
+      } catch (InvalidOperation e) {
+        display.add(Message.noSuchSection(id.value()));
+        display.display();
+      }
     }
 }

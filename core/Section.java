@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.io.*;
 import pt.utl.ist.po.ui.InvalidOperation;
 import edt.textui.section.*;
+
 /**
 * Class Section that represents a section of a document
 */
@@ -78,7 +79,7 @@ public class Section extends TextElement {
 	*/
 	public String getContent() {
 		StringBuilder result = new StringBuilder();
-		result.append(this.getHeadLine());
+		result.append(getHeadLine());
 
 		if (_paragraphs != null) {
 			for (Paragraph par : _paragraphs) {
@@ -120,8 +121,7 @@ public class Section extends TextElement {
 				return _subsections.get(idx);
 			}
 		} catch (IndexOutOfBoundsException e) {
-			e.getMessage();
-			return null;
+				throw new InvalidOperation();
 		}
 	}
 
@@ -146,7 +146,7 @@ public class Section extends TextElement {
 			_subsections.add(idx,sec);
 			}
 		} catch (IndexOutOfBoundsException e) {
-			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
+			_subsections.add(sec);
 		}
 	}
 
@@ -155,7 +155,7 @@ public class Section extends TextElement {
 	* @param idx: position in the list. doc: current document
 	* @return return boolean value based on the success of the remove
 	*/
-	public boolean removeSection(int idx, Document doc) {
+	public boolean removeSection(int idx, Document doc) throws InvalidOperation {
 		try {
 			Section s = _subsections.get(idx);
 
@@ -166,7 +166,7 @@ public class Section extends TextElement {
 			return true;
 
 		} catch (NullPointerException e) {
-			System.err.println("NullPointerException: " + e.getMessage());
+
 			return false;
 		}
 	}
@@ -183,7 +183,7 @@ public class Section extends TextElement {
 				_paragraphs.add(idx, par);
 			}
 		} catch (IndexOutOfBoundsException e) {
-			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
+			_paragraphs.add(par);
 		}
 	}
 
@@ -207,7 +207,7 @@ public class Section extends TextElement {
 			}
 
 		} catch (NullPointerException e) {
-			System.err.println("NullPointerException: " + e.getMessage());
+
 			return false;
 		}
 	}
@@ -220,13 +220,12 @@ public class Section extends TextElement {
 	public Paragraph getParagraph(int idx) throws InvalidOperation {
 		try {
 			if (_paragraphs.isEmpty()) {
-				throw new InvalidOperation("No paragraph");
+				throw new InvalidOperation();
 			} else {
 				return _paragraphs.get(idx);
 			}
 		} catch (IndexOutOfBoundsException e) {
-			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
-			return null;
+			throw new InvalidOperation();
 		}
 	}
 

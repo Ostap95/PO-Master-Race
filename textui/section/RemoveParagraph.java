@@ -11,15 +11,19 @@ import edt.core.*;
 /**
  * Command for removing a paragraph of the current section.
  */
-public class RemoveParagraph extends Command<Document> {
+public class RemoveParagraph extends Command<Section> {
+
+    /** Holds the Document that we are using */
+    private Document _doc;
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
-    public RemoveParagraph(Document ent) {
-        super(MenuEntry.REMOVE_PARAGRAPH, ent);
+    public RemoveParagraph(Document doc, Section sec) {
+        super(MenuEntry.REMOVE_PARAGRAPH, sec);
+        _doc = doc;
     }
 
     /**

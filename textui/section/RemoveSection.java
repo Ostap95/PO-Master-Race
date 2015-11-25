@@ -11,15 +11,19 @@ import edt.core.*;
 /**
  * Command for removing a subsection of the current section.
  */
-public class RemoveSection extends Command<Document> {
+public class RemoveSection extends Command<Section> {
+
+    /** Holds the Document that we are using */
+    private Document _doc;
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
-    public RemoveSection(Document ent) {
-        super(MenuEntry.REMOVE_SECTION, ent);
+    public RemoveSection(Document doc, Section sec) {
+        super(MenuEntry.REMOVE_SECTION, sec);
+        _doc = doc;
     }
 
     /**

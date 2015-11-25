@@ -9,14 +9,14 @@ import edt.core.*;
 /**
  * Command for changing the title of the current section.
  */
-public class ChangeTitle extends Command<Document> {
+public class ChangeTitle extends Command<Section> {
 
     /**
     * Constructor.
     * @param ent the target entity.
     */
-    public ChangeTitle(Document ent) {
-        super(MenuEntry.CHANGE_TITLE, ent);
+    public ChangeTitle(Section sec) {
+        super(MenuEntry.CHANGE_TITLE, sec);
     }
 
     /**
