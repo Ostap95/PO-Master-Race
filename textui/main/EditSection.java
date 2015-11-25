@@ -27,11 +27,8 @@ public class EditSection extends Command<Editor> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-<<<<<<< HEAD
-        EditMenu edit = new EditMenu(entity().getDocument());
-=======
+
         EditMenu edit = new EditMenu(entity().getDocument(), entity().getDocument());
->>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
         edit.open();
     }
 }

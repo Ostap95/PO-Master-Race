@@ -118,11 +118,7 @@ public class Section extends TextElement {
 				return _subsections.get(idx);
 			}
 		} catch (IndexOutOfBoundsException e) {
-<<<<<<< HEAD
 			throw new InvalidOperation();
-=======
-				throw new InvalidOperation();
->>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
 		}
 	}
 
@@ -150,12 +146,12 @@ public class Section extends TextElement {
 			_subsections.add(sec);
 		}
 	}
-
+/*
 	public String searchTopSections() {
 			StringBuilder result = new StringBuilder();
-			result.append( this.getHeadLine());
+			result.append( getHeadLine());
 			try {
-					for(Section section : this.getSubsections()) {
+					for(Section section : getSubsections()) {
 								result.append(section.getHeadLine());
 					}
 			} catch(InvalidOperation e) {
@@ -167,7 +163,7 @@ public class Section extends TextElement {
 	public String searchAllSections() {
 			StringBuilder result = new StringBuilder();
 					try {
-						for(Section section : this.getSubsections()) {
+						for(Section section : getSubsections()) {
 								result.append(section.getHeadLine());
 								section.searchAllSections();
 						}
@@ -178,16 +174,15 @@ public class Section extends TextElement {
 			return result.toString();
 	}
 
+	*/
+
 	/**
 	* Remove Subsection based on index
 	* @param idx: position in the list. doc: current document
 	* @return return boolean value based on the success of the remove
 	*/
-<<<<<<< HEAD
+
 	public boolean removeSection(int idx,Document doc) {
-=======
-	public boolean removeSection(int idx, Document doc) throws InvalidOperation {
->>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
 		try {
 			Section s = _subsections.get(idx);
 			if (s.isIndexed()) {
@@ -195,13 +190,7 @@ public class Section extends TextElement {
 			}
 			_subsections.remove(idx);
 			return true;
-<<<<<<< HEAD
 		} catch (IndexOutOfBoundsException e) {
-=======
-
-		} catch (NullPointerException e) {
-
->>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
 			return false;
 		}
 	}
@@ -218,11 +207,7 @@ public class Section extends TextElement {
 				_paragraphs.add(idx, par);
 			}
 		} catch (IndexOutOfBoundsException e) {
-<<<<<<< HEAD
 				_paragraphs.add(par);
-=======
-			_paragraphs.add(par);
->>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
 		}
 	}
 
@@ -243,14 +228,8 @@ public class Section extends TextElement {
 				_paragraphs.remove(idx);
 				return true;
 			}
-<<<<<<< HEAD
 			//remover catch (message)
 		} catch (IndexOutOfBoundsException e) {
-=======
-
-		} catch (NullPointerException e) {
-
->>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
 			return false;
 		}
 	}
@@ -268,11 +247,8 @@ public class Section extends TextElement {
 				return _paragraphs.get(idx);
 			}
 		} catch (IndexOutOfBoundsException e) {
-<<<<<<< HEAD
 				throw new InvalidOperation();
-=======
-			throw new InvalidOperation();
->>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
+
 		}
 	}
 
@@ -281,6 +257,7 @@ public class Section extends TextElement {
 	* @param idx : paragraph id
 	* @return returns boolean value
 	*/
+	/*
 	public boolean paragraphExist(int idx) {
 		Paragraph paragraph = null;
 		try {
@@ -296,6 +273,7 @@ public class Section extends TextElement {
 	* @param idx: section id
 	* @return return boolean value
 	*/
+	/*
 	public boolean sectionExist(int idx) {
 		Section section = null;
 		try {
@@ -305,4 +283,5 @@ public class Section extends TextElement {
 			return false;
 		}
 	}
+	*/
 }

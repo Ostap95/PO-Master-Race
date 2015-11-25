@@ -28,42 +28,12 @@ public class ListTopSections extends Command<Editor> {
     }
 
     /**
-<<<<<<< HEAD
-    * Search top section in document
-    * @param sec: section to be Used
-    * @return return formatted string with top section information
-    */
-    /*
-    public String searchTopSections(Section sec) {
-        StringBuilder result = new StringBuilder();
-        result.append( sec.getHeadLine());
-        try {
-            for(Section section : sec.getSubsections()) {
-                  result.append(section.getHeadLine());
-            }
-        } catch(InvalidOperation e) {
-            return result.toString();
-        }
-        return result.toString();
-    }
-    */
-    /**
-=======
->>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
     * Execute the command.
     */
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
 
-<<<<<<< HEAD
-        Display display = new Display();
-        Form f = new Form();
-        display.add(entity().getDocument().searchTopSections());
-        display.display();
-        f.parse();
-
-=======
         try {
           Display display = new Display();
           display.add(((Section)entity().getDocument()).getHeadLine());
@@ -77,6 +47,5 @@ public class ListTopSections extends Command<Editor> {
         } catch (InvalidOperation e) {
             e.getMessage();
         }
->>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
     }
 }

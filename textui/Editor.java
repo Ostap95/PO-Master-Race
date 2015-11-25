@@ -8,8 +8,9 @@ import static pt.utl.ist.po.ui.UserInteraction.IO;
 import edt.core.Command;
 import edt.parser.Parser;
 import java.io.*;
+import pt.utl.ist.po.ui.InvalidOperation;
 /**
- * Themain class of the edt application.
+ * The main class of the edt application
  **/
 public class Editor {
 
@@ -55,17 +56,19 @@ public class Editor {
     * @param filename : name of the document
     * @return return boolean value
     */
-    public boolean loadDocument(String filename) {
+    public void loadDocument(String filename) throws InvalidOperation {
       Command cmd = new Command();
       try {
         _currentDoc= cmd.loadDocument(filename);
-        return true;
+        //return true;
       } catch (ClassNotFoundException e) {
         e.getMessage();
-        return false;
+        //return false;
+        throw new InvalidOperation();
       } catch (IOException e) {
         e.getMessage();
-        return false;
+        //return false;
+        throw new InvalidOperation();
       }
     }
 

@@ -6,7 +6,6 @@ import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputInteger;
 
 import edt.core.*;
-/* FIXME: import core classes here */
 
 /**
  * Command for removing a subsection of the current section.
@@ -18,10 +17,6 @@ public class RemoveSection extends Command<Section> {
 
     /**
      * Constructor.
-<<<<<<< HEAD
-=======
-     *
->>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
      * @param ent the target entity.
      */
     public RemoveSection(Document doc, Section sec) {
@@ -39,7 +34,7 @@ public class RemoveSection extends Command<Section> {
         Form f = new Form();
         InputInteger idx = new InputInteger(f, Message.requestSectionId());
         f.parse();
-        entity().removeSection(idx.value(), entity());
+        entity().removeSection(idx.value(), _doc);
         display.display();
     }
 }

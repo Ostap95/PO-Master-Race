@@ -12,6 +12,7 @@ import pt.utl.ist.po.ui.InvalidOperation;
 import java.io.*;
 import edt.core.*;
 import edt.textui.Editor;
+import pt.utl.ist.po.ui.InvalidOperation;
 
 /**
  * Command for opening an existing document in the editor.
@@ -37,9 +38,11 @@ public class OpenDocument extends Command<Editor> {
         Form f = new Form();
         InputString filename = new InputString(f, Message.openFile());
         f.parse();
-        if (!(entity().loadDocument(filename.toString()))) {
+        try {
+          entity().loadDocument(filename.toString());
+        } catch(InvalidOperation e) {
           display.add(Message.fileNotFound());
-          display.display();
         }
+        display.display();
     }
 }

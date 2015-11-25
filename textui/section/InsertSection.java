@@ -33,15 +33,6 @@ public class InsertSection extends Command<Section> {
       InputString sectionTitle = new InputString(f, Message.requestSectionTitle());
       f.parse();
       Section newSection = new Section(sectionTitle.toString());
-<<<<<<< HEAD
       entity().addSection(Integer.parseInt(sReferenceId.toString()), newSection);
-=======
-      if(entity().sectionExist(Integer.parseInt(sReferenceId.toString()))){
-          entity().addSection(Integer.parseInt(sReferenceId.toString()), newSection);
-      } else {
-          entity().addSection(-1, newSection);
-      }
-
->>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
     }
 }

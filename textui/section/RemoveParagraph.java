@@ -36,7 +36,7 @@ public class RemoveParagraph extends Command<Section> {
       InputInteger idx = new InputInteger(f, Message.requestParagraphId());
       f.parse();
       try {
-      entity().removeParagraph(idx.value(), entity());
+      entity().removeParagraph(idx.value(), _doc);
       //caso remova com sucesso n apresenta mensagem
       }catch(InvalidOperation e) {
         display.add(Message.noSuchParagraph(idx.value()));

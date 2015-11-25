@@ -20,14 +20,8 @@ public class ListSections extends Command<Section> {
      *
      * @param ent the target entity.
      */
-<<<<<<< HEAD
-
-    public ListSections(Document ent) {
-        super(MenuEntry.LIST_SECTIONS, ent);
-=======
     public ListSections(Section sec) {
         super(MenuEntry.LIST_SECTIONS, sec);
->>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
     }
 
     /**
@@ -36,11 +30,7 @@ public class ListSections extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-<<<<<<< HEAD
-      Display display = new Display();
-      display.add(entity().searchAllSections());
-      display.display();
-=======
+      //fazer func recursiva
         try {
           ArrayList<Section> subsections = entity().getSubsections();
           for(Section sect : subsections) {
@@ -51,6 +41,5 @@ public class ListSections extends Command<Section> {
         } catch (InvalidOperation e) {
           e.getMessage();
         }
->>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
     }
 }
