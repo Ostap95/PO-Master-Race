@@ -44,8 +44,8 @@ public class Document extends Section {
 	* Return list of the document authors
 	* @return ArrayList of authors
 	*/
-	public ArrayList<Author> getAuthors() {
-		return _authorList;
+	public ArrayList<Author> getAuthors(){
+			return _authorList;
 	}
 
 	/**

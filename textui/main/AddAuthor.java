@@ -8,6 +8,7 @@ import pt.utl.ist.po.ui.InputString;
 import edt.core.*;
 
 import edt.textui.Editor;
+import java.util.ArrayList;
 
 /**
  * Command for adding an author to the current document in the editor.
@@ -18,7 +19,7 @@ public class AddAuthor extends Command<Editor> {
     * Constructor.
     * @param ent the target entity.
     */
-    public AddAuthor(Editor editor) { 
+    public AddAuthor(Editor editor) {
         super(MenuEntry.ADD_AUTHOR, editor);
     }
 
@@ -34,6 +35,13 @@ public class AddAuthor extends Command<Editor> {
         InputString email = new InputString(f, Message.requestEmail());
         f.parse();
         Author author = new Author(name.toString(), email.toString());
-        entity().getDocument().addAuthor(author);
+        ArrayList<Author> aut = entity().getDocument().getAuthors();
+        if(aut.contains(author)) {
+          Display display = new Display();
+          display.add(Message.duplicateAuthor(name.value()));
+          display.display();
+        } else {
+          entity().getDocument().addAuthor(author);
+        }
     }
 }
