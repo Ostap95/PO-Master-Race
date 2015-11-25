@@ -3,20 +3,17 @@ import java.io.*;
 
 
 public class Command {
-
 	/**
 	* Loads new document
 	* @param filename : file name
 	* @return return loaded document
 	*/
 	public Document loadDocument(String filename) throws IOException, ClassNotFoundException {
-
 			FileInputStream fileStream = new FileInputStream(filename);
 			ObjectInputStream obj = new ObjectInputStream(fileStream);
 			Document doc = (Document) obj.readObject();
 			return doc;
 	}
-
 	/**
 	* Saves the document
 	* @param doc: document to be saved
@@ -31,5 +28,4 @@ public class Command {
 			ex.printStackTrace();
 		}
 	}
-
 }

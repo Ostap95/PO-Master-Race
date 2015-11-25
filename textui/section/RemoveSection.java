@@ -32,7 +32,6 @@ public class RemoveSection extends Command<Document> {
         InputInteger idx = new InputInteger(f, Message.requestSectionId());
         f.parse();
         entity().removeSection(idx.value(), entity());
-          // no display
         display.display();
     }
 }
