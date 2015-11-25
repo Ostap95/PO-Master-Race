@@ -57,13 +57,11 @@ public class Section extends TextElement {
 	*/
 	public int getSize() {
 		int totalsize = _title.length();
-
 		 if (_paragraphs != null) {
 			for (Paragraph y : _paragraphs) {
 				totalsize += y.getSize();
 			}
 		}
-
 		if (_subsections != null) {
 			for (Section x : _subsections) {
 				totalsize += x.getSize();
@@ -120,8 +118,7 @@ public class Section extends TextElement {
 				return _subsections.get(idx);
 			}
 		} catch (IndexOutOfBoundsException e) {
-			e.getMessage();
-			return null;
+			throw new InvalidOperation();
 		}
 	}
 
@@ -143,10 +140,10 @@ public class Section extends TextElement {
 			if (idx == -1) {
 				_subsections.add(sec);
 			} else {
-			_subsections.add(idx,sec);
+				_subsections.add(idx,sec);
 			}
 		} catch (IndexOutOfBoundsException e) {
-				System.err.println("IndexOutOfBoundsException: " + e.getMessage());
+			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
 		}
 	}
 
@@ -185,15 +182,14 @@ public class Section extends TextElement {
 	public boolean removeSection(int idx,Document doc) {
 		try {
 			Section s = _subsections.get(idx);
-
 			if (s.isIndexed()) {
 				doc.removeFromIndex(s);
 			}
 			_subsections.remove(idx);
 			return true;
-
-		} catch (NullPointerException e) {
-			System.err.println("NullPointerException: " + e.getMessage());
+		} catch (NullPointerException|IndexOutOfBoundsException e) {
+			// System.err.println("NullPointerException: " + e.getMessage());
+			// no action
 			return false;
 		}
 	}
@@ -220,10 +216,8 @@ public class Section extends TextElement {
 	* @return return boolean value based on the success of the remove
 	*/
 	public boolean removeParagraph(int idx,Document doc) throws InvalidOperation {
-
 		try {
 			if (_paragraphs.isEmpty()) {
-
 				throw new InvalidOperation("No paragraphs");
 			} else {
 				Paragraph p = _paragraphs.get(idx);
@@ -235,7 +229,9 @@ public class Section extends TextElement {
 			}
 			//remover catch (message)
 		} catch (NullPointerException e) {
-			System.err.println("NullPointerException: " + e.getMessage());
+			//System.err.println("NullPointerException: " + e.getMessage());
+			return false;
+		} catch (IndexOutOfBoundsException e) {
 			return false;
 		}
 	}

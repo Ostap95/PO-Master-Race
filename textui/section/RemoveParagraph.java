@@ -33,10 +33,10 @@ public class RemoveParagraph extends Command<Document> {
       f.parse();
       try {
       entity().removeParagraph(idx.value(), entity());
+      //caso remova com sucesso n apresenta mensagem
       }catch(InvalidOperation e) {
         display.add(Message.noSuchParagraph(idx.value()));
       }
-      //caso remova com sucesso n apresenta mensagem
       display.display();
     }
 }
