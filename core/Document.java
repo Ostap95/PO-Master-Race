@@ -36,24 +36,8 @@ public class Document extends Section {
 	* @param name: authors name, email: authors email
 	*/
 	public void addAuthor(Author author) {
-		int idx = 0;
-
-		if (!_authorList.isEmpty()) {
-				for (Author aut: _authorList) {
-					if (aut.compareTo(author) > 0) {
-						_authorList.add(idx, author);
-						break;
-					}
-					idx ++;
-				}
-
-				if (idx == _authorList.size()) {
-					_authorList.add(author);
-				}
-
-		} else {
-			_authorList.add(author);
-		}
+		_authorList.add(author);
+		Collections.sort(_authorList);
 	}
 
 	/**

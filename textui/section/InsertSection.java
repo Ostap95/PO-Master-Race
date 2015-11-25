@@ -11,14 +11,14 @@ import edt.core.*;
 /**
  * Command for adding a subsection to current section.
  */
-public class InsertSection extends Command<Document> {
+public class InsertSection extends Command<Section> {
 
     /**
     * Constructor.
     * @param ent the target entity.
     */
-    public InsertSection(Document ent) {
-        super(MenuEntry.INSERT_SECTION, ent);
+    public InsertSection(Section sec) {
+        super(MenuEntry.INSERT_SECTION, sec);
     }
 
     /**
@@ -33,6 +33,15 @@ public class InsertSection extends Command<Document> {
       InputString sectionTitle = new InputString(f, Message.requestSectionTitle());
       f.parse();
       Section newSection = new Section(sectionTitle.toString());
+<<<<<<< HEAD
       entity().addSection(Integer.parseInt(sReferenceId.toString()), newSection);
+=======
+      if(entity().sectionExist(Integer.parseInt(sReferenceId.toString()))){
+          entity().addSection(Integer.parseInt(sReferenceId.toString()), newSection);
+      } else {
+          entity().addSection(-1, newSection);
+      }
+
+>>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
     }
 }

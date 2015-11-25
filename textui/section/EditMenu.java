@@ -6,7 +6,6 @@ import pt.utl.ist.po.ui.Command;
 import edt.textui.section.*;
 
 import edt.core.*;
-/* FIXME: import core classes here */
 
 /**
  * Represents the edit menu of this application. This menu
@@ -21,19 +20,19 @@ public class EditMenu extends Menu {
      * @param doc
      * @param section
      **/
-    public EditMenu(Document doc) {
+    public EditMenu(Document doc, Section sec) {
         super(MenuEntry.TITLE,
-              new Command<?>[] { new ChangeTitle(doc),
-                      new ListSections(doc),
-                      new ShowSection(doc),
-                      new SelectSection(doc),
-                      new InsertSection(doc),
-                      new IndexSection(doc),
-                      new RemoveSection(doc),
+              new Command<?>[] { new ChangeTitle(sec),
+                      new ListSections(sec),
+                      new ShowSection(sec),
+                      new SelectSection(doc, sec),
+                      new InsertSection(sec),
+                      new IndexSection(doc, sec),
+                      new RemoveSection(doc, sec),
                       new InsertParagraph(doc),
-                      new IndexParagraph(doc),
-                      new ChangeParagraph(doc),
-                      new RemoveParagraph(doc),
+                      new IndexParagraph(doc, sec),
+                      new ChangeParagraph(sec),
+                      new RemoveParagraph(doc, sec),
                       });
     }
 }

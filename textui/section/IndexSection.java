@@ -12,15 +12,19 @@ import pt.utl.ist.po.ui.InvalidOperation;
 /**
  * Command for indexing ia subsection (nomear secção 2.2.6) the current section .
  */
-public class IndexSection extends Command<Document> {
+public class IndexSection extends Command<Section> {
+
+    /** Holds the Document that we are using */
+    private Document _doc;
 
     /**
     * Constructor.
     * @param ent the target entity.
     */
-    public IndexSection(Document ent) {
-        super(MenuEntry.NAME_SECTION, ent);
-    }
+    public IndexSection(Document doc, Section ent) {
+         super(MenuEntry.NAME_SECTION, ent);
+         _doc = doc;
+     }
 
     /**
     * Execute the command.
@@ -34,17 +38,16 @@ public class IndexSection extends Command<Document> {
     InputString uniqueId = new InputString(f, Message.requestUniqueId());
     f.parse();
     try {
-        Section desiredSection = entity().getSection(Integer.parseInt(sectionId.toString()));
-        HashMap<String, TextElement> elementMap = entity().getElementMap();
+        Section desiredSection = entity().getSection(sectionId.value());
+        HashMap<String, TextElement> elementMap = _doc.getElementMap();
         if(elementMap.containsKey(uniqueId.toString())) {
           desiredSection.setKey(uniqueId.toString());
           display.add(Message.sectionNameChanged());
         } else {
-          entity().indexElement(uniqueId.toString(), desiredSection);
+          _doc.indexElement(uniqueId.toString(), desiredSection);
         }
-
     } catch (InvalidOperation e) {
-        display.add(Message.noSuchSection(Integer.parseInt(sectionId.toString())));
+        display.add(Message.noSuchSection(sectionId.value()));
         display.display();
     }
     }

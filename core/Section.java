@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.io.*;
 import pt.utl.ist.po.ui.InvalidOperation;
 import edt.textui.section.*;
+
 /**
 * Class Section that represents a section of a document
 */
@@ -76,7 +77,7 @@ public class Section extends TextElement {
 	*/
 	public String getContent() {
 		StringBuilder result = new StringBuilder();
-		result.append(this.getHeadLine());
+		result.append(getHeadLine());
 
 		if (_paragraphs != null) {
 			for (Paragraph par : _paragraphs) {
@@ -117,7 +118,11 @@ public class Section extends TextElement {
 				return _subsections.get(idx);
 			}
 		} catch (IndexOutOfBoundsException e) {
+<<<<<<< HEAD
 			throw new InvalidOperation();
+=======
+				throw new InvalidOperation();
+>>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
 		}
 	}
 
@@ -178,7 +183,11 @@ public class Section extends TextElement {
 	* @param idx: position in the list. doc: current document
 	* @return return boolean value based on the success of the remove
 	*/
+<<<<<<< HEAD
 	public boolean removeSection(int idx,Document doc) {
+=======
+	public boolean removeSection(int idx, Document doc) throws InvalidOperation {
+>>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
 		try {
 			Section s = _subsections.get(idx);
 			if (s.isIndexed()) {
@@ -186,7 +195,13 @@ public class Section extends TextElement {
 			}
 			_subsections.remove(idx);
 			return true;
+<<<<<<< HEAD
 		} catch (IndexOutOfBoundsException e) {
+=======
+
+		} catch (NullPointerException e) {
+
+>>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
 			return false;
 		}
 	}
@@ -203,7 +218,11 @@ public class Section extends TextElement {
 				_paragraphs.add(idx, par);
 			}
 		} catch (IndexOutOfBoundsException e) {
+<<<<<<< HEAD
 				_paragraphs.add(par);
+=======
+			_paragraphs.add(par);
+>>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
 		}
 	}
 
@@ -224,8 +243,14 @@ public class Section extends TextElement {
 				_paragraphs.remove(idx);
 				return true;
 			}
+<<<<<<< HEAD
 			//remover catch (message)
 		} catch (IndexOutOfBoundsException e) {
+=======
+
+		} catch (NullPointerException e) {
+
+>>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
 			return false;
 		}
 	}
@@ -238,12 +263,16 @@ public class Section extends TextElement {
 	public Paragraph getParagraph(int idx) throws InvalidOperation {
 		try {
 			if (_paragraphs.isEmpty()) {
-				throw new InvalidOperation("No paragraph");
+				throw new InvalidOperation();
 			} else {
 				return _paragraphs.get(idx);
 			}
 		} catch (IndexOutOfBoundsException e) {
+<<<<<<< HEAD
 				throw new InvalidOperation();
+=======
+			throw new InvalidOperation();
+>>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
 		}
 	}
 

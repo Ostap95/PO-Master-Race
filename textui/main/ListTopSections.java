@@ -28,6 +28,7 @@ public class ListTopSections extends Command<Editor> {
     }
 
     /**
+<<<<<<< HEAD
     * Search top section in document
     * @param sec: section to be Used
     * @return return formatted string with top section information
@@ -47,17 +48,35 @@ public class ListTopSections extends Command<Editor> {
     }
     */
     /**
+=======
+>>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
     * Execute the command.
     */
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
 
+<<<<<<< HEAD
         Display display = new Display();
         Form f = new Form();
         display.add(entity().getDocument().searchTopSections());
         display.display();
         f.parse();
 
+=======
+        try {
+          Display display = new Display();
+          display.add(((Section)entity().getDocument()).getHeadLine());
+          display.display();
+
+          for(Section section : entity().getDocument().getSubsections()) {
+            display = new Display();
+            display.add(section.getHeadLine());
+            display.display();
+          }
+        } catch (InvalidOperation e) {
+            e.getMessage();
+        }
+>>>>>>> e47e0fc1ab30af17ed9dced9631eaf33baa56dc8
     }
 }
