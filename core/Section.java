@@ -22,7 +22,7 @@ public class Section extends TextElement {
 	/**
 	* Section class constructor
 	* @param id - unique key of the new section, title - title of the section
-	*/	
+	*/
 	public Section(String title) {
 		_title = title;
 	}
@@ -135,6 +135,7 @@ public class Section extends TextElement {
 	* Adds new subsections to the section
 	* @param idx: position in the list. sec: section to be added to the list
 	*/
+
 	public void addSection(int idx, Section sec) {
 		try{
 			if (idx == -1) {
@@ -153,11 +154,17 @@ public class Section extends TextElement {
 	* @return return boolean value based on the success of the remove
 	*/
 
-	public boolean removeSection(int idx,Document doc) {
+	public boolean removeSection(int idx, Document doc) {
 		try {
-			Section s = _subsections.get(idx);
-			if (s.isIndexed()) {
-				doc.removeFromIndex(s);
+			int n = 0;
+			Section sec = _subsections.get(idx);
+			//for (Section sec : this.getSection(idx).getSubsections()) {
+				if (sec.isIndexed()) {
+					doc.removeFromIndex(sec);
+				}
+				for(; n < sec.getSubsectionIndex(); n++) {
+				sec.removeSection(n,doc);
+				n++;
 			}
 			_subsections.remove(idx);
 			return true;
@@ -170,6 +177,7 @@ public class Section extends TextElement {
 	* Add paragraph to the section
 	* @param idx: position int the list. par: paragraph to be added
 	*/
+
 	public void addParagraph(int idx, Paragraph par) {
 		try {
 			if (idx == -1) {
