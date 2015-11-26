@@ -5,8 +5,9 @@ import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputInteger;
 
-import edt.core.*;
-/* FIXME: import core classes here */
+import edt.core.Section;
+import edt.core.Paragraph;
+import edt.core.Document;
 
 /**
  * Command for removing a paragraph of the current section.

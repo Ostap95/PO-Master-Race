@@ -2,10 +2,8 @@ package edt.textui.main;
 
 import pt.utl.ist.po.ui.Menu;
 import pt.utl.ist.po.ui.Command;
-
 import edt.textui.section.EditMenu;
 
-import edt.core.*;
 import edt.textui.Editor;
 
 /**

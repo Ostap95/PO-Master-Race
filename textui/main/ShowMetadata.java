@@ -4,15 +4,15 @@ import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 
 
-import edt.core.*;
-
-// importado
-import java.util.SortedSet;
 import pt.utl.ist.po.ui.Menu;
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputString;
-import edt.core.*;
-import java.util.*;
+
+import edt.core.Section;
+import edt.core.Author;
+import java.util.SortedSet;
+import java.util.ArrayList;
+import java.util.List;
 import edt.textui.Editor;
 
 import pt.utl.ist.po.ui.InvalidOperation;

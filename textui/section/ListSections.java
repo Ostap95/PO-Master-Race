@@ -2,13 +2,12 @@ package edt.textui.section;
 
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
+import pt.utl.ist.po.ui.InvalidOperation;
 
 import edt.core.Section;
 import edt.core.Document;
 import edt.core.Paragraph;
-import pt.utl.ist.po.ui.InvalidOperation;
 import java.util.ArrayList;
-/* FIXME: import core classes here */
 
 /**
  * Command for listing all subsections of the current section.

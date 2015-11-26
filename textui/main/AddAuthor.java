@@ -5,10 +5,11 @@ import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputString;
-import edt.core.*;
 
 import edt.textui.Editor;
 import java.util.ArrayList;
+import edt.core.Document;
+import edt.core.Author;
 
 /**
  * Command for adding an author to the current document in the editor.

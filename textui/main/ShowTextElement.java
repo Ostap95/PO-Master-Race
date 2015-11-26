@@ -5,7 +5,7 @@ import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputString;
 
-import edt.core.*;
+import edt.core.TextElement;
 import edt.textui.Editor;
 
 /**

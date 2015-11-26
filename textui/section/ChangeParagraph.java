@@ -6,7 +6,9 @@ import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputInteger;
 import pt.utl.ist.po.ui.InputString;
 
-import edt.core.*;
+import edt.core.Paragraph;
+import edt.core.Section;
+import edt.core.Document;
 import pt.utl.ist.po.ui.InvalidOperation;
 
 /**

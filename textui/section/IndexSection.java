@@ -6,7 +6,9 @@ import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputString;
 import pt.utl.ist.po.ui.InputInteger;
 
-import edt.core.*;
+import edt.core.Document;
+import edt.core.Section;
+import edt.core.TextElement;
 import java.util.HashMap;
 import pt.utl.ist.po.ui.InvalidOperation;
 /**

@@ -4,8 +4,8 @@ import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputString;
-import edt.core.*;
-/* FIXME: import core classes here */
+
+import edt.core.Section;
 
 /**
  * Command for showing the content of current section.

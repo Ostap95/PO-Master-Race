@@ -6,7 +6,7 @@ import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.InputInteger;
 import pt.utl.ist.po.ui.InputString;
 
-import edt.core.*;
+import edt.core.Section;
 
 /**
  * Command for adding a subsection to current section.

@@ -1,13 +1,14 @@
 package edt.textui;
 
-
 import edt.textui.main.MainMenu;
-import edt.core.Document;
 import pt.utl.ist.po.ui.Menu;
 import static pt.utl.ist.po.ui.UserInteraction.IO;
+
+import edt.core.Document;
 import edt.core.Command;
 import edt.parser.Parser;
 import java.io.*;
+
 /**
  * Themain class of the edt application.
  **/

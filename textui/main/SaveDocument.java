@@ -8,7 +8,6 @@ import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.InputString;
 import java.io.IOException;
 
-import edt.core.*;
 import edt.textui.Editor;
 
 /**

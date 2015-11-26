@@ -4,7 +4,7 @@ import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputString;
 
-import edt.core.*;
+import edt.core.Section;
 
 /**
  * Command for changing the title of the current section.

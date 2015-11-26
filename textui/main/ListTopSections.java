@@ -8,10 +8,11 @@ import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
 
 import pt.utl.ist.po.ui.InputString;
-import edt.core.*;
-import java.util.*;
 import pt.utl.ist.po.ui.InvalidOperation;
+
+import java.util.*;
 import edt.textui.Editor;
+import edt.core.Section;
 
 /**
  * Command for showing the top sections of the current document in the editor.

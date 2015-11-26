@@ -5,7 +5,8 @@ import pt.utl.ist.po.ui.Command;
 
 import edt.textui.section.*;
 
-import edt.core.*;
+import edt.core.Document;
+import edt.core.Section;
 
 /**
  * Represents the edit menu of this application. This menu

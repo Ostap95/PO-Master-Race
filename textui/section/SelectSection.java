@@ -5,11 +5,11 @@ import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputInteger;
-
-import edt.textui.main.EditSection;
 import pt.utl.ist.po.ui.InvalidOperation;
-import edt.core.*;
-/* FIXME: import core classes here */
+
+import edt.core.Document;
+import edt.core.Section;
+import edt.textui.main.EditSection;
 
 /**
  * Command for selecting a subsection of the current section and edit it.

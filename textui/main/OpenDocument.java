@@ -10,7 +10,6 @@ import pt.utl.ist.po.ui.InputString;
 import pt.utl.ist.po.ui.InvalidOperation;
 
 import java.io.*;
-import edt.core.*;
 import edt.textui.Editor;
 
 /**

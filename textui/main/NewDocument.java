@@ -11,7 +11,6 @@ import edt.textui.main.MainMenu;
 import edt.core.Document;
 import static pt.utl.ist.po.ui.UserInteraction.IO;
 
-import edt.core.*;
 import edt.textui.Editor;
 
 /**
@@ -33,7 +32,7 @@ public class NewDocument extends Command<Editor> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        
+
         Document newdoc = new Document();
     		entity().setDocument(newdoc);
     }
