@@ -157,15 +157,13 @@ public class Section extends TextElement {
 	public boolean removeSection(int idx, Document doc) {
 		try {
 			int n = 0;
-			Section sec = _subsections.get(idx);
-			//for (Section sec : this.getSection(idx).getSubsections()) {
+			for (Section sec : _subsections) {
 				if (sec.isIndexed()) {
 					doc.removeFromIndex(sec);
 				}
-				for(; n < sec.getSubsectionIndex(); n++) {
-				sec.removeSection(n,doc);
-				n++;
-			}
+					sec.removeSection(n, doc);
+					n++;
+				}
 			_subsections.remove(idx);
 			return true;
 		} catch (IndexOutOfBoundsException e) {
