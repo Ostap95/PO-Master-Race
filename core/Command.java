@@ -11,10 +11,12 @@ public class Command {
 	*/
 	public Document loadDocument(String filename) throws IOException, ClassNotFoundException {
 
+
 			FileInputStream fileStream = new FileInputStream(filename);
 			ObjectInputStream obj = new ObjectInputStream(fileStream);
 			Document doc = (Document) obj.readObject();
 			return doc;
+
 	}
 
 	/**
@@ -27,8 +29,8 @@ public class Command {
 			ObjectOutputStream os = new ObjectOutputStream(fileStream);
 			os.writeObject(doc);
 			os.close();
-		} catch (IOException ex) {
-			ex.printStackTrace();
+		} catch (IOException e) {
+			e.getMessage();
 		}
 	}
 

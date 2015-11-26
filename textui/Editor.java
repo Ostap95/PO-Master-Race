@@ -55,18 +55,9 @@ public class Editor {
     * @param filename : name of the document
     * @return return boolean value
     */
-    public boolean loadDocument(String filename) {
+    public void loadDocument(String filename) throws IOException, ClassNotFoundException {
       Command cmd = new Command();
-      try {
-        _currentDoc= cmd.loadDocument(filename);
-        return true;
-      } catch (ClassNotFoundException e) {
-        e.getMessage();
-        return false;
-      } catch (IOException e) {
-        e.getMessage();
-        return false;
-      }
+      _currentDoc = cmd.loadDocument(filename);
     }
 
     public static void main(String[] args) {

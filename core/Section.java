@@ -222,6 +222,7 @@ public class Section extends TextElement {
 			if (_paragraphs.isEmpty()) {
 				throw new InvalidOperation();
 			} else {
+
 				return _paragraphs.get(idx);
 			}
 		} catch (IndexOutOfBoundsException e) {
