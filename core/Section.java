@@ -228,34 +228,4 @@ public class Section extends TextElement {
 			throw new InvalidOperation();
 		}
 	}
-
-	/**
-	* Checks if the paragraph with given id exists
-	* @param idx : paragraph id
-	* @return returns boolean value
-	*/
-	public boolean paragraphExist(int idx) {
-		Paragraph paragraph = null;
-		try {
-			paragraph = getParagraph(idx);
-			return _paragraphs.contains(paragraph);
-		} catch (IndexOutOfBoundsException | InvalidOperation e) {
-			return false;
-		}
-	}
-
-	/*
-	* Checks if the section with given id exists
-	* @param idx: section id
-	* @return return boolean value
-	*/
-	public boolean sectionExist(int idx) {
-		Section section = null;
-		try {
-			section = getSection(idx);
-			return _subsections.contains(section);
-		} catch (IndexOutOfBoundsException | InvalidOperation e) {
-			return false;
-		}
-	}
 }

@@ -33,7 +33,6 @@ public class ListTopSections extends Command<Editor> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-
         try {
           Display display = new Display();
           display.add(((Section)entity().getDocument()).getHeadLine());
