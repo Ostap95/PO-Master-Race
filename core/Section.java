@@ -1,6 +1,6 @@
 package edt.core;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.io.*;
 import pt.utl.ist.po.ui.InvalidOperation;
 import edt.textui.section.*;
@@ -14,15 +14,15 @@ public class Section extends TextElement {
 	private String _title = "";
 
 	/** ArrayList of paragraphs of the section */
-	private ArrayList<Paragraph> _paragraphs = new ArrayList<Paragraph>();
+	private List<Paragraph> _paragraphs = new ArrayList<Paragraph>();
 
 	/**  ArrayList of subsections of the section */
-	private ArrayList<Section> _subsections = new ArrayList<Section>();
+	private List<Section> _subsections = new ArrayList<Section>();
 
 	/**
 	* Section class constructor
 	* @param id - unique key of the new section, title - title of the section
-	*/
+	*/	
 	public Section(String title) {
 		_title = title;
 	}
@@ -97,7 +97,7 @@ public class Section extends TextElement {
 	* Return list of all subsections of the current section
 	* @return list of subsections
 	*/
-	public ArrayList<Section> getSubsections() throws InvalidOperation {
+	public List<Section> getSubsections() throws InvalidOperation {
 		if (_subsections.isEmpty()) {
 			throw new InvalidOperation();
 		} else {
@@ -146,35 +146,6 @@ public class Section extends TextElement {
 			_subsections.add(sec);
 		}
 	}
-/*
-	public String searchTopSections() {
-			StringBuilder result = new StringBuilder();
-			result.append( getHeadLine());
-			try {
-					for(Section section : getSubsections()) {
-								result.append(section.getHeadLine());
-					}
-			} catch(InvalidOperation e) {
-					return result.toString();
-			}
-			return result.toString();
-	}
-
-	public String searchAllSections() {
-			StringBuilder result = new StringBuilder();
-					try {
-						for(Section section : getSubsections()) {
-								result.append(section.getHeadLine());
-								section.searchAllSections();
-						}
-					}catch(InvalidOperation e) {
-						// if no more Subsections continue
-						return result.toString();
-					}
-			return result.toString();
-	}
-
-	*/
 
 	/**
 	* Remove Subsection based on index

@@ -11,10 +11,10 @@ public class Document extends Section {
 	public String _filename = "";
 
 	/** List of authors */
-	private ArrayList<Author> _authorList = new ArrayList<Author>();
+	private List<Author> _authorList = new ArrayList<Author>();
 
 	/** List of TextElements **/
-	private HashMap<String, TextElement> _elementList = new HashMap<String, TextElement>();
+	private Map<String, TextElement> _elementList = new HashMap<String, TextElement>();
 
 	/**
 	* Document Constructor
@@ -44,7 +44,7 @@ public class Document extends Section {
 	* Return list of the document authors
 	* @return ArrayList of authors
 	*/
-	public ArrayList<Author> getAuthors() {
+	public List<Author> getAuthors() {
 		return _authorList;
 	}
 
@@ -109,7 +109,7 @@ public class Document extends Section {
 	/*
 	* Return Element Map
 	*/
-	public HashMap<String, TextElement> getElementMap() {
+	public Map<String, TextElement> getElementMap() {
 		return _elementList;
 	}
 }

@@ -7,7 +7,7 @@ import pt.utl.ist.po.ui.InputString;
 import pt.utl.ist.po.ui.InputInteger;
 
 import edt.core.*;
-import java.util.HashMap;
+import java.util.*;
 import pt.utl.ist.po.ui.InvalidOperation;
 /**
  * Command for indexing ia subsection (nomear secção 2.2.6) the current section .
@@ -39,7 +39,7 @@ public class IndexSection extends Command<Section> {
     f.parse();
     try {
         Section desiredSection = entity().getSection(sectionId.value());
-        HashMap<String, TextElement> elementMap = _doc.getElementMap();
+        Map<String, TextElement> elementMap = _doc.getElementMap();
         if(elementMap.containsKey(uniqueId.toString())) {
           desiredSection.setKey(uniqueId.toString());
           display.add(Message.sectionNameChanged());

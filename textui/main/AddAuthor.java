@@ -5,8 +5,9 @@ import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputString;
-import edt.core.*;
 
+import java.util.*;
+import edt.core.*;
 import edt.textui.Editor;
 
 /**
@@ -28,12 +29,18 @@ public class AddAuthor extends Command<Editor> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-
-        Form f = new Form();
-        InputString name = new InputString(f, Message.requestAuthorName());
-        InputString email = new InputString(f, Message.requestEmail());
-        f.parse();
-        Author author = new Author(name.toString(), email.toString());
+      Form f = new Form();
+      InputString name = new InputString(f, Message.requestAuthorName());
+      InputString email = new InputString(f, Message.requestEmail());
+      f.parse();
+      Author author = new Author(name.toString(), email.toString());
+      List<Author> aut = entity().getDocument().getAuthors();
+      if(aut.contains(author)) {
+        Display display = new Display();
+        display.add(Message.duplicateAuthor(name.value()));
+        display.display();
+      } else {
         entity().getDocument().addAuthor(author);
+      }
     }
 }

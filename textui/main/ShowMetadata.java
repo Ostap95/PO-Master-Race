@@ -49,7 +49,7 @@ public class ShowMetadata extends Command<Editor> {
     @SuppressWarnings("nls")
     public final void execute() {
         Display display = new Display();
-        ArrayList<Author> authors;
+        List<Author> authors;
         authors = entity().getDocument().getAuthors();
         Collections.sort(authors);
         display.add(Message.documentTitle(entity().getDocument().getTitle()) + "\n"); // adds string

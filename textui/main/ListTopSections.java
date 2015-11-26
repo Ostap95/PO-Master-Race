@@ -40,7 +40,7 @@ public class ListTopSections extends Command<Editor> {
           display.display();
 
           for(Section section : entity().getDocument().getSubsections()) {
-            display = new Display();
+            //display = new Display();
             display.add(section.getHeadLine());
             display.display();
           }

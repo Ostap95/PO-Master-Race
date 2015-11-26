@@ -8,7 +8,7 @@ import pt.utl.ist.po.ui.InputString;
 
 import edt.core.*;
 import pt.utl.ist.po.ui.InvalidOperation;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * Command for indexing a paragraph (nomear um parágrafo 2.2.9) of the current section.
@@ -41,7 +41,7 @@ public class IndexParagraph extends Command<Section> {
       f.parse();
       try {
           Paragraph desiredParagraph = entity().getParagraph(paragraphId.value());
-          HashMap<String, TextElement> elementMap = _doc.getElementMap();
+          Map<String, TextElement> elementMap = _doc.getElementMap();
           if(elementMap.containsKey(uniqueId.toString())) {
             desiredParagraph.setKey(uniqueId.toString());
             display.add(Message.paragraphNameChanged());

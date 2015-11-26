@@ -28,6 +28,7 @@ public class RemoveParagraph extends Command<Section> {
     /**
      * Execute the command.
      */
+     
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
