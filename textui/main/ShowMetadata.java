@@ -34,6 +34,8 @@ public class ShowMetadata extends Command<Editor> {
     * @param authors List
     * @return return string with authors data
     */
+
+    /*
     public String printAuthors(List<Author> authors) {
         StringBuilder result = new StringBuilder();
         for (Author author : authors) {
@@ -41,6 +43,7 @@ public class ShowMetadata extends Command<Editor> {
         }
         return result.toString();
     }
+    */
 
     /**
     * Execute the command.
@@ -49,11 +52,12 @@ public class ShowMetadata extends Command<Editor> {
     @SuppressWarnings("nls")
     public final void execute() {
         Display display = new Display();
-        List<Author> authors;
+        SortedSet<Author> authors;
         authors = entity().getDocument().getAuthors();
-        Collections.sort(authors);
         display.add(Message.documentTitle(entity().getDocument().getTitle()) + "\n"); // adds string
-        display.add(printAuthors(authors));
+        for (Author author : authors) {
+          display.add(Message.author(author.getName(), author.getEmail()) + "\n");
+        }
         display.add(Message.documentSections(entity().getDocument().getSubsectionIndex()) + "\n");
         display.add(Message.documentBytes(entity().getDocument().getSize()) + "\n");
         display.add(Message.documentIdentifiers(entity().getDocument().getNumberUniqueIds()) + "\n");

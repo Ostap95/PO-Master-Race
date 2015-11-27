@@ -1,6 +1,7 @@
 package edt.core;
 
 import java.util.*;
+import pt.utl.ist.po.ui.InvalidOperation;
 
 /**
 * Class Document represents general document, containing sections, subsections, authors and paragraphs.
@@ -11,7 +12,7 @@ public class Document extends Section {
 	public String _filename = "";
 
 	/** List of authors */
-	private List<Author> _authorList = new ArrayList<Author>();
+	private SortedSet<Author> _authorList = new TreeSet<Author>();
 
 	/** List of TextElements **/
 	private Map<String, TextElement> _elementList = new HashMap<String, TextElement>();
@@ -37,14 +38,14 @@ public class Document extends Section {
 	*/
 	public void addAuthor(Author author) {
 		_authorList.add(author);
-		Collections.sort(_authorList);
+		//Collections.sort(_authorList);
 	}
 
 	/**
 	* Return list of the document authors
 	* @return ArrayList of authors
 	*/
-	public List<Author> getAuthors() {
+	public SortedSet<Author> getAuthors() {
 		return _authorList;
 	}
 
@@ -60,8 +61,8 @@ public class Document extends Section {
 	* Add element to hasmap of text elements
 	* @param id: text element id. ele: textelement
 	*/
-	public void indexElement(String id, TextElement ele) {
-		 ele.setKey(id);
+	public void indexElement(String id, TextElement ele){
+		ele.setKey(id);
 		_elementList.put(id, ele);
 	}
 
@@ -104,12 +105,5 @@ public class Document extends Section {
 	*/
 	public int getNumberUniqueIds() {
 		return _elementList.size();
-	}
-
-	/*
-	* Return Element Map
-	*/
-	public Map<String, TextElement> getElementMap() {
-		return _elementList;
 	}
 }

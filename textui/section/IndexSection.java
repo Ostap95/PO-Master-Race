@@ -6,9 +6,11 @@ import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputString;
 import pt.utl.ist.po.ui.InputInteger;
 
+import java.util.*;
 import edt.core.*;
 import java.util.*;
 import pt.utl.ist.po.ui.InvalidOperation;
+import java.lang.NullPointerException;
 /**
  * Command for indexing ia subsection (nomear secção 2.2.6) the current section .
  */
@@ -38,17 +40,25 @@ public class IndexSection extends Command<Section> {
     InputString uniqueId = new InputString(f, Message.requestUniqueId());
     f.parse();
     try {
-        Section desiredSection = entity().getSection(sectionId.value());
-        Map<String, TextElement> elementMap = _doc.getElementMap();
-        if(elementMap.containsKey(uniqueId.toString())) {
-          desiredSection.setKey(uniqueId.toString());
+      Section desiredSection = entity().getSection(sectionId.value());
+      TextElement keyTextEl = _doc.getTextElement(uniqueId.value());
+
+      if(desiredSection.isIndexed() )
           display.add(Message.sectionNameChanged());
-        } else {
-          _doc.indexElement(uniqueId.toString(), desiredSection);
-        }
+
+      if(keyTextEl != null) {
+        _doc.removeFromIndex(keyTextEl);
+        _doc.indexElement(uniqueId.value(), desiredSection);
+
+      } else {
+        _doc.indexElement(uniqueId.toString(), desiredSection);
+      }
+
     } catch (InvalidOperation e) {
         display.add(Message.noSuchSection(sectionId.value()));
+
+    }finally {
         display.display();
     }
-    }
+  }
 }

@@ -33,15 +33,18 @@ public class ListSections extends Command<Section> {
       //fazer func recursiva
         try {
           List<Section> subsections = entity().getSubsections();
-          Display display = new Display();
           ListSections list;
-          for(Section sect : subsections) {
-            list = new ListSections(sect);
-            list.execute();
-            display.add(sect.getHeadLine());
-          }
+          Display display = new Display();
+          display.add(entity().getHeadLine());
           display.display();
+          for(Section sect : subsections) {
+            if(sect != null) {
+              list = new ListSections(sect);
+              list.execute();
+            }
+          }
         } catch (InvalidOperation e) {
+          System.out.println("mamas");
           e.getMessage();
         }
     }

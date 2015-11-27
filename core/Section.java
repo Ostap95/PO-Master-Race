@@ -155,31 +155,38 @@ public class Section extends TextElement {
 	*/
 
 	public boolean removeSection(int idx, Document doc) {
-				Section sec = _subsections.get(idx);
-				int n = 0;
+			Section sec = _subsections.get(idx);
+			int n = 0;
+			int a = 0;
 			try {
-					if (sec.isIndexed()) {
-						doc.removeFromIndex(sec);
-	        }
+				if (sec.isIndexed()) {
+					doc.removeFromIndex(sec);
+        }
 				while (n <= sec.getSubsections().size()) {
 					if (!sec.removeSection(n,doc)) {
 							n++;
 					}
 				}
-	      return _subsections.remove(sec);
+				for(; ;) {
+					if(sec.removeParagraph(a,doc));
+						System.out.println("removepar");
+					a++;
+				}
 			} catch (IndexOutOfBoundsException e) {
-				return false;
+				System.out.println("out of bounds remove sec");
+	      return _subsections.remove(sec);
+				//return false;
 			} catch (InvalidOperation e) {
+				System.out.println("invalid op remove sec");
 				return _subsections.remove(sec);
 			}
-	}
-
+		}
 
 	/**
 	* Add paragraph to the section
+	*
 	* @param idx: position int the list. par: paragraph to be added
 	*/
-
 	public void addParagraph(int idx, Paragraph par) {
 		try {
 			if (idx == -1) {
@@ -200,10 +207,13 @@ public class Section extends TextElement {
 	public boolean removeParagraph(int idx,Document doc) throws InvalidOperation {
 		try {
 			if (_paragraphs.isEmpty()) {
+				System.out.println("empty par");
 				throw new InvalidOperation("No paragraphs");
 			} else {
 				Paragraph p = _paragraphs.get(idx);
 				if (p.isIndexed()) {
+					System.out.println("par is indexed");
+
 					doc.removeFromIndex(p);
 				}
 				_paragraphs.remove(idx);
@@ -211,6 +221,7 @@ public class Section extends TextElement {
 			}
 			//remover catch (message)
 		} catch (IndexOutOfBoundsException e) {
+			System.out.println("remove par index out of bounds");
 			return false;
 		}
 	}

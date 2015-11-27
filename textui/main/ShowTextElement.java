@@ -34,9 +34,9 @@ public class ShowTextElement extends Command<Editor> {
         f.parse();
         TextElement t = entity().getDocument().getTextElement(elementId.toString());
         if (t != null) {
-           display.add(t.getContent());
+          display.add(t.getContent());
         } else {
-            display.add(Message.noSuchTextElement(elementId.toString()));
+          display.add(Message.noSuchTextElement(elementId.toString()));
         }
         display.display();
     }

@@ -34,7 +34,7 @@ public class AddAuthor extends Command<Editor> {
       InputString email = new InputString(f, Message.requestEmail());
       f.parse();
       Author author = new Author(name.toString(), email.toString());
-      List<Author> aut = entity().getDocument().getAuthors();
+      SortedSet<Author> aut = entity().getDocument().getAuthors();
       if(aut.contains(author)) {
         Display display = new Display();
         display.add(Message.duplicateAuthor(name.value()));
