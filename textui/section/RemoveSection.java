@@ -33,13 +33,10 @@ public class RemoveSection extends Command<Section> {
     public final void execute() {
         Display display = new Display();
         Form f = new Form();
-        try{
           InputInteger idx = new InputInteger(f, Message.requestSectionId());
           f.parse();
-          entity().getSection(idx.value()).removeSection(idx.value(), _doc);
+          entity().removeSection(idx.value(), _doc);
           display.display();
-        }catch(InvalidOperation e) {
-          e.getMessage();
-        }
+
     }
 }

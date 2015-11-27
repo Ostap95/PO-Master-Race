@@ -155,23 +155,25 @@ public class Section extends TextElement {
 	*/
 
 	public boolean removeSection(int idx, Document doc) {
-		try {
-			int n = 0;
-			int a = 0;
-			for (Section sec : _subsections) {
-				if (sec.isIndexed()) {
-					doc.removeFromIndex(sec);
+				Section sec = _subsections.get(idx);
+				int n = 0;
+			try {
+					if (sec.isIndexed()) {
+						doc.removeFromIndex(sec);
+	        }
+				while (n <= sec.getSubsections().size()) {
+					if (!sec.removeSection(n,doc)) {
+							n++;
+					}
 				}
-					sec.removeSection(n, doc);
-					n++;
-				}
-			for(; a<n ;a++)
-				_subsections.remove(idx); // only removes last element
-			return true;
-		} catch (IndexOutOfBoundsException e) {
-			return false;
-		}
+	      return _subsections.remove(sec);
+			} catch (IndexOutOfBoundsException e) {
+				return false;
+			} catch (InvalidOperation e) {
+				return _subsections.remove(sec);
+			}
 	}
+
 
 	/**
 	* Add paragraph to the section

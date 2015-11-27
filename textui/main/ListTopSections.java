@@ -37,13 +37,11 @@ public class ListTopSections extends Command<Editor> {
         try {
           Display display = new Display();
           display.add(((Section)entity().getDocument()).getHeadLine());
-          display.display();
-
           for(Section section : entity().getDocument().getSubsections()) {
             //display = new Display();
             display.add(section.getHeadLine());
-            display.display();
           }
+        display.display();
         } catch (InvalidOperation e) {
             e.getMessage();
         }
