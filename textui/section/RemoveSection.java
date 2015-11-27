@@ -5,6 +5,7 @@ import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputInteger;
 
+import pt.utl.ist.po.ui.InvalidOperation;
 import edt.core.*;
 
 /**
@@ -32,9 +33,13 @@ public class RemoveSection extends Command<Section> {
     public final void execute() {
         Display display = new Display();
         Form f = new Form();
-        InputInteger idx = new InputInteger(f, Message.requestSectionId());
-        f.parse();
-        entity().removeSection(idx.value(), _doc);
-        display.display();
+        try{
+          InputInteger idx = new InputInteger(f, Message.requestSectionId());
+          f.parse();
+          entity().getSection(idx.value()).removeSection(idx.value(), _doc);
+          display.display();
+        }catch(InvalidOperation e) {
+          e.getMessage();
+        }
     }
 }

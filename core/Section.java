@@ -157,6 +157,7 @@ public class Section extends TextElement {
 	public boolean removeSection(int idx, Document doc) {
 		try {
 			int n = 0;
+			int a = 0;
 			for (Section sec : _subsections) {
 				if (sec.isIndexed()) {
 					doc.removeFromIndex(sec);
@@ -164,7 +165,8 @@ public class Section extends TextElement {
 					sec.removeSection(n, doc);
 					n++;
 				}
-			_subsections.remove(idx);
+			for(; a<n ;a++)
+				_subsections.remove(idx); // only removes last element
 			return true;
 		} catch (IndexOutOfBoundsException e) {
 			return false;
