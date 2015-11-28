@@ -99,7 +99,7 @@ public class Section extends TextElement {
 	*/
 	public List<Section> getSubsections() throws InvalidOperation {
 		if (_subsections.isEmpty()) {
-			throw new InvalidOperation();
+			throw new InvalidOperation("no subsections");
 		} else {
 			return _subsections;
 		}
@@ -155,29 +155,45 @@ public class Section extends TextElement {
 	*/
 
 	public boolean removeSection(int idx, Document doc) {
-			Section sec = _subsections.get(idx);
+
 			int n = 0;
 			int a = 0;
+			Section sec = _subsections.get(idx);
 			try {
 				if (sec.isIndexed()) {
 					doc.removeFromIndex(sec);
         }
-				while (n <= sec.getSubsections().size()) {
+
+//following condition must be checked after checking if sec is indexed, throws Invalidop
+				if (sec._paragraphs.isEmpty() && sec._paragraphs != null) {
+					System.out.println("paragraph exists");
+					while(a <= sec._paragraphs.size()) {
+						try {
+							if(!removeParagraph(a,doc)) {
+								a++;
+							}
+						}catch(InvalidOperation e) {
+							System.out.println("paragraphs empty again");
+							break;
+						}
+					}
+				}
+
+				while (n < sec.getSubsections().size()) {
 					if (!sec.removeSection(n,doc)) {
 							n++;
 					}
 				}
-				for(; ;) {
-					if(sec.removeParagraph(a,doc));
-						System.out.println("removepar");
-					a++;
-				}
+
+	      return _subsections.remove(sec);
+				// .remove returns bool if obj is passed as arg
+
 			} catch (IndexOutOfBoundsException e) {
 				System.out.println("out of bounds remove sec");
-	      return _subsections.remove(sec);
-				//return false;
+				return false;
 			} catch (InvalidOperation e) {
 				System.out.println("invalid op remove sec");
+				doc.removeFromIndex(sec);
 				return _subsections.remove(sec);
 			}
 		}
@@ -208,18 +224,18 @@ public class Section extends TextElement {
 		try {
 			if (_paragraphs.isEmpty()) {
 				System.out.println("empty par");
-				throw new InvalidOperation("No paragraphs");
+				throw new InvalidOperation();
 			} else {
 				Paragraph p = _paragraphs.get(idx);
 				if (p.isIndexed()) {
 					System.out.println("par is indexed");
-
 					doc.removeFromIndex(p);
+					System.out.println("removed from index");
 				}
 				_paragraphs.remove(idx);
 				return true;
 			}
-			//remover catch (message)
+
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println("remove par index out of bounds");
 			return false;

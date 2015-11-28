@@ -103,7 +103,14 @@ public class Document extends Section {
 	* Used to get the number of uniq Ids
 	*@return number of Unique Ids in file
 	*/
-	public int getNumberUniqueIds() {
-		return _elementList.size();
+	public int getElementListSize() {
+		int n = 0;
+		int i = 0;
+		for (; i < _elementList.size(); i++) {
+			if(_elementList.containsValue(""))
+				n++;
+			System.out.println("n =" + n);
+		}
+		return _elementList.size() - n;
 	}
 }

@@ -28,7 +28,7 @@ public class RemoveParagraph extends Command<Section> {
     /**
      * Execute the command.
      */
-     
+
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
@@ -37,9 +37,9 @@ public class RemoveParagraph extends Command<Section> {
       InputInteger idx = new InputInteger(f, Message.requestParagraphId());
       f.parse();
       try {
-      entity().removeParagraph(idx.value(), _doc);
       //caso remova com sucesso n apresenta mensagem
-      }catch(InvalidOperation e) {
+      entity().removeParagraph(idx.value(), _doc);
+    }catch(InvalidOperation|IndexOutOfBoundsException e) {
         display.add(Message.noSuchParagraph(idx.value()));
       }
       display.display();
