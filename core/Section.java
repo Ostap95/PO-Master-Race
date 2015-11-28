@@ -156,45 +156,30 @@ public class Section extends TextElement {
 	* @return return boolean value based on the success of the remove
 	*/
 	public boolean removeSection(int idx, Document doc) {
-				/*Section sec = _subsections.get(idx);
-				int n = 0;
-				int a = 0;
-				try {
-					if (sec.isIndexed()) {
-						doc.removeFromIndex(sec);
-	        }
-					while (n <= sec.getSubsections().size()) {
-						if (!sec.removeSection(n,doc)) {
-								n++;
-						}
-					}
-					for(; ;) {
-						if(sec.removeParagraph(a,doc));
-						a++;
-					}
-				} catch (IndexOutOfBoundsException e) {
-		      return _subsections.remove(sec);
-					//return false;
-				} catch (InvalidOperation e) {
-					return _subsections.remove(sec);
-				}
-			}*/
 			try {
-				for (Section sec : getSection(idx).getSubsections()) {
-						for(Paragraph par : sec._paragraphs ) {
-								if(par.isIndexed()) {
-									doc.removeFromIndex(par);
-								}
-						}
-						if(sec.isIndexed()){
-							doc.removeFromIndex(sec);
-						}
+				if(getSection(idx)._paragraphs.isEmpty() && getSection(idx)._subsections.isEmpty()) {
+					if(getSection(idx).isIndexed()) {
+					   doc.removeFromIndex(getSection(idx));
+					}
+					_subsections.remove(getSection(idx));
+					return true;
+				} else if(!getSection(idx)._paragraphs.isEmpty()) {
+					for(int i = 0; i < _paragraphs.size(); i++) {
+						removeParagraph(i, doc);
+					}
 				}
-				return _subsections.remove(getSection(idx));
-		  } catch (InvalidOperation e) {
+				if(!getSection(idx)._subsections.isEmpty()) {
+					for(int i = 0; i < _subsections.size(); i++) {
+						return removeSection(i, doc);
+					}
+				}
+			} catch (InvalidOperation e) {
+				e.getMessage();
 				return false;
 			}
+			return true;
 	}
+
 	/**
 	* Add paragraph to the section
 	* @param idx: position int the list. par: paragraph to be added
