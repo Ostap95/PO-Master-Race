@@ -157,19 +157,22 @@ public class Section extends TextElement {
 	*/
 	public boolean removeSection(int idx, Document doc) {
 			try {
-				if(getSection(idx)._paragraphs.isEmpty() && getSection(idx)._subsections.isEmpty()) {
-					if(getSection(idx).isIndexed()) {
-					   doc.removeFromIndex(getSection(idx));
+				Section sec = _subsections.get(idx);
+				if(sec._paragraphs.isEmpty() && sec._subsections.isEmpty()) {
+					if(sec.isIndexed()) {
+					   doc.removeFromIndex(sec);
 					}
-					_subsections.remove(getSection(idx));
 					return true;
-				} else if(!getSection(idx)._paragraphs.isEmpty()) {
-					for(int i = 0; i < _paragraphs.size(); i++) {
-						removeParagraph(i, doc);
+				} else if(!sec._paragraphs.isEmpty()) {
+					for(int i = 0; i < sec._paragraphs.size(); i++) {
+						if(sec.getParagraph(i).isIndexed()) {
+							doc.removeFromIndex(sec.getParagraph(i));
+						}
 					}
+					return true;
 				}
-				if(!getSection(idx)._subsections.isEmpty()) {
-					for(int i = 0; i < _subsections.size(); i++) {
+				if(!sec._subsections.isEmpty()) {
+					for(int i = 0; i < sec._subsections.size(); i++) {
 						return removeSection(i, doc);
 					}
 				}

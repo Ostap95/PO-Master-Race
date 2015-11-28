@@ -6,7 +6,8 @@ import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputInteger;
 
 import edt.core.*;
-/* FIXME: import core classes here */
+import java.util.*;
+import pt.utl.ist.po.ui.InvalidOperation;
 
 /**
  * Command for removing a subsection of the current section.
@@ -32,11 +33,15 @@ public class RemoveSection extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-      Display display = new Display();
       Form f = new Form();
       InputInteger idx = new InputInteger(f, Message.requestSectionId());
       f.parse();
       entity().removeSection(idx.value(), _doc);
-      display.display();
+      try {
+        List<Section> sec = entity().getSubsections();
+        sec.remove(idx.value());
+      } catch (InvalidOperation e) {
+        e.getMessage();
+      }
     }
 }
