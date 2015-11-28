@@ -17,7 +17,6 @@ public class SaveDocument extends Command<Editor> {
 
     /**
     * Constructor.
-    *
     * @param ent the target entity.
     */
     public SaveDocument(Editor editor) {
@@ -30,8 +29,6 @@ public class SaveDocument extends Command<Editor> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() throws InvalidOperation {
-
-        Display display = new Display();
         Form f = new Form();
         if (entity().getDocument().getFilename() == "") {
           InputString filename = new InputString(f, Message.newSaveAs());
@@ -39,7 +36,5 @@ public class SaveDocument extends Command<Editor> {
           entity().getDocument().setFilename(filename.toString());
         }
         entity().saveDocument();
-        display.display();
-
     }
 }

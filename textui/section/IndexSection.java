@@ -34,7 +34,7 @@ public class IndexSection extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-    Display display = new Display();
+    /*Display display = new Display();
     Form f = new Form();
     InputInteger sectionId = new InputInteger(f, Message.requestSectionId());
     InputString uniqueId = new InputString(f, Message.requestUniqueId());
@@ -52,5 +52,33 @@ public class IndexSection extends Command<Section> {
         display.add(Message.noSuchSection(sectionId.value()));
         display.display();
     }
+  }*/
+    Display display = new Display();
+    Form f = new Form();
+    InputInteger sectionId = new InputInteger(f, Message.requestSectionId());
+    InputString uniqueId = new InputString(f, Message.requestUniqueId());
+    f.parse();
+    try {
+      Section desiredSection = entity().getSection(sectionId.value());
+      TextElement keyTextEl = _doc.getTextElement(uniqueId.value());
+
+      if(desiredSection.isIndexed() )
+          display.add(Message.sectionNameChanged());
+
+      if(keyTextEl != null) {
+        _doc.removeFromIndex(keyTextEl);
+        _doc.indexElement(uniqueId.value(), desiredSection);
+
+      } else {
+        _doc.indexElement(uniqueId.toString(), desiredSection);
+      }
+
+    } catch (InvalidOperation e) {
+        display.add(Message.noSuchSection(sectionId.value()));
+
+    }finally {
+        display.display();
     }
+  }
+
 }

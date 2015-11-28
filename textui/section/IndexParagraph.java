@@ -37,7 +37,7 @@ public class IndexParagraph extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-      Display display = new Display();
+      /*Display display = new Display();
       Form f = new Form();
       InputInteger paragraphId = new InputInteger(f, Message.requestParagraphId());
       InputString uniqueId = new InputString(f, Message.requestUniqueId());
@@ -54,6 +54,34 @@ public class IndexParagraph extends Command<Section> {
       } catch (InvalidOperation e) {
           display.add(Message.noSuchParagraph(paragraphId.value()));
           display.display();
+      }
+    }*/
+      Display display = new Display();
+      Form f = new Form();
+      InputInteger paragraphId = new InputInteger(f, Message.requestParagraphId());
+      InputString uniqueId = new InputString(f, Message.requestUniqueId());
+      f.parse();
+      try {
+        Paragraph desiredParagraph = entity().getParagraph(paragraphId.value());
+        TextElement keyTextEl = _doc.getTextElement(uniqueId.value());
+
+        if(desiredParagraph.isIndexed())
+            display.add(Message.paragraphNameChanged());
+
+        if(keyTextEl != null) {
+          _doc.removeFromIndex(keyTextEl);
+          _doc.indexElement(uniqueId.value(), desiredParagraph);
+
+        } else {
+          _doc.indexElement(uniqueId.toString(), desiredParagraph);
+
+      }
+
+      } catch (InvalidOperation e) {
+          display.add(Message.noSuchParagraph(paragraphId.value()));
+      }finally {
+          display.display();
+
       }
     }
 }

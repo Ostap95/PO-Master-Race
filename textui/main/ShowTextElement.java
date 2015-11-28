@@ -36,7 +36,7 @@ public class ShowTextElement extends Command<Editor> {
         if (t != null) {
            display.add(t.getContent());
         } else {
-            display.add(Message.noSuchTextElement(elementId.toString()));
+           display.add(Message.noSuchTextElement(elementId.toString()));
         }
         display.display();
     }

@@ -11,10 +11,10 @@ public class Document extends Section {
 	public String _filename = "";
 
 	/** List of authors */
-	private ArrayList<Author> _authorList = new ArrayList<Author>();
+	private SortedSet<Author> _authorList = new TreeSet<Author>();
 
 	/** List of TextElements **/
-	private HashMap<String, TextElement> _elementList = new HashMap<String, TextElement>();
+	private Map<String, TextElement> _elementList = new HashMap<String, TextElement>();
 
 	/**
 	* Document Constructor
@@ -37,14 +37,13 @@ public class Document extends Section {
 	*/
 	public void addAuthor(Author author) {
 		_authorList.add(author);
-		Collections.sort(_authorList);
 	}
 
 	/**
 	* Return list of the document authors
 	* @return ArrayList of authors
 	*/
-	public ArrayList<Author> getAuthors(){
+	public SortedSet<Author> getAuthors(){
 			return _authorList;
 	}
 
@@ -67,7 +66,7 @@ public class Document extends Section {
 
 	/**
 	* Return formmated title
-	* @return return formmated title
+	* @return return form	mated title
 	*/
 	public String getHeadLine() {
 		return "{" + getTitle() + "}\n";
@@ -106,10 +105,11 @@ public class Document extends Section {
 		return _elementList.size();
 	}
 
+	/** ------------------------------- ------------------------ ----------*/
 	/*
 	* Return Element Map
 	*/
-	public HashMap<String, TextElement> getElementMap() {
+	public Map<String, TextElement> getElementMap() {
 		return _elementList;
 	}
 }

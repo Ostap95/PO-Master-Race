@@ -30,7 +30,7 @@ public class EditMenu extends Menu {
                       new InsertSection(sec),
                       new IndexSection(doc, sec),
                       new RemoveSection(doc, sec),
-                      new InsertParagraph(doc),
+                      new InsertParagraph(sec),
                       new IndexParagraph(doc, sec),
                       new ChangeParagraph(sec),
                       new RemoveParagraph(doc, sec),

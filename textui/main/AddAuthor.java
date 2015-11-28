@@ -7,7 +7,7 @@ import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputString;
 
 import edt.textui.Editor;
-import java.util.ArrayList;
+import java.util.*;
 import edt.core.Document;
 import edt.core.Author;
 
@@ -36,7 +36,7 @@ public class AddAuthor extends Command<Editor> {
         InputString email = new InputString(f, Message.requestEmail());
         f.parse();
         Author author = new Author(name.toString(), email.toString());
-        ArrayList<Author> aut = entity().getDocument().getAuthors();
+        SortedSet<Author> aut = entity().getDocument().getAuthors();
         if(aut.contains(author)) {
           Display display = new Display();
           display.add(Message.duplicateAuthor(name.value()));

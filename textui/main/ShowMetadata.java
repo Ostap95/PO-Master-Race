@@ -49,15 +49,16 @@ public class ShowMetadata extends Command<Editor> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        Display display = new Display();
-        ArrayList<Author> authors;
-        authors = entity().getDocument().getAuthors();
-        display.add(Message.documentTitle(entity().getDocument().getTitle()) + "\n"); // adds string
-        display.add(printAuthors(authors));
-        display.add(Message.documentSections(entity().getDocument().getSubsectionIndex()) + "\n");
-        display.add(Message.documentBytes(entity().getDocument().getSize()) + "\n");
-        display.add(Message.documentIdentifiers(entity().getDocument().getNumberUniqueIds()) + "\n");
-        display.display();
-
+      Display display = new Display();
+      SortedSet<Author> authors;
+      authors = entity().getDocument().getAuthors();
+      display.add(Message.documentTitle(entity().getDocument().getTitle()) + "\n"); // adds string
+      for (Author author : authors) {
+        display.add(Message.author(author.getName(), author.getEmail()) + "\n");
+      }
+      display.add(Message.documentSections(entity().getDocument().getSubsectionIndex()) + "\n");
+      display.add(Message.documentBytes(entity().getDocument().getSize()) + "\n");
+      display.add(Message.documentIdentifiers(entity().getDocument().getNumberUniqueIds()) + "\n");
+      display.display();
     }
 }

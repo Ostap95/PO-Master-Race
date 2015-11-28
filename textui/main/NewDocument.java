@@ -32,7 +32,6 @@ public class NewDocument extends Command<Editor> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-
         Document newdoc = new Document();
     		entity().setDocument(newdoc);
     }

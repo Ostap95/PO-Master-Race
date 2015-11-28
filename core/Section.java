@@ -1,6 +1,6 @@
 package edt.core;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.io.*;
 import pt.utl.ist.po.ui.InvalidOperation;
 import edt.textui.section.*;
@@ -14,10 +14,10 @@ public class Section extends TextElement {
 	private String _title = "";
 
 	/** ArrayList of paragraphs of the section */
-	private ArrayList<Paragraph> _paragraphs = new ArrayList<Paragraph>();
+	private List<Paragraph> _paragraphs = new ArrayList<Paragraph>();
 
 	/**  ArrayList of subsections of the section */
-	private ArrayList<Section> _subsections = new ArrayList<Section>();
+	private List<Section> _subsections = new ArrayList<Section>();
 
 	/**
 	* Section class constructor
@@ -99,7 +99,7 @@ public class Section extends TextElement {
 	* Return list of all subsections of the current section
 	* @return list of subsections
 	*/
-	public ArrayList<Section> getSubsections() throws InvalidOperation {
+	public List<Section> getSubsections() throws InvalidOperation {
 		if (_subsections.isEmpty()) {
 			throw new InvalidOperation();
 		} else {
@@ -115,7 +115,7 @@ public class Section extends TextElement {
 	public Section getSection(int idx) throws InvalidOperation {
 
 		try{
-			 if (_subsections.isEmpty()) {
+			if (_subsections.isEmpty()) {
 				throw new InvalidOperation();
 			} else {
 				return _subsections.get(idx);
@@ -143,7 +143,7 @@ public class Section extends TextElement {
 			if (idx == -1) {
 				_subsections.add(sec);
 			} else {
-			_subsections.add(idx,sec);
+				_subsections.add(idx,sec);
 			}
 		} catch (IndexOutOfBoundsException e) {
 			_subsections.add(sec);
@@ -155,21 +155,33 @@ public class Section extends TextElement {
 	* @param idx: position in the list. doc: current document
 	* @return return boolean value based on the success of the remove
 	*/
-	public boolean removeSection(int idx, Document doc) throws InvalidOperation {
-		try {
-			Section s = _subsections.get(idx);
-
-			if (s.isIndexed()) {
-				doc.removeFromIndex(s);
+	public boolean removeSection(int idx, Document doc) {
+				Section sec = _subsections.get(idx);
+				int n = 0;
+				int a = 0;
+				try {
+					if (sec.isIndexed()) {
+						doc.removeFromIndex(sec);
+	        }
+					while (n <= sec.getSubsections().size()) {
+						if (!sec.removeSection(n,doc)) {
+								n++;
+						}
+					}
+					for(; ;) {
+						if(sec.removeParagraph(a,doc));
+							System.out.println("removepar");
+						a++;
+					}
+				} catch (IndexOutOfBoundsException e) {
+					System.out.println("out of bounds remove sec");
+		      return _subsections.remove(sec);
+					//return false;
+				} catch (InvalidOperation e) {
+					System.out.println("invalid op remove sec");
+					return _subsections.remove(sec);
+				}
 			}
-			_subsections.remove(idx);
-			return true;
-
-		} catch (NullPointerException e) {
-
-			return false;
-		}
-	}
 
 	/**
 	* Add paragraph to the section
@@ -192,25 +204,23 @@ public class Section extends TextElement {
 	* @param idx: position in the list. doc: current document
 	* @return return boolean value based on the success of the remove
 	*/
-	public boolean removeParagraph(int idx, Document doc) throws InvalidOperation {
-
-		try {
-			if (_paragraphs.isEmpty()) {
-				throw new InvalidOperation("No paragraph");
-			} else {
-				Paragraph p = _paragraphs.get(idx);
-				if (p.isIndexed()) {
-					doc.removeFromIndex(p);
+	public boolean removeParagraph(int idx,Document doc) throws InvalidOperation {
+			try {
+				if (_paragraphs.isEmpty()) {
+					throw new InvalidOperation("No paragraphs");
+				} else {
+					Paragraph p = _paragraphs.get(idx);
+					if (p.isIndexed()) {
+						doc.removeFromIndex(p);
+					}
+					_paragraphs.remove(idx);
+					return true;
 				}
-				_paragraphs.remove(idx);
-				return true;
+				//remover catch (message)
+			} catch (IndexOutOfBoundsException e) {
+				return false;
 			}
-
-		} catch (NullPointerException e) {
-
-			return false;
 		}
-	}
 
 	/**
 	* Return desired paragraph from the list
