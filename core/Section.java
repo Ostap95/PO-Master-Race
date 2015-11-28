@@ -32,8 +32,8 @@ public class Section extends TextElement {
 	* @return headline title
 	*/
 	public String getHeadLine() {
-		return Message.sectionIndexEntry(getKey() ,_title) + "\n";
-		//return "[" + getKey() + "]" + "{" + _title + "}\n";
+		//return Message.sectionIndexEntry(getKey() ,_title) + "\n";
+		return "[" + getKey() + "]" + "{" + _title + "}\n";
 	}
 
 	/**
@@ -156,7 +156,7 @@ public class Section extends TextElement {
 	* @return return boolean value based on the success of the remove
 	*/
 	public boolean removeSection(int idx, Document doc) {
-				Section sec = _subsections.get(idx);
+				/*Section sec = _subsections.get(idx);
 				int n = 0;
 				int a = 0;
 				try {
@@ -170,19 +170,31 @@ public class Section extends TextElement {
 					}
 					for(; ;) {
 						if(sec.removeParagraph(a,doc));
-							System.out.println("removepar");
 						a++;
 					}
 				} catch (IndexOutOfBoundsException e) {
-					System.out.println("out of bounds remove sec");
 		      return _subsections.remove(sec);
 					//return false;
 				} catch (InvalidOperation e) {
-					System.out.println("invalid op remove sec");
 					return _subsections.remove(sec);
 				}
+			}*/
+			try {
+				for (Section sec : getSection(idx).getSubsections()) {
+						for(Paragraph par : sec._paragraphs ) {
+								if(par.isIndexed()) {
+									doc.removeFromIndex(par);
+								}
+						}
+						if(sec.isIndexed()){
+							doc.removeFromIndex(sec);
+						}
+				}
+				return _subsections.remove(getSection(idx));
+		  } catch (InvalidOperation e) {
+				return false;
 			}
-
+	}
 	/**
 	* Add paragraph to the section
 	* @param idx: position int the list. par: paragraph to be added

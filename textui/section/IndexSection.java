@@ -70,7 +70,7 @@ public class IndexSection extends Command<Section> {
         _doc.indexElement(uniqueId.value(), desiredSection);
 
       } else {
-        _doc.indexElement(uniqueId.toString(), desiredSection);
+        _doc.indexElement(uniqueId.value(), desiredSection);
       }
 
     } catch (InvalidOperation e) {

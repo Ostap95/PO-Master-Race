@@ -36,7 +36,7 @@ public class InsertParagraph extends Command<Section> {
       InputInteger pReferenceId = new InputInteger(f, Message.requestParagraphId());
       InputString paragraphContent = new InputString(f, Message.requestParagraphContent());
       f.parse();
-      Paragraph newParagraph = new Paragraph(paragraphContent.toString());
-      entity().addParagraph(Integer.parseInt(pReferenceId.toString()), newParagraph);
+      Paragraph newParagraph = new Paragraph(paragraphContent.value());
+      entity().addParagraph(pReferenceId.value(), newParagraph);
     }
 }

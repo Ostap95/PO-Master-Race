@@ -39,7 +39,6 @@ public class SelectSection extends Command<Section> {
       Form f = new Form();
       InputInteger id = new InputInteger(f, Message.requestSectionId());
       f.parse();
-
       try {
         EditMenu edit = new EditMenu(_doc, entity().getSection(id.value()));
         display.add(Message.newActiveSection(id.value()));

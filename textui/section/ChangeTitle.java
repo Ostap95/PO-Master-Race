@@ -29,6 +29,6 @@ public class ChangeTitle extends Command<Section> {
         Form f = new Form();
         InputString title = new InputString(f, Message.requestSectionTitle());
         f.parse();
-        entity().setTitle(title.toString());
+        entity().setTitle(title.value());
     }
 }

@@ -29,8 +29,8 @@ public class ListSections extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /*try {
-          ArrayList<Section> subsections = entity().getSubsections();
+      try {
+          List<Section> subsections = entity().getSubsections();
           for(Section sect : subsections) {
             Display display = new Display();
             display.add(sect.getHeadLine());
@@ -39,8 +39,8 @@ public class ListSections extends Command<Section> {
         } catch (InvalidOperation e) {
           e.getMessage();
         }
-    }*/
-    try {
+      }
+    /*try {
       List<Section> subsections = entity().getSubsections();
       ListSections list;
       Display display = new Display();
@@ -55,5 +55,5 @@ public class ListSections extends Command<Section> {
     } catch (InvalidOperation e) {
       e.getMessage();
     }
-  }
+  }*/
 }

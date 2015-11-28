@@ -37,7 +37,7 @@ public class OpenDocument extends Command<Editor> {
         InputString filename = new InputString(f, Message.openFile());
         f.parse();
         try {
-          entity().loadDocument(filename.toString());
+          entity().loadDocument(filename.value());
         } catch (IOException | ClassNotFoundException e) {
           display.add(Message.fileNotFound());
           display.display();

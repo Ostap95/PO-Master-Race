@@ -32,7 +32,7 @@ public class InsertSection extends Command<Section> {
       InputInteger sReferenceId = new InputInteger(f, Message.requestSectionId());
       InputString sectionTitle = new InputString(f, Message.requestSectionTitle());
       f.parse();
-      Section newSection = new Section(sectionTitle.toString());
-      entity().addSection(Integer.parseInt(sReferenceId.toString()), newSection);
+      Section newSection = new Section(sectionTitle.value());
+      entity().addSection(sReferenceId.value(), newSection);
     }
 }

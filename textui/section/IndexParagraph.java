@@ -73,7 +73,7 @@ public class IndexParagraph extends Command<Section> {
           _doc.indexElement(uniqueId.value(), desiredParagraph);
 
         } else {
-          _doc.indexElement(uniqueId.toString(), desiredParagraph);
+          _doc.indexElement(uniqueId.value(), desiredParagraph);
 
       }
 

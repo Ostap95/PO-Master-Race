@@ -32,11 +32,11 @@ public class ShowTextElement extends Command<Editor> {
         Form f = new Form();
         InputString elementId = new InputString(f, Message.requestElementId());
         f.parse();
-        TextElement t = entity().getDocument().getTextElement(elementId.toString());
+        TextElement t = entity().getDocument().getTextElement(elementId.value());
         if (t != null) {
            display.add(t.getContent());
         } else {
-           display.add(Message.noSuchTextElement(elementId.toString()));
+           display.add(Message.noSuchTextElement(elementId.value()));
         }
         display.display();
     }

@@ -33,7 +33,7 @@ public class SaveDocument extends Command<Editor> {
         if (entity().getDocument().getFilename() == "") {
           InputString filename = new InputString(f, Message.newSaveAs());
           f.parse();
-          entity().getDocument().setFilename(filename.toString());
+          entity().getDocument().setFilename(filename.value());
         }
         entity().saveDocument();
     }
