@@ -40,7 +40,7 @@ public class RemoveSection extends Command<Section> {
       try {
         List<Section> sec = entity().getSubsections();
         sec.remove(idx.value());
-      } catch (InvalidOperation e) {
+      } catch (InvalidOperation | IndexOutOfBoundsException e) {
         e.getMessage();
       }
     }

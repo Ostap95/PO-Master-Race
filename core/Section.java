@@ -156,12 +156,12 @@ public class Section extends TextElement {
 	* @return return boolean value based on the success of the remove
 	*/
 	public boolean removeSection(int idx, Document doc) {
-			try {
+			/*try {
 				Section sec = _subsections.get(idx);
+				if(sec.isIndexed()) {
+					doc.removeFromIndex(sec);
+				}
 				if(sec._paragraphs.isEmpty() && sec._subsections.isEmpty()) {
-					if(sec.isIndexed()) {
-					   doc.removeFromIndex(sec);
-					}
 					return true;
 				} else if(!sec._paragraphs.isEmpty()) {
 					for(int i = 0; i < sec._paragraphs.size(); i++) {
@@ -180,7 +180,30 @@ public class Section extends TextElement {
 				e.getMessage();
 				return false;
 			}
-			return true;
+			return true;*/
+			Section sec = _subsections.get(idx);
+			int n = 0;
+
+			try {
+ 				if (sec.isIndexed()) {
+				doc.removeFromIndex(sec);
+			}
+ 			for (Paragraph p : sec._paragraphs) {
+				if (p.isIndexed()) {
+	 				doc.removeFromIndex(p);
+				}
+ 			}
+
+ 			while (n <= sec.getSubsections().size()) {
+				if (!sec.removeSection(n,doc)) {
+					n++;
+				}
+ 			}
+
+ 		  return _subsections.remove(sec);
+			} catch (IndexOutOfBoundsException | InvalidOperation e) {
+				return _subsections.remove(sec);
+			}
 	}
 
 	/**
@@ -205,7 +228,7 @@ public class Section extends TextElement {
 	* @return return boolean value based on the success of the remove
 	*/
 	public boolean removeParagraph(int idx,Document doc) throws InvalidOperation {
-			try {
+			/*try {
 				if (_paragraphs.isEmpty()) {
 					throw new InvalidOperation("No paragraphs");
 				} else {
@@ -217,6 +240,21 @@ public class Section extends TextElement {
 					return true;
 				}
 				//remover catch (message)
+			} catch (IndexOutOfBoundsException e) {
+				return false;
+			}*/
+			try {
+				if (_paragraphs.isEmpty()) {
+					throw new InvalidOperation();
+				} else {
+				Paragraph p = _paragraphs.get(idx);
+				if (p.isIndexed()) {
+					doc.removeFromIndex(p);
+				}
+				_paragraphs.remove(idx);
+				return true;
+			}
+
 			} catch (IndexOutOfBoundsException e) {
 				return false;
 			}
