@@ -41,7 +41,7 @@ public class ShowMetadata extends Command<Editor> {
         }
         display.add(Message.documentSections(entity().getDocument().getSubsectionIndex()) + "\n");
         display.add(Message.documentBytes(entity().getDocument().getSize()) + "\n");
-        display.add(Message.documentIdentifiers(entity().getDocument().getElementListSize()) + "\n");
+        display.add(Message.documentIdentifiers(entity().getDocument().getNumberUniqueIds()) + "\n");
         display.display();
     }
 }

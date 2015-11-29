@@ -32,8 +32,8 @@ public class Section extends TextElement {
 	* @return headline title
 	*/
 	public String getHeadLine() {
-		return Message.sectionIndexEntry(getKey() ,_title) + "\n";
-		//return "[" + getKey() + "]" + "{" + _title + "}\n";
+
+		return "[" + getKey() + "]" + "{" + _title + "}\n";
 	}
 
 	/**

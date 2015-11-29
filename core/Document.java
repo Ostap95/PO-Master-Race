@@ -102,7 +102,7 @@ public class Document extends Section {
 	* Used to get the number of uniq Ids
 	*@return number of Unique Ids in file
 	*/
-	public int getElementListSize() {
+	public int getNumberUniqueIds() {
 		return _elementList.size();
 	}
 }
