@@ -155,49 +155,31 @@ public class Section extends TextElement {
 	*/
 
 	public boolean removeSection(int idx, Document doc) {
+    Section sec = _subsections.get(idx);
+    int n = 0;
 
-			int n = 0;
-			int a = 0;
-			Section sec = _subsections.get(idx);
-			try {
-				if (sec.isIndexed()) {
-					doc.removeFromIndex(sec);
-        }
+    try {
+     if (sec.isIndexed()) {
+      doc.removeFromIndex(sec);
+  }
 
-//following condition must be checked after checking if sec is indexed, throws Invalidop
-				if (sec._paragraphs.isEmpty() && sec._paragraphs != null) {
-					System.out.println("paragraph exists");
-					while(a <= sec._paragraphs.size()) {
-						try {
-							if(!removeParagraph(a,doc)) {
-								a++;
-							}
-						}catch(InvalidOperation e) {
-							System.out.println("paragraphs empty again");
-							break;
-						}
-					}
-				}
+     for (Paragraph p : sec._paragraphs) {
+      if (p.isIndexed()) {
+       doc.removeFromIndex(p);
+      }
+     }
 
-				while (n < sec.getSubsections().size()) {
-					if (!sec.removeSection(n,doc)) {
-							n++;
-					}
-				}
+     while (n <= sec.getSubsections().size()) {
+      if (!sec.removeSection(n,doc)) {
+        n++;
+      }
+     }
 
-	      return _subsections.remove(sec);
-				// .remove returns bool if obj is passed as arg
-
-			} catch (IndexOutOfBoundsException e) {
-				System.out.println("out of bounds remove sec");
-				return false;
-			} catch (InvalidOperation e) {
-				System.out.println("invalid op remove sec");
-				doc.removeFromIndex(sec);
-				return _subsections.remove(sec);
-			}
-		}
-
+     return _subsections.remove(sec);
+    } catch (IndexOutOfBoundsException | InvalidOperation e) {
+    return _subsections.remove(sec);
+    }
+  }
 	/**
 	* Add paragraph to the section
 	*

@@ -30,21 +30,17 @@ public class ListSections extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-      //fazer func recursiva
+        ListSections list;
         try {
-          int i;
-          List<Section> subsections = entity().getSubsections();
-          //ListSections list;
           Display display = new Display();
-          for (Section sec : subsections) {
-            display.add(sec.getHeadLine());
-            ListSections list = new ListSections(sec);
+          display.add(entity().getHeadLine());
+          display.display();
+          for (Section sec : entity().getSubsections()) {
+            list = new ListSections(sec);
             list.execute();
           }
-          display.display();
 
         } catch (InvalidOperation e) {
-          System.out.println("invalid op listAllsecs");
           e.getMessage();
         }
     }
