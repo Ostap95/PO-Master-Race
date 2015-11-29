@@ -31,6 +31,7 @@ public class ListSections extends Command<Section> {
     public final void execute() {
       try {
           List<Section> subsections = entity().getSubsections();
+
           for(Section sect : subsections) {
             Display display = new Display();
             display.add(sect.getHeadLine());

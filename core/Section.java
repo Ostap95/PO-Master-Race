@@ -33,7 +33,7 @@ public class Section extends TextElement {
 	*/
 	public String getHeadLine() {
 		//return Message.sectionIndexEntry(getKey() ,_title) + "\n";
-		return "[" + getKey() + "]" + "{" + _title + "}\n";
+		return "[" + getKey() + "]"+"{" + _title + "}\n";
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class Section extends TextElement {
 
 		if (_paragraphs != null) {
 			for (Paragraph par : _paragraphs) {
-				result.append("[" + par.getKey() + "]" + par.getContent());
+				result.append(par.getContent());
 			}
 		}
 
@@ -155,7 +155,7 @@ public class Section extends TextElement {
 	* @param idx: position in the list. doc: current document
 	* @return return boolean value based on the success of the remove
 	*/
-	public boolean removeSection(int idx, Document doc) {
+	public boolean removeSection(int idx, Document doc) throws IndexOutOfBoundsException {
 			/*try {
 				Section sec = _subsections.get(idx);
 				if(sec.isIndexed()) {
@@ -201,9 +201,11 @@ public class Section extends TextElement {
 	 			 }
 
  		  	return _subsections.remove(sec);
-			} catch (InvalidOperation | IndexOutOfBoundsException e) {
+			} catch (InvalidOperation e) {
 					return _subsections.remove(sec);
-				}
+			} catch (IndexOutOfBoundsException e) {
+				return false;
+			}
 	}
 
 	/**

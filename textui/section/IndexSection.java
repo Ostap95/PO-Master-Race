@@ -62,10 +62,14 @@ public class IndexSection extends Command<Section> {
       Section desiredSection = entity().getSection(sectionId.value());
       TextElement keyTextEl = _doc.getTextElement(uniqueId.value());
 
+      if(desiredSection.isIndexed()) {
+        display.add(Message.sectionNameChanged());
+      }
+
       if(keyTextEl != null) {
         _doc.removeFromIndex(keyTextEl);
         _doc.indexElement(uniqueId.value(), desiredSection);
-        display.add(Message.sectionNameChanged());
+
 
       } else {
         _doc.indexElement(uniqueId.value(), desiredSection);
