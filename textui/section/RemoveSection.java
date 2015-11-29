@@ -41,11 +41,5 @@ public class RemoveSection extends Command<Section> {
     } catch (IndexOutOfBoundsException e) {
       e.getMessage();
     }
-      /*try {
-        List<Section> sec = entity().getSubsections();
-        sec.remove(idx.value());
-      } catch (InvalidOperation  e) {
-        e.getMessage();
-      }*/
-    }
+  }
 }

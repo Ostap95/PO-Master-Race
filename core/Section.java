@@ -78,21 +78,21 @@ public class Section extends TextElement {
 	* @return returns content of the section
 	*/
 	public String getContent() {
-		StringBuilder result = new StringBuilder();
-		result.append(getHeadLine());
+		String result = new String();
+		result += getHeadLine();
 
 		if (_paragraphs != null) {
 			for (Paragraph par : _paragraphs) {
-				result.append("[" + par.getKey() + "]" + par.getContent());
+				result += par.getContent();
 			}
 		}
 
 		if (_subsections != null) {
 			for (Section sec : _subsections) {
-				result.append(sec.getContent());
+				result += sec.getContent();
 			}
 		}
-		return result.toString();
+		return result;
 	}
 
 	/**
@@ -155,37 +155,14 @@ public class Section extends TextElement {
 	* @param idx: position in the list. doc: current document
 	* @return return boolean value based on the success of the remove
 	*/
-	public boolean removeSection(int idx, Document doc) {
-			/*try {
-				Section sec = _subsections.get(idx);
-				if(sec.isIndexed()) {
-					doc.removeFromIndex(sec);
-				}
-				if(sec._paragraphs.isEmpty() && sec._subsections.isEmpty()) {
-					return true;
-				} else if(!sec._paragraphs.isEmpty()) {
-					for(int i = 0; i < sec._paragraphs.size(); i++) {
-						if(sec.getParagraph(i).isIndexed()) {
-							doc.removeFromIndex(sec.getParagraph(i));
-						}
-					}
-					return true;
-				}
-				if(!sec._subsections.isEmpty()) {
-					for(int i = 0; i < sec._subsections.size(); i++) {
-						return removeSection(i, doc);
-					}
-				}
-			} catch (InvalidOperation | IndexOutOfBoundsException e) {
-				e.getMessage();
-				return false;
-			}
-			return true;*/
-			Section sec = _subsections.get(idx);
+	public boolean removeSection(int idx, Document doc) throws IndexOutOfBoundsException {
+
 			int n = 0;
+			Section sec = _subsections.get(idx);
 
 			try {
- 				if (sec.isIndexed()) {
+
+				if (sec.isIndexed()) {
 					doc.removeFromIndex(sec);
 				}
 	 			for (Paragraph p : sec._paragraphs) {
@@ -201,9 +178,11 @@ public class Section extends TextElement {
 	 			 }
 
  		  	return _subsections.remove(sec);
-			} catch (InvalidOperation | IndexOutOfBoundsException e) {
+			} catch (InvalidOperation  e) {
 					return _subsections.remove(sec);
-				}
+			} catch (IndexOutOfBoundsException e) {
+					return false;
+			}
 	}
 
 	/**

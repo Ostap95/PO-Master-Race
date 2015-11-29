@@ -65,10 +65,14 @@ public class IndexParagraph extends Command<Section> {
         Paragraph desiredParagraph = entity().getParagraph(paragraphId.value());
         TextElement keyTextEl = _doc.getTextElement(uniqueId.value());
 
-        if(keyTextEl != null) {
+        if (desiredParagraph.isIndexed()) {
+            display.add(Message.paragraphNameChanged());
+        }
+
+        if (keyTextEl != null) {
           _doc.removeFromIndex(keyTextEl);
           _doc.indexElement(uniqueId.value(), desiredParagraph);
-          display.add(Message.paragraphNameChanged());
+
         } else {
           _doc.indexElement(uniqueId.value(), desiredParagraph);
 
