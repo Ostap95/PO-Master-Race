@@ -222,7 +222,7 @@ public class Section extends TextElement {
 			}
 
 			} catch (IndexOutOfBoundsException e) {
-				return false;
+				throw new InvalidOperation();
 			}
 		}
 
@@ -236,7 +236,6 @@ public class Section extends TextElement {
 			if (_paragraphs.isEmpty()) {
 				throw new InvalidOperation();
 			} else {
-
 				return _paragraphs.get(idx);
 			}
 		} catch (IndexOutOfBoundsException e) {

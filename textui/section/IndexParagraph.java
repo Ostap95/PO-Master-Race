@@ -75,14 +75,12 @@ public class IndexParagraph extends Command<Section> {
 
         } else {
           _doc.indexElement(uniqueId.value(), desiredParagraph);
-
       }
-
+      
       } catch (InvalidOperation e) {
           display.add(Message.noSuchParagraph(paragraphId.value()));
       }finally {
           display.display();
-
       }
     }
 }
