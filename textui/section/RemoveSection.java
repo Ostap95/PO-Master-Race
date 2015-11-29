@@ -36,12 +36,16 @@ public class RemoveSection extends Command<Section> {
       Form f = new Form();
       InputInteger idx = new InputInteger(f, Message.requestSectionId());
       f.parse();
-      entity().removeSection(idx.value(), _doc);
       try {
+      entity().removeSection(idx.value(), _doc);
+    } catch (IndexOutOfBoundsException e) {
+      e.getMessage();
+    }
+      /*try {
         List<Section> sec = entity().getSubsections();
         sec.remove(idx.value());
-      } catch (InvalidOperation | IndexOutOfBoundsException e) {
+      } catch (InvalidOperation  e) {
         e.getMessage();
-      }
+      }*/
     }
 }

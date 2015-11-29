@@ -176,7 +176,7 @@ public class Section extends TextElement {
 						return removeSection(i, doc);
 					}
 				}
-			} catch (InvalidOperation e) {
+			} catch (InvalidOperation | IndexOutOfBoundsException e) {
 				e.getMessage();
 				return false;
 			}
@@ -186,24 +186,24 @@ public class Section extends TextElement {
 
 			try {
  				if (sec.isIndexed()) {
-				doc.removeFromIndex(sec);
-			}
- 			for (Paragraph p : sec._paragraphs) {
-				if (p.isIndexed()) {
-	 				doc.removeFromIndex(p);
+					doc.removeFromIndex(sec);
 				}
- 			}
+	 			for (Paragraph p : sec._paragraphs) {
+					if (p.isIndexed()) {
+		 				doc.removeFromIndex(p);
+					}
+	 			 }
 
- 			while (n <= sec.getSubsections().size()) {
-				if (!sec.removeSection(n,doc)) {
-					n++;
+	 			while (n <= sec.getSubsections().size()) {
+					if (!sec.removeSection(n,doc)) {
+						n++;
+					}
+	 			 }
+
+ 		  	return _subsections.remove(sec);
+			} catch (InvalidOperation | IndexOutOfBoundsException e) {
+					return _subsections.remove(sec);
 				}
- 			}
-
- 		  return _subsections.remove(sec);
-			} catch (IndexOutOfBoundsException | InvalidOperation e) {
-				return _subsections.remove(sec);
-			}
 	}
 
 	/**
