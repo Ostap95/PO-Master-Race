@@ -162,14 +162,15 @@ public class Section extends TextElement {
 
 			try {
 
+				for (Paragraph p : sec._paragraphs) {
+					if (p.isIndexed()) {
+						doc.removeFromIndex(p);
+					}
+				 }
+
 				if (sec.isIndexed()) {
 					doc.removeFromIndex(sec);
 				}
-	 			for (Paragraph p : sec._paragraphs) {
-					if (p.isIndexed()) {
-		 				doc.removeFromIndex(p);
-					}
-	 			 }
 
 	 			while (n <= sec.getSubsections().size()) {
 					if (!sec.removeSection(n,doc)) {
@@ -207,31 +208,17 @@ public class Section extends TextElement {
 	* @return return boolean value based on the success of the remove
 	*/
 	public boolean removeParagraph(int idx,Document doc) throws InvalidOperation {
-			/*try {
-				if (_paragraphs.isEmpty()) {
-					throw new InvalidOperation("No paragraphs");
-				} else {
-					Paragraph p = _paragraphs.get(idx);
-					if (p.isIndexed()) {
-						doc.removeFromIndex(p);
-					}
-					_paragraphs.remove(idx);
-					return true;
-				}
-				//remover catch (message)
-			} catch (IndexOutOfBoundsException e) {
-				return false;
-			}*/
+
 			try {
 				if (_paragraphs.isEmpty()) {
 					throw new InvalidOperation();
 				} else {
-				Paragraph p = _paragraphs.get(idx);
-				if (p.isIndexed()) {
+					Paragraph p = _paragraphs.get(idx);
+					if (p.isIndexed()) {
 					doc.removeFromIndex(p);
-				}
-				_paragraphs.remove(idx);
-				return true;
+					}
+					_paragraphs.remove(idx);
+					return true;
 			}
 
 			} catch (IndexOutOfBoundsException e) {

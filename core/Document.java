@@ -60,6 +60,9 @@ public class Document extends Section {
 	* @param id: text element id. ele: textelement
 	*/
 	public void indexElement(String id, TextElement ele) {
+		if (ele.isIndexed()) {
+			_elementList.remove(ele.getKey());
+		}
 		 ele.setKey(id);
 		_elementList.put(id, ele);
 	}

@@ -29,31 +29,20 @@ public class ListSections extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-      try {
-          List<Section> subsections = entity().getSubsections();
-          for(Section sect : subsections) {
-            Display display = new Display();
-            display.add(sect.getHeadLine());
-            display.display();
-          }
-        } catch (InvalidOperation e) {
-          e.getMessage();
-        }
-      }
-    /*try {
-      List<Section> subsections = entity().getSubsections();
       ListSections list;
-      Display display = new Display();
-      display.add(entity().getHeadLine());
-      display.display();
-      for(Section sect : subsections) {
-        if(sect != null) {
-          list = new ListSections(sect);
-          list.execute();
-        }
-      }
+      try {
+          Display display = new Display();
+
+          for (Section sec : entity().getSubsections()) {
+            display.add(sec.getHeadLine());
+            display.display();
+            display = new Display();
+            list = new ListSections(sec);
+            list.execute();
+          }
+
     } catch (InvalidOperation e) {
       e.getMessage();
     }
-  }*/
+  }
 }
