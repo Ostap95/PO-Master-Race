@@ -38,7 +38,6 @@ public class Document extends Section {
 	*/
 	public void addAuthor(Author author) {
 		_authorList.add(author);
-		//Collections.sort(_authorList);
 	}
 
 	/**
@@ -104,13 +103,6 @@ public class Document extends Section {
 	*@return number of Unique Ids in file
 	*/
 	public int getElementListSize() {
-		int n = 0;
-		int i = 0;
-		for (; i < _elementList.size(); i++) {
-			if(_elementList.containsValue(""))
-				n++;
-			System.out.println("n =" + n);
-		}
-		return _elementList.size() - n;
+		return _elementList.size();
 	}
 }

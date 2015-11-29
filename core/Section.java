@@ -205,21 +205,17 @@ public class Section extends TextElement {
 	public boolean removeParagraph(int idx,Document doc) throws InvalidOperation {
 		try {
 			if (_paragraphs.isEmpty()) {
-				System.out.println("empty par");
 				throw new InvalidOperation();
 			} else {
 				Paragraph p = _paragraphs.get(idx);
 				if (p.isIndexed()) {
-					System.out.println("par is indexed");
 					doc.removeFromIndex(p);
-					System.out.println("removed from index");
 				}
 				_paragraphs.remove(idx);
 				return true;
 			}
 
 		} catch (IndexOutOfBoundsException e) {
-			System.out.println("remove par index out of bounds");
 			return false;
 		}
 	}
@@ -241,37 +237,4 @@ public class Section extends TextElement {
 
 		}
 	}
-
-	/**
-	* Checks if the paragraph with given id exists
-	* @param idx : paragraph id
-	* @return returns boolean value
-	*/
-	/*
-	public boolean paragraphExist(int idx) {
-		Paragraph paragraph = null;
-		try {
-			paragraph = getParagraph(idx);
-			return _paragraphs.contains(paragraph);
-		} catch (IndexOutOfBoundsException | InvalidOperation e) {
-			return false;
-		}
-	}
-
-	/*
-	* Checks if the section with given id exists
-	* @param idx: section id
-	* @return return boolean value
-	*/
-	/*
-	public boolean sectionExist(int idx) {
-		Section section = null;
-		try {
-			section = getSection(idx);
-			return _subsections.contains(section);
-		} catch (IndexOutOfBoundsException | InvalidOperation e) {
-			return false;
-		}
-	}
-	*/
 }

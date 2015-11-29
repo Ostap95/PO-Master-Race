@@ -28,9 +28,6 @@ public class IndexSection extends Command<Section> {
          _doc = doc;
      }
 
-    /**
-    * Execute the command.
-    */
     @Override
     @SuppressWarnings("nls")
     public final void execute() {

@@ -29,25 +29,6 @@ public class ShowMetadata extends Command<Editor> {
      }
 
 
-    /**
-    * Prints authors data
-    * @param authors List
-    * @return return string with authors data
-    */
-
-    /*
-    public String printAuthors(List<Author> authors) {
-        StringBuilder result = new StringBuilder();
-        for (Author author : authors) {
-            result.append(Message.author(author.getName(), author.getEmail()) + "\n");
-        }
-        return result.toString();
-    }
-    */
-
-    /**
-    * Execute the command.
-    */
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
