@@ -33,7 +33,7 @@ public class Section extends TextElement {
 	*/
 	public String getHeadLine() {
 
-		return "[" + getKey() + "]" + "{" + _title + "}\n";
+		return "[" + getKey() + "]" + " {" + _title + "}\n";
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class Section extends TextElement {
 
 		if (_paragraphs != null) {
 			for (Paragraph par : _paragraphs) {
-				result.append("[" + par.getKey() + "]" + par.getContent());
+				result.append(par.getContent());
 			}
 		}
 
@@ -154,32 +154,35 @@ public class Section extends TextElement {
 	* @return return boolean value based on the success of the remove
 	*/
 
-	public boolean removeSection(int idx, Document doc) {
-    Section sec = _subsections.get(idx);
-    int n = 0;
+	public boolean removeSection(int idx, Document doc) throws InvalidOperation {
 
-    try {
-     if (sec.isIndexed()) {
-      doc.removeFromIndex(sec);
-  }
+	   int n = 0;
+	   Section sec = _subsections.get(idx);
 
-     for (Paragraph p : sec._paragraphs) {
-      if (p.isIndexed()) {
-       doc.removeFromIndex(p);
-      }
-     }
+	   try {
 
-     while (n <= sec.getSubsections().size()) {
-      if (!sec.removeSection(n,doc)) {
-        n++;
-      }
-     }
+	    if (sec.isIndexed()) {
+	     doc.removeFromIndex(sec);
+	    }
+	     for (Paragraph p : sec._paragraphs) {
+	     if (p.isIndexed()) {
+	       doc.removeFromIndex(p);
+	     }
+	      }
 
-     return _subsections.remove(sec);
-    } catch (IndexOutOfBoundsException | InvalidOperation e) {
-    return _subsections.remove(sec);
-    }
-  }
+	     while (n <= sec.getSubsections().size()) {
+	     if (!sec.removeSection(n,doc)) {
+	      n++;
+	     }
+	      }
+
+	     return _subsections.remove(sec);
+	   } catch (InvalidOperation e) {
+	     return _subsections.remove(sec);
+	   } catch (IndexOutOfBoundsException e) {
+	     throw new InvalidOperation();
+	   }
+	 }
 	/**
 	* Add paragraph to the section
 	*
@@ -216,7 +219,7 @@ public class Section extends TextElement {
 			}
 
 		} catch (IndexOutOfBoundsException e) {
-			return false;
+			throw new InvalidOperation();
 		}
 	}
 

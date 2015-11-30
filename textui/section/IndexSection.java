@@ -40,9 +40,10 @@ public class IndexSection extends Command<Section> {
       Section desiredSection = entity().getSection(sectionId.value());
       TextElement keyTextEl = _doc.getTextElement(uniqueId.value());
 
+      if(desiredSection.isIndexed())
+        display.add(Message.sectionNameChanged());
 
       if(keyTextEl != null) {
-        display.add(Message.sectionNameChanged());
         _doc.removeFromIndex(keyTextEl);
         _doc.indexElement(uniqueId.value(), desiredSection);
 
@@ -51,10 +52,10 @@ public class IndexSection extends Command<Section> {
       }
 
     } catch (InvalidOperation e) {
-        display.add(Message.noSuchSection(sectionId.value()));
+      display.add(Message.noSuchSection(sectionId.value()));
 
     }finally {
-        display.display();
+      display.display();
     }
   }
 }

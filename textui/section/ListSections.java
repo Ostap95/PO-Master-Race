@@ -31,11 +31,12 @@ public class ListSections extends Command<Section> {
     @SuppressWarnings("nls")
     public final void execute() {
         ListSections list;
+        Display display = new Display();
         try {
-          Display display = new Display();
-          display.add(entity().getHeadLine());
-          display.display();
           for (Section sec : entity().getSubsections()) {
+            display.add(sec.getHeadLine());
+            display.display();
+            display = new Display();
             list = new ListSections(sec);
             list.execute();
           }

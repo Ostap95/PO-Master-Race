@@ -41,6 +41,8 @@ public class RemoveSection extends Command<Section> {
           }catch( IndexOutOfBoundsException e) {
             e.getMessage();
             //does nothing
+          }catch ( InvalidOperation e) {
+            e.getMessage();
           }
 
     }
