@@ -83,7 +83,7 @@ public class Document extends Section {
 	public void removeFromIndex(TextElement ele) {
 		String key = ele.getKey();
 		_elementList.remove(key);
-		ele.setKey("");
+		ele.setKey(null);
 	}
 
 	/**

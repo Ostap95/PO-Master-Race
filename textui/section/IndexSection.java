@@ -45,7 +45,7 @@ public class IndexSection extends Command<Section> {
         display.add(Message.sectionNameChanged());
 
       if(keyTextEl != null) {
-        //_doc.removeFromIndex(keyTextEl);
+        _doc.removeFromIndex(keyTextEl);
         _doc.indexElement(uniqueId.value(), desiredSection);
 
       } else {
