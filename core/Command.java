@@ -30,5 +30,4 @@ public class Command {
 			e.getMessage();
 		}
 	}
-
 }
