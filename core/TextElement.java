@@ -9,13 +9,15 @@ import java.io.*;
 public abstract class TextElement implements Serializable {
 
 	/** Text element identification */
-	private String _key = "";
+	private String _key = null;
 
 	/**
 	* Return text element key
 	* @return return text element key
 	*/
 	public String getKey() {
+		if (_key == null)
+			return "";
 		return _key;
 	}
 
@@ -31,7 +33,7 @@ public abstract class TextElement implements Serializable {
 	* @return return boolean value based on if text element has unique key
 	*/
 	public boolean isIndexed() {
-		return _key !=  "";
+		return _key !=  null;
 	}
 
 	/**
