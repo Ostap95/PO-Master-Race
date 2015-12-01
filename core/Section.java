@@ -8,7 +8,7 @@ import edt.textui.section.*;
 /**
 * Class Section that represents a section of a document
 */
-public class Section extends TextElement {
+public class Section extends TextElement implements Visitable {
 
 	/* Section title */
 	private String _title = "";
@@ -91,6 +91,9 @@ public class Section extends TextElement {
 			}
 		}
 		return result.toString();
+	}
+	public String accept(Visitor visit) {
+		return visitor.visit(this);
 	}
 
 	/**
@@ -183,6 +186,18 @@ public class Section extends TextElement {
 	     throw new InvalidOperation();
 	   }
 	 }
+
+	 public String getAllSubsections() {
+		 StringBuilder result = new StringBuilder();
+			 for (Section section : _subsections) {
+				 result.append(section.getHeadLine());
+				 result.append(section.getAllSubsections());
+			 }
+			 return result.toString();
+	 }
+
+
+
 	/**
 	* Add paragraph to the section
 	*

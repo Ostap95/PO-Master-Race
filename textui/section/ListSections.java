@@ -30,19 +30,8 @@ public class ListSections extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        ListSections list;
-        Display display = new Display();
-        try {
-          for (Section sec : entity().getSubsections()) {
-            display.add(sec.getHeadLine());
-            display.display();
-            display = new Display();
-            list = new ListSections(sec);
-            list.execute();
-          }
-
-        } catch (InvalidOperation e) {
-          e.getMessage();
-        }
+      Display display = new Display();
+      display.add(entity().getAllSubsections());
+      display.display();
     }
-}
+  }
