@@ -60,14 +60,11 @@ public class Editor {
       Command cmd = new Command();
       try {
         _currentDoc= cmd.loadDocument(filename);
-        //return true;
       } catch (ClassNotFoundException e) {
         e.getMessage();
-        //return false;
         throw new InvalidOperation();
       } catch (IOException e) {
         e.getMessage();
-        //return false;
         throw new InvalidOperation();
       }
     }

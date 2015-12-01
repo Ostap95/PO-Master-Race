@@ -39,8 +39,7 @@ public class IndexSection extends Command<Section> {
     try {
       Section desiredSection = entity().getSection(sectionId.value());
       TextElement keyTextEl = _doc.getTextElement(uniqueId.value());
-/*
-*/
+      
       if(desiredSection.isIndexed())
         display.add(Message.sectionNameChanged());
 

@@ -30,6 +30,8 @@ public class ListSections extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
+      concreteVisitorA mainPresentation = new concreteVisitorA();
+
       Display display = new Display();
       display.add(entity().getAllSubsections());
       display.display();

@@ -1,6 +1,9 @@
 
 
-public interface Visitor {
-  public visit(Section sec);
-  public visit(Paragraph par);
+interface Visitor {
+
+  public String visit(Section sec);
+
+  public String visit(Paragraph par);
+
 }

@@ -31,8 +31,8 @@ public class Section extends TextElement implements Visitable {
 	* Return HeadLine title
 	* @return headline title
 	*/
-	public String getHeadLine() {
 
+	public String getHeadLine() {
 		return "[" + getKey() + "]" + " {" + _title + "}\n";
 	}
 
@@ -75,25 +75,9 @@ public class Section extends TextElement implements Visitable {
 	* Return content of the section
 	* @return returns content of the section
 	*/
-	public String getContent() {
-		StringBuilder result = new StringBuilder();
-		result.append(getHeadLine());
 
-		if (_paragraphs != null) {
-			for (Paragraph par : _paragraphs) {
-				result.append(par.getContent());
-			}
-		}
-
-		if (_subsections != null) {
-			for (Section sec : _subsections) {
-				result.append(sec.getContent());
-			}
-		}
-		return result.toString();
-	}
-	public String accept(Visitor visit) {
-		return visitor.visit(this);
+	public String accept(Visitor v) {
+		return v.visit(this);
 	}
 
 	/**
